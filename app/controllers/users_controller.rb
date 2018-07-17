@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   before_action :require_users_permission, only: [:names, :handle_name_change]
   before_action :require_user_confirmation_token, only: :confirm_email
   before_action :require_user_confirmation_not_timed_out, only: :confirm_email
-
+  before_action :require_users_impersonate_permission, only: [:impersonate, :unimpersonate]
+  
   def index
     @users = User.search(params[:q])
                  .paginate(page: params[:page])
@@ -162,6 +163,10 @@ class UsersController < ApplicationController
     redirect_to pages_home_path unless user_can_edit_users?
   end
 
+  def require_users_impersonate_permission
+    redirect_to root_path unless user_can_impersonate_users?
+  end  
+  
   def require_user_confirmation_token
     return if @user
 

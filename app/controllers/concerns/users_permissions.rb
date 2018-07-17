@@ -9,4 +9,8 @@ module UsersPermissions
   def user_can_edit_users?
     user_signed_in? && current_user.can?(:edit, :users)
   end
+  
+  def user_can_impersonate_users?
+  	user_signed_in? && true_user.can?(:impersonate, :users)
+  end  
 end
