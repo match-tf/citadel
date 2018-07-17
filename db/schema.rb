@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(version: 20180530021850) do
     t.index ["user_id"], name: "index_action_user_edit_users_on_user_id"
   end
 
+  create_table "action_user_impersonate_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_action_user_impersonate_users_on_user_id", using: :btree
+  end  
+  
   create_table "action_user_manage_forums", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.index ["user_id"], name: "index_action_user_manage_forums_on_user_id"
