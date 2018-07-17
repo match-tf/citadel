@@ -49,9 +49,6 @@ gem 'active_model_serializers', '~> 0.10.0'
 # Tournament systems
 gem 'tournament-system', '~> 1.0.0'
 
-# Save huge user data
-gem 'sisyphus-rails'
-
 group :test do
   # Use rspec for tests
   gem 'rspec-rails', '~> 3.5'
