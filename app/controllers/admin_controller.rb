@@ -4,6 +4,24 @@ class AdminController < ApplicationController
   def index
   end
 
+  before_action only: [:host_grant] do
+    @user = User.all.find(params.require(:user_id))
+  end  
+ 
+  def host
+  end  
+
+  def host_grant
+    @user.grant(:view, :leagues)
+    @user.grant(:create, :leagues)
+	@user.notifications.create(user_id: @user.id, message: "You have been granted the tournament host permissions! Click this notification to create your first tournament.", link: "/tournaments/new", created_at: Time.now, updated_at: Time.now)
+	@user.badge_name = "Tournament host"
+	@user.badge_color = 3
+    @user.save
+    flash[:notice] = 'Host permissions granted!'
+	redirect_to(admin_host_path)
+  end
+  
   def statistics
     @timeframe = (params[:t] || 30.minutes).to_i.seconds
     events_in_timeframe = Ahoy::Event.where(time: @timeframe.ago..Time.current)

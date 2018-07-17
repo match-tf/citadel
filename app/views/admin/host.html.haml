@@ -1,0 +1,21 @@
+- content_for(:title) { 'Grant host permissions' }
+.row
+  %h2.outside Grant tournament host permissions
+
+.panel.panel-container
+  .row
+    .panel.panel-default
+      .panel-body
+        = bootstrap_form_tag url: admin_host_grant_path do |f|
+          = f.text_field :user_id
+          = f.submit 'Grant'
+          
+          
+:javascript
+  $(function() {
+  var str = window.location.href;
+  str = str.substring(str.indexOf("?") + 1);
+  if(parseInt(str)==str){
+  document.getElementById("user_id").value = str;
+  }
+  });

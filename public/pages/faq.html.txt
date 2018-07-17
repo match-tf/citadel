@@ -1,0 +1,156 @@
+ <h1 class="tab-header outside">F.A.Q.</h1>
+ <div class="panel panel-default ">
+     <div class="panel-heading hero-banner">
+        <img class="img-responsive center-block" src="/images/faq.png">
+     </div>
+ </div>
+ <div class="panel-group" id="faqAccordion">
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">What is the purpose of the site?</a>
+              </h4>
+
+            </div>
+            <div id="question0" class="panel-collapse collapse">
+                <div class="panel-body">
+
+
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five <a href="http://jquery2dotnet.com/" class="label label-success">http://jquery2dotnet.com/</a> centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">How to host a tournament?</a>
+              </h4>
+
+            </div>
+            <div id="question1" class="panel-collapse collapse">
+            <div class="panel-body timeline-container">
+						<ul class="timeline">
+							<li>
+								<div class="timeline-badge"><em class="fa fa-steam"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Log into the site</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Use Steam to log in, no additional actions required.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa fa-sign-in"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Hop in our <a href="https://discord.match.tf" target="_blank">Discord server</a></h4>
+									</div>
+									<div class="timeline-body">
+										<p>This is required for a better coordination process & customer support. You are free to use any kind of coordination hub for your tournament, but as a tournament host, you should join our server.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa fa-magic"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Request tournament host permissions</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Fill in a simple form in <code>#request-center</code>. You can submit it via PM if you want your application and tournament to be private. This is only required once, you will be able to host as many tournaments as you want.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa-fire"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Go for it!</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Once you are granted with the permissions, you will recieve a site notification with a link to your new tournament page and all the information on the hosting process.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+			</div>
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">How do I participate?</a>
+              </h4>
+
+            </div>
+            <div id="question2" class="panel-collapse collapse">
+            <div class="panel-body timeline-container">
+						<ul class="timeline">
+							<li>
+								<div class="timeline-badge"><em class="fa fa-steam"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Log into the site</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Use Steam to log in, no additional actions required.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa fa-sign-in"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Create a team</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Go to the "Teams" page, press the "Start team" button.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa fa-magic"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Request tournament host permissions</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Fill in a simple form in <code>#request-center</code>. You can submit it via PM if you want your application and tournament to be private. This is only required once, you will be able to host as many tournaments as you want.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge"><em class="fa-fire"></em></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Go for it!</h4>
+									</div>
+									<div class="timeline-body">
+										<p>Once you are granted with the permissions, you will recieve a site notification with a link to your new tournament page and all the information on the hosting process.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+			</div>
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">I have more questions</a>
+              </h4>
+
+            </div>
+            <div id="question3" class="panel-collapse collapse">
+                <div class="panel-body">
+
+
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>

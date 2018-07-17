@@ -1,0 +1,20 @@
+- content_for(:title) { 'Apply for tournament host' }
+.row
+  %h2.outside Apply for tournament host
+
+.panel.panel-container
+  .row
+    .panel.panel-default
+      .panel-body
+        = bootstrap_form_tag url: apply_sendrequest_path do |f|
+          = f.text_field  :discord, label: 'Discord username'
+          %p.text-muted Is required to recieve support and grant an access to the tournament host chat. You must join our #{link_to 'Discord', 'https://discord.match.tf'} before applying. Use the full format: Username#digits
+          %br
+          = f.text_field  :organization
+          %p.text-muted If you are applying as a part of a certain organization, please provide the name and URL if possible. If you are going to single-handedly host a tournament, just type "None"
+          %br
+          = f.text_area  :community, label: 'Community achievements'
+          %p.text-muted Tournaments you hosted / been a part of in past. Generally, something that can prove your position as a responsible and experienced person
+          = f.submit 'Send a request'
+:javascript
+  $(function() {$("input").prop('required',true);});
