@@ -1,15 +1,17 @@
 - content_for(:title) { "Signups | #{@league.name}" }
 
 - league_p = present(@league)
-%h1
+%h1.outside
   = league_p.link
   Signups
 
-- @divisions.each do |div|
-  .panel.panel-default
-    .panel-heading= div.name
-    %ul.list-group
-      - present_collection(div.rosters).each do |roster|
-        - bg = roster.approved? ? 'list-group-item-success' : 'list-group-item-warning'
-        %li{ class: "list-group-item #{bg}" }
-          = roster.link
+.panel.panel-container
+  .row
+    - @divisions.each do |div|
+      .panel.panel-default
+        .panel-heading= div.name
+        %ul.list-group
+          - present_collection(div.rosters).each do |roster|
+            - bg = roster.approved? ? 'list-group-item-success' : 'list-group-item-warning'
+            %li{ class: "list-group-item #{bg}" }
+              = roster.link

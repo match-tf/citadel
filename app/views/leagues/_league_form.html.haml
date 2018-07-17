@@ -3,7 +3,10 @@
   .panel-body
     = f.select :format_id, format_options
     = f.text_field :name
+    = f.text_field :heroimage_url
+    = f.check_box :display_heroimage
     = f.markdown_editor :description, rows: 10
+    = f.markdown_editor :rules, rows: 15    
     = f.text_field :category
 
 .panel.panel-default

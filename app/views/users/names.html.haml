@@ -1,21 +1,23 @@
 - content_for(:title) { 'Name Change Requests' }
 
-%h1 User Name Change Requests
+%h1.outside User Name Change Requests
 
-%ul.list-group
-  - @name_changes.each do |name_change|
-    - user_p = present(name_change.user)
-
-    %li.list-group-item
-      = user_p.link
-      wants to change their name to
-      = user_p.link name_change.name
-
-      .button-group.pull-right
-        = button_to handle_user_name_path(name_change.user, name_change, approve: true),
-                    method: :patch, class: 'btn btn-success' do
-          Approve
-      .button-group.pull-right
-        = button_to handle_user_name_path(name_change.user, name_change, approve: false),
-                    method: :patch, class: 'btn btn-danger' do
-          Deny
+.panel.panel-container
+  .row
+    %ul.list-group
+      - @name_changes.each do |name_change|
+        - user_p = present(name_change.user)
+    
+        %li.list-group-item
+          = user_p.link
+          wants to change their name to
+          = user_p.link name_change.name
+    
+          .button-group.pull-right
+            = button_to handle_user_name_path(name_change.user, name_change, approve: true),
+                        method: :patch, class: 'btn btn-success' do
+              Approve
+          .button-group.pull-right
+            = button_to handle_user_name_path(name_change.user, name_change, approve: false),
+                        method: :patch, class: 'btn btn-danger' do
+              Deny

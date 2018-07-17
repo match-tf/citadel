@@ -1,41 +1,46 @@
 - content_for(:title) { "Edit: #{@league.name}" }
 
-.alert.alert-warning
-  - if !@league.hidden?
-    %span.glyphicon.glyphicon-warning-sign
-    %b Public
-    All changes are visible to everyone.
-  - else
-    %span.glyphicon.glyphicon-lock
-    Private
-
-= bootstrap_form_for @league, url: league_path(@league) do |f|
-  = render 'league_form', f: f, weekly_scheduler: @weekly_scheduler
-
-  = f.submit 'Update'
-  = link_to 'Cancel', league_path(@league), class: 'btn btn-default'
-
-%hr
-
-- if user_can_edit_leagues?
-  .panel.panel-danger
-    .panel-heading Danger Zone
-    .panel-body
-      - if @league.hidden? && @league.rosters.empty?
-        = button_to league_path(@league), method: :delete, class: 'btn btn-danger',
-                    data: { confirm: 'Are you sure you want to delete this League?' } do
-          %span.glyphicon.glyphicon-trash
-          Delete
-
-      - if @league.hidden?
-        = button_to 'Make Public', modify_league_path(@league, status: 'running'),
-                    method: :patch, class: 'btn btn-warning'
-      - elsif @league.running?
-        = button_to 'Make Private', modify_league_path(@league, status: 'hidden'),
-                    method: :patch, class: 'btn btn-danger'
-        = button_to 'Mark Completed', modify_league_path(@league, status: 'completed'),
-                    method: :patch, class: 'btn btn-warning'
-      - else
-        = button_to 'Unmark Completed', modify_league_path(@league, status: 'running'),
-                    method: :patch, class: 'btn btn-warning'
-
+.row
+  .alert.alert-warning
+    - if !@league.hidden?
+      %span.glyphicon.glyphicon-warning-sign
+      %b Public
+      All changes are visible to everyone.
+    - else
+      %span.glyphicon.glyphicon-lock
+      Private
+  
+  = bootstrap_form_for @league, url: league_path(@league) do |f|
+    = render 'league_form', f: f, weekly_scheduler: @weekly_scheduler
+  
+    = f.submit 'Update'
+    = link_to 'Cancel', league_path(@league), class: 'btn btn-default'
+  
+  %hr
+  
+  - if user_can_edit_league?
+    .panel.panel-danger
+      .panel-heading Danger Zone
+      .panel-body.btn-spacing
+        - if @league.hidden? && @league.rosters.empty?
+          = button_to league_path(@league), method: :delete, class: 'btn btn-danger',
+                      data: { confirm: 'Are you sure you want to delete this League?' } do
+            %span.glyphicon.glyphicon-trash
+            Delete
+  
+        - if @league.hidden?
+          = button_to 'Make Public', modify_league_path(@league, status: 'running'),
+                      method: :patch, class: 'btn btn-warning'
+        - elsif @league.running?
+          = button_to 'Make Private', modify_league_path(@league, status: 'hidden'),
+                      method: :patch, class: 'btn btn-danger'
+          = button_to 'Mark Completed', modify_league_path(@league, status: 'completed'),
+                      method: :patch, class: 'btn btn-warning'
+        - else
+          = button_to 'Unmark Completed', modify_league_path(@league, status: 'running'),
+                      method: :patch, class: 'btn btn-warning'
+  
+        = link_to users_permissions_path(action_: :edit, subject: :league, target: @league.id),
+                class: 'btn btn-default' do
+          Manage Permissions
+          %span.glyphicon.glyphicon-cog

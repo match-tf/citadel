@@ -1,18 +1,20 @@
-- if user_can_meta?
-  = link_to edit_meta_game_path(@game), class: 'btn btn-default pull-right', type: 'button' do
-    Edit
-    %span.glyphicon.glyphicon-cog
-
-%h1= @game.name
-
-.panel.panel-default
-  .panel-heading Formats
-  %ul.list-group
-    - present_collection(@game.formats).each do |format_p|
-      = format_p.link class: 'list-group-item'
-
-.panel.panel-default
-  .panel-heading Maps
-  %ul.list-group
-    - present_collection(@game.maps).each do |map_p|
-      = map_p.link class: 'list-group-item'
+.panel.panel-container
+  .row
+    - if user_can_meta?
+      = link_to edit_meta_game_path(@game), class: 'btn btn-default pull-right', type: 'button' do
+        Edit
+        %span.glyphicon.glyphicon-cog
+    
+    %h1= @game.name
+    
+    .panel.panel-default
+      .panel-heading Formats
+      %ul.list-group
+        - present_collection(@game.formats).each do |format_p|
+          = format_p.link class: 'list-group-item'
+    
+    .panel.panel-default
+      .panel-heading Maps
+      %ul.list-group
+        - present_collection(@game.maps).each do |map_p|
+          = map_p.link class: 'list-group-item'

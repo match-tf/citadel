@@ -2,7 +2,7 @@
 
 .panel{ class: comm_p.panel_class }
   %div{ id: comm.paths.dom_id }
-  .panel-heading
+  .panel-heading.post-edit
     - if user_can_edit_comm?(comm)
       .pull-right
         = link_to comm.paths.edit, class: 'btn btn-link btn-sm' do

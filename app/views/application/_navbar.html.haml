@@ -1,18 +1,35 @@
 %li{ class: navbar_class(:home) }
-  = link_to('Home', :pages_home)
-
-%li{ class: navbar_class(:users) }
-  = link_to('Users', :users)
-
-%li{ class: navbar_class(:teams) }
-  = link_to('Teams', :teams)
-
-%li{ class: navbar_class(:forums) }
-  = link_to('Forums', :forums)
+  %a{:href => "/"}
+    %em.fa.fa-home  
+    Home
 
 %li{ class: navbar_class(:leagues) }
-  = link_to('Leagues', :leagues)
+  %a{:href => "/tournaments"}
+    %em.fa.fa-trophy  
+    Tournaments
+
+%li{ class: navbar_class(:teams) }
+  %a{:href => "/teams"}
+    %em.fa.fa-calendar  
+    Teams
+
+%li{ class: navbar_class(:users) }
+  %a{:href => "/users"}
+    %em.fa.fa-users  
+    Users
+
+%li{ class: navbar_class(:faq) }
+  %a{:href => "/faq"}
+    %em.fa.fa-bars  
+    FAQ
+    
+%li{ class: navbar_class(:about) }
+  %a{:href => "/about"}
+    %em.fa.fa-bars  
+    About
 
 - if user_signed_in? && current_user.admin?
   %li{ class: navbar_class(:admin) }
-    = link_to('Admin', :admin)
+    %a{:href => "/admin"}
+      %em.fa.fa-wheelchair-alt  
+      Admin

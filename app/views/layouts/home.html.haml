@@ -15,9 +15,9 @@
     %meta{:content => "#e39418", :name => "theme-color"}/
     %link{:href => "#{asset_path 'icon-192.png'}", :rel => "icon", :sizes => "192x192"}/
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = content_for :head
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    - public_league = League.where(status: 1)
     / Custom Font
     %link{:href => "https://fonts.googleapis.com/css?family=Anton|Lato", :rel => "stylesheet"}/
   %body
@@ -54,6 +54,15 @@
         = render 'user_dropdown'
     / /.sidebar
     .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+      .row
+        .panel.panel-default
+          .panel-heading.hero-banner
+            %img.img-responsive.center-block{:src => "#{asset_path 'homeimage.png'}"}/
+            - if public_league.exists?
+              .text-featured.animated.fadeInRight
+                %a{:href => "/tournaments/#{public_league.last.id}"}
+                  %span Latest tournament:
+                  = public_league.last.name
       .row
         = render 'flashes'
       = yield

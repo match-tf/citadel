@@ -1,9 +1,11 @@
 - content_for(:title) { "Post Edits | #{@thread.title}" }
 
-%h2 Post Edits
+%h2.outside Post Edits
 
-.panel.panel-default
-  - @edits.each do |post_edit|
-    = render 'post_edit', post_edit: post_edit
-
-= bootstrap_paginate @edits
+.panel.panel-container
+  .row
+    .panel.panel-default
+      - @edits.each do |post_edit|
+        = render 'post_edit', post_edit: post_edit
+    
+    = bootstrap_paginate @edits

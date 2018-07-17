@@ -1,36 +1,32 @@
-.panel.panel-default
-  - if user_can_create_thread? || !threads.empty?
-    .panel-heading
-      - if user_can_create_thread?
-        .pull-right
-          = link_to new_forums_thread_path(topic: parent_topic), class: 'btn btn-default' do
-            Create
-            %span.glyphicon.glyphicon-plus
-
-      Threads
-
-    %ul.list-group
-      - threads.each do |thread|
-        - thread_p = present(thread)
-        %li.list-group-item
-          = thread_p.link
-
-          .pull-right.label.alert-info= pluralize(thread.posts_count, 'Post')
-
-  - if user_can_manage_topic? || !topics.empty?
-    .panel-heading
-      - if user_can_manage_topic?
-        .pull-right
-          = link_to new_forums_topic_path(parent: parent_topic), class: 'btn btn-default' do
-            Create
-            %span.glyphicon.glyphicon-plus
-
-      Topics
-
-    %ul.list-group
-      - topics.each do |topic|
-        - topic_p = present(topic)
-        %li.list-group-item
-          = topic_p.link
-
-          .pull-right.label.alert-info= pluralize(topic.threads_count, 'Thread')
+.panel.panel-container
+  .row
+    .panel.panel-default
+      - if user_can_create_thread? || !threads.empty?
+        .panel-heading
+          - if user_can_create_thread?
+            .pull-right
+              = link_to new_forums_thread_path(topic: parent_topic), class: 'btn btn-default' do
+                Create
+                %span.glyphicon.glyphicon-plus
+    
+          Threads
+    
+        %ul.list-group
+          - present_collection(threads).each do |thread|
+            %li.list-group-item
+              = thread.link
+    
+      - if user_can_manage_topic? || !topics.empty?
+        .panel-heading
+          - if user_can_manage_topic?
+            .pull-right
+              = link_to new_forums_topic_path(parent: parent_topic), class: 'btn btn-default' do
+                Create
+                %span.glyphicon.glyphicon-plus
+    
+          Topics
+    
+        %ul.list-group
+          - present_collection(topics).each do |topic|
+            %li.list-group-item
+              = topic.link

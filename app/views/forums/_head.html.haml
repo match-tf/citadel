@@ -1,10 +1,7 @@
 - if object
   - presenter = present(object)
 
-  %h2= presenter
+  %h2.outside= presenter
 
-  %br= presenter.path
 - else
-  %h1.tab-header Forums
-
-%hr
+  %h1.tab-header.outside News

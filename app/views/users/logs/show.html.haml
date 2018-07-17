@@ -2,30 +2,30 @@
 
 - user_p = present(@user)
 
-%h1 Logs for #{user_p.link}
+%h1.outside Logs for #{user_p.link}
 
-%hr
-
-.panel.panel-info
-  .panel-heading Tools
-  .panel-body
-    = link_to alts_user_logs_path(@user), class: 'btn btn-default' do
-      Alternate Accounts
-      .glyphicon.glyphicon-user
-
-%table.table.table-striped
-  %thead
-    %tr
-      %th IP Address
-      %th First Seen
-      %th Browser
-      %th Operating System
-  %tbody
-    - @visits.each do |visit|
-      - visit_p = present(visit)
-      %tr
-        %td= visit.ip
-        %td= visit_p.started_at
-        %td= visit.browser
-        %td= visit.os
+.panel.panel-container
+  .row
+    .panel.panel-info
+      .panel-heading Tools
+      .panel-body
+        = link_to alts_user_logs_path(@user), class: 'btn btn-default' do
+          Alternate Accounts
+          .glyphicon.glyphicon-user
+    
+    %table.table.table-striped
+      %thead
+        %tr
+          %th IP Address
+          %th First Seen
+          %th Browser
+          %th Operating System
+      %tbody
+        - @visits.each do |visit|
+          - visit_p = present(visit)
+          %tr
+            %td= visit.ip
+            %td= visit_p.started_at
+            %td= visit.browser
+            %td= visit.os
 

@@ -1,9 +1,11 @@
 - content_for(:title) { "Comment Edits | #{@user.name}" }
 
-%h2
+%h2.outside
   Comment Edits on
   = link_to @user.name, user_path(@user)
 
-.panel.panel-default
-  - @edits.each do |comment_edit|
-    = render 'comment_edit', comment_edit: comment_edit
+.panel.panel-container
+  .row
+    .panel.panel-default
+      - @edits.each do |comment_edit|
+        = render 'comment_edit', comment_edit: comment_edit

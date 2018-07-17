@@ -1,0 +1,5 @@
+- content_for(:title) { 'About' }
+
+-# rubocop:disable Rails/OutputSafety
+= raw File.read(Rails.root.join('public', 'pages/about.html.txt'))
+-# rubocop:enable Rails/OutputSafety

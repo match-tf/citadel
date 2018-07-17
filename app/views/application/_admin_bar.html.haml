@@ -1,0 +1,13 @@
+- if user_signed_in? && true_user.can?(:impersonate, :users)
+  %div{ id: "admin-bar", class: Rails.env }
+    %div{ class: "container" }
+      %span.view
+        Viewing as: 
+        = current_user.name
+
+        - if true_user.id != current_user.id
+          = link_to user_unimpersonate_path(current_user.id), method: :post, class: 'badge badge-danger', type: 'button' do
+            Stop
+      %span.view
+        Git revision:
+        = git_revision

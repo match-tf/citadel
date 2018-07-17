@@ -1,16 +1,20 @@
+- content_for(:title) { 'Home' }
+
 - if @topic
-  %h1 News
-
-  - @threads.each do |thread|
-    - post = @news_posts[thread]
-    %hr
-
-    = render 'forums/posts/news_post', post: post
-
-  - if @more_threads
-    = link_to 'View Older', forums_topic_path(@topic), class: 'btn btn-default'
+  %h1.outside News
+  .panel.panel-container
+    .row  
+      - @threads.each do |thread|
+        - post = @news_posts[thread]
+      
+        = render 'forums/posts/news_post', post: post
+      
+      - if @more_threads
+        = link_to 'View Older', forums_topic_path(@topic), class: 'btn btn-default'
 - else
-  .jumbotron
-    %h1 Welcome to Citadel
-
-    %p View the source on #{link_to 'Github', 'https://github.com/ozfortress/citadel'}
+  .panel.panel-container
+    .row
+      .jumbotron
+        %h1 Welcome to match.tf
+      
+        %p Nothing to see here yet, go check out another #{link_to 'cool site', 'https://cfg.tf'}

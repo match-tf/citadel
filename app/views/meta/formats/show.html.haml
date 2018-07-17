@@ -1,13 +1,15 @@
-- if user_can_meta?
-  = link_to edit_meta_format_path(@format), class: 'btn btn-default pull-right', type: 'button' do
-    Edit
-    %span.glyphicon.glyphicon-cog
-
-- format_p = present(@format)
-
-%h1= format_p.game.link
-%h2= @format.name
-
-.panel.panel-default
-  .panel-heading Information
-  .panel-body.markdown= format_p.description
+.panel.panel-container
+  .row
+    - if user_can_meta?
+      = link_to edit_meta_format_path(@format), class: 'btn btn-default pull-right', type: 'button' do
+        Edit
+        %span.glyphicon.glyphicon-cog
+    
+    - format_p = present(@format)
+    
+    %h1= format_p.game.link
+    %h2= @format.name
+    
+    .panel.panel-default
+      .panel-heading Information
+      .panel-body.markdown= format_p.description

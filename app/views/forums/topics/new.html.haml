@@ -1,11 +1,13 @@
 - content_for(:title) { 'Create Topic | Forums' }
 
-%h4.pull-right Create a new Topic
+%h2.outside Create a new Topic
 
-= render 'forums/head', object: @topic.parent
-
-= bootstrap_form_for @topic, url: forums_topics_path(parent: @topic.parent) do |f|
-  = render 'form', f: f
-
-  = f.submit 'Create'
-  = link_to 'Cancel', :back, class: 'btn btn-default'
+.panel.panel-container
+  .row
+    = render 'forums/head', object: @topic.parent
+    
+    = bootstrap_form_for @topic, url: forums_topics_path(parent: @topic.parent) do |f|
+      = render 'form', f: f
+    
+      = f.submit 'Create'
+      = link_to 'Cancel', :back, class: 'btn btn-default'

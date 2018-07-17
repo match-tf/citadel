@@ -1,25 +1,27 @@
 - content_for(:title) { "Invite: #{@team.name}" }
 
-%h1 Users
+%h1.outside Users
 
-.row
-  .col-sm-3.col-md-3.pull-right
-    = render 'search'
-
-.panel.panel-default
-  - if @users.empty?
-    .panel-body No users found...
-  - else
-    %ul.list-group
-      - @users.each do |user|
-        %li.list-group-item
-          .button-group.pull-right
-            = button_to invite_team_path(@team, user_id: user.id),
-                        method: :patch, class: 'btn btn-primary',
-                        disabled: @team.invited?(user) || @team.on_roster?(user) do
-              Invite
-              %span.glyphicon.glyphicon-plus
-
-          = render 'users/listing', user: user
-
-= bootstrap_paginate @users
+.panel.panel-container
+  .row
+    .row
+      .col-sm-3.col-md-3.pull-right
+        = render 'search'
+    
+    .panel.panel-default
+      - if @users.empty?
+        .panel-body No users found...
+      - else
+        %ul.list-group
+          - @users.each do |user|
+            %li.list-group-item
+              .button-group.pull-right
+                = button_to invite_team_path(@team, user_id: user.id),
+                            method: :patch, class: 'btn btn-primary',
+                            disabled: @team.invited?(user) || @team.on_roster?(user) do
+                  Invite
+                  %span.glyphicon.glyphicon-plus
+    
+              = render 'users/listing', user: user
+    
+    = bootstrap_paginate @users
