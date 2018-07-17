@@ -5,8 +5,9 @@ class LeaguesController < ApplicationController
     @league = League.includes(:tiebreakers).find(params[:id])
   end
 
-  before_action :require_user_leagues_permission, only: [:new, :create, :destroy]
-  before_action :require_user_league_permission, only: [:edit, :update, :modify]
+  before_action :require_user_leagues_permission, only: [:destroy]
+  before_action :require_user_create_permission, only: [:new, :create]
+  before_action :require_user_league_permission, only: [:edit, :update, :modify, :message]
   before_action :require_league_not_hidden_or_permission, only: [:show]
   before_action :require_hidden, only: [:destroy]
 
@@ -14,7 +15,7 @@ class LeaguesController < ApplicationController
     @leagues = League.search(params[:q])
                      .order(status: :asc, created_at: :desc)
                      .includes(format: :game)
-    @leagues = @leagues.visible unless user_can_edit_leagues?
+    @leagues = @leagues.visible unless user_can_edit_leagues? || user_can_view_leagues? 
     @leagues = @leagues.group_by { |league| league.format.game }
 
     @games = @leagues.keys
@@ -30,6 +31,8 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
 
     if @league.save
+      @user = current_user
+      @user.grant(:edit, @league)
       redirect_to league_path(@league)
     else
       edit
@@ -78,10 +81,38 @@ class LeaguesController < ApplicationController
     end
   end
 
+  before_action only: [:message] do
+    comm = params.require(:message)
+    org = params.require(:url)
+  end  
+  
+  def message
+    
+    league_id = @league.id
+    
+    message = params['message']
+    url = params['url']
+
+    i = 0
+    
+    Team.find_each do |team|
+      if team.rosters.joins(:division).where(league_divisions: { league_id: league_id }).exists?
+        User.which_can(:edit, team).each do |user|
+          Users::NotificationService.call(user, message, url)
+          i += 1
+        end
+      end
+    end
+    
+    flash[:notice] = "The message was sent to  " + i.to_s + " captains"
+    redirect_to league_path(@league)
+    
+  end
+  
   private
 
   LEAGUE_PARAMS = [
-    :name, :description, :format_id, :category,
+    :name, :description, :rules, :heroimage_url, :display_heroimage, :format_id, :category,
     :signuppable, :roster_locked, :matches_submittable, :transfers_require_approval, :allow_disbanding,
     :forfeit_all_matches_when_roster_disbands,
     :min_players, :max_players,
@@ -107,11 +138,15 @@ class LeaguesController < ApplicationController
     redirect_to leagues_path unless user_can_edit_leagues?
   end
 
+  def require_user_create_permission
+    redirect_to leagues_path unless user_can_edit_leagues? || user_can_create_leagues?
+  end  
+  
   def require_user_league_permission
     redirect_to league_path(@league) unless user_can_edit_league?
   end
 
   def require_league_not_hidden_or_permission
-    redirect_to leagues_path unless !@league.hidden? || user_can_edit_league?
+    redirect_to leagues_path unless !@league.hidden? || user_can_edit_league? || user_can_edit_leagues?
   end
 end
