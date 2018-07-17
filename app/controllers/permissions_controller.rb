@@ -2,6 +2,7 @@ class PermissionsController < ApplicationController
   # Include a bunch of permission models
   include Forums::Permissions
   include TeamPermissions
+  include LeaguePermissions
 
   before_action except: :index do
     @action = params.require(:action_).to_sym
@@ -82,12 +83,14 @@ class PermissionsController < ApplicationController
       user_can_edit_team?(@target)
     when Forums::Topic
       user_can_manage_topic?(@target)
+    when League
+      user_can_edit_league?(@target)
     else raise('Unknown permission target')
     end
   end
 
   def ensure_valid_target
-    redirect_back if subject? && ![:team, :forums_topic].include?(@subject)
+    redirect_back if subject? && ![:team, :forums_topic, :league].include?(@subject)
   end
 
   def redirect_back(options = {})
