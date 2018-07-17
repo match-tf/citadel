@@ -115,6 +115,19 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def impersonate
+    @user = User.find(params[:user_id])
+    impersonate_user(@user)
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unimpersonate
+    stop_impersonating_user
+
+    redirect_back(fallback_location: root_path)
+  end  
+  
   private
 
   def steam_data

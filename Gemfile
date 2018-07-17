@@ -49,9 +49,6 @@ gem 'active_model_serializers', '~> 0.10.0'
 # Tournament systems
 gem 'tournament-system', '~> 1.0.0'
 
-# Discord webhooks
-gem 'discord-notifier'
-
 # Save huge user data
 gem 'sisyphus-rails'
 
@@ -105,3 +102,13 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-passenger', require: false
 end
+
+# Animate.css
+gem "animate-rails"
+
+# User impersonation:
+gem 'pretender', '~> 0.3.1'
+gem 'allowable', '~> 1.1'
+
+# Discord webhooks
+gem 'discord-notifier'
