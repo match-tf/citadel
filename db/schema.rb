@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530021850) do
+ActiveRecord::Schema.define(version: 20180628073130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "action_user_create_leagues", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_action_user_create_leagues_on_user_id", unique: true
+  end
 
   create_table "action_user_edit_games", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -57,9 +62,9 @@ ActiveRecord::Schema.define(version: 20180530021850) do
 
   create_table "action_user_impersonate_users", force: :cascade do |t|
     t.integer "user_id"
-    t.index ["user_id"], name: "index_action_user_impersonate_users_on_user_id", using: :btree
-  end  
-  
+    t.index ["user_id"], name: "index_action_user_impersonate_users_on_user_id"
+  end
+
   create_table "action_user_manage_forums", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.index ["user_id"], name: "index_action_user_manage_forums_on_user_id"
@@ -147,6 +152,11 @@ ActiveRecord::Schema.define(version: 20180530021850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_action_user_use_users_bans_on_user_id"
+  end
+
+  create_table "action_user_view_leagues", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_action_user_view_leagues_on_user_id", unique: true
   end
 
   create_table "ahoy_events", id: :serial, force: :cascade do |t|
@@ -489,6 +499,10 @@ ActiveRecord::Schema.define(version: 20180530021850) do
     t.integer "points_per_forfeit_draw", default: 1, null: false
     t.integer "points_per_forfeit_loss", default: 0, null: false
     t.boolean "forfeit_all_matches_when_roster_disbands", default: true, null: false
+    t.string "heroimage_url", default: "/images/heroimage_default.png", null: false
+    t.boolean "display_heroimage", default: false, null: false
+    t.string "rules", default: "### Welcome to match.tf tournament! Please follow the rules below:", null: false
+    t.text "rules_render_cache", default: "", null: false
     t.index "query_name_cache gist_trgm_ops", name: "index_leagues_on_query_name_change", using: :gist
     t.index ["format_id"], name: "index_leagues_on_format_id"
   end
