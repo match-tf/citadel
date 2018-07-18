@@ -41,4 +41,19 @@ module ApplicationHelper
   def present_collection(collection, klass = nil)
     collection.map { |object| present(object, klass) }
   end
+  
+  def git_revision
+    if File.exists?(File.join(Rails.root, "REVISION"))
+      File.open(File.join(Rails.root, "REVISION"), 'r') { |f| return f.gets.chomp }
+    else
+      `SHA1=$(git rev-parse HEAD 2> /dev/null); if [ $SHA1 ]; then echo $SHA1; else echo 'unknown'; fi`.chomp
+    end
+  end
+  
+  # painful workaround to `true_user` not being available in rspec tests
+  def true_user
+    @impersonated_user || current_user
+  end  
+  
+  
 end
