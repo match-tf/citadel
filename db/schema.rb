@@ -697,6 +697,7 @@ ActiveRecord::Schema.define(version: 20180628073130) do
   add_foreign_key "action_user_edit_team", "users"
   add_foreign_key "action_user_edit_teams", "users"
   add_foreign_key "action_user_edit_users", "users"
+  add_foreign_key "action_user_impersonate_users", "users"
   add_foreign_key "action_user_manage_forums", "users"
   add_foreign_key "action_user_manage_forums_thread", "forums_threads"
   add_foreign_key "action_user_manage_forums_thread", "users"
