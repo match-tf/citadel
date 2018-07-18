@@ -47,7 +47,9 @@ class User < ApplicationRecord
 
   validates_permission_to :edit, :league
   validates_permission_to :edit, :leagues
-
+  validates_permission_to :create, :leagues
+  validates_permission_to :view, :leagues
+  
   validates_permission_to :manage_rosters, :league
   validates_permission_to :manage_rosters, :leagues
 
