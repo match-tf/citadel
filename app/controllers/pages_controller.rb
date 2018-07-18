@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  layout "home", only: [:home]
+
   def home
     read_news_config
   end
