@@ -15,7 +15,7 @@ class LeaguesController < ApplicationController
     @leagues = League.search(params[:q])
                      .order(status: :asc, created_at: :desc)
                      .includes(format: :game)
-    @leagues = @leagues.visible unless user_can_edit_leagues? || user_can_view_leagues? 
+    @leagues = @leagues.visible unless user_can_edit_leagues? || user_can_view_league? 
     @leagues = @leagues.group_by { |league| league.format.game }
 
     @games = @leagues.keys
