@@ -1,4 +1,4 @@
-class AlterLeaguesDefaults < ActiveRecord::Migration[5.0]
+class AlterLeagueDefaults < ActiveRecord::Migration[5.0]
   def change
     change_column_default(:leagues, :transfers_require_approval, false)
     change_column_default(:leagues, :points_per_match_win, 2)
