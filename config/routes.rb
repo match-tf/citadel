@@ -19,16 +19,29 @@ Rails.application.routes.draw do
 
   get 'pages/home'
 
+  # Custom pages
+  get 'rules', to: 'pages#rules'
+  get 'host', to: 'pages#host'
+  get 'faq', to: 'pages#faq'
+  get 'about', to: 'pages#about'
+
   get 'admin', to: 'admin#index'
+  get 'admin/host', to: 'admin#host'
+  match '/admin/host_grant',      to: 'admin#host_grant',           via: 'post'
   get 'statistics',  to: 'admin#statistics', as: 'admin_statistics'
 
+  get 'apply', to: 'apply#index'  
+  match 'apply/sendrequest',      to: 'apply#sendrequest',           via: 'post'   
+  
   namespace :meta do
     resources :games, except: [:destroy]
     resources :formats, except: [:destroy]
     resources :maps, except: [:destroy]
   end
 
-  resources :leagues do
+  
+  resources :leagues, :path => :tournaments do
+    match 'message',      to: 'message',           via: 'post'   
     patch 'modify', on: :member
 
     resources :transfers, controller: 'leagues/transfers', only: [:index, :destroy, :update]
@@ -108,7 +121,7 @@ Rails.application.routes.draw do
     post 'name',  on: :member, to: 'users#request_name_change'
     post 'impersonate', to: 'users#impersonate'
     post 'unimpersonate', to: 'users#unimpersonate'
-    
+
     resources :comments, controller: 'users/comments', only: [:create, :edit, :update, :destroy] do
       get :edits, on: :member, as: 'edits_for'
       patch :restore, on: :member
@@ -138,8 +151,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :forums, only: :show
-  namespace :forums, shallow: true do
+  resource :forums, :path => :news, only: :show
+  namespace :forums, :path => :news, shallow: true do
     resources :topics, except: :index do
       concerns :subscribable
       patch :isolate, on: :member
@@ -153,6 +166,5 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
 end
