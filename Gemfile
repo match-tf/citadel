@@ -109,3 +109,6 @@ gem 'allowable', '~> 1.1'
 
 # Discord webhooks
 gem 'discord-notifier'
+
+# Sentry logging 
+gem "sentry-raven"
