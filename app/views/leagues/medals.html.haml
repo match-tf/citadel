@@ -1,0 +1,51 @@
+- content_for(:title) { "Medal distribution for #{@league.name}" }
+
+%h1.outside Medal distribution for #{@league.name}
+
+.row    
+  .col-md-8
+    .panel.panel-container
+      .panel-body.table-responsive
+        - @ordered_rosters.each do |div, rosters|
+          %h3= div.name
+          %table.table
+            %tr
+              %th #
+              %th Team
+              %th Points
+              %th Add to the list
+              - present_collection(@league.tiebreakers).each do |tiebreaker|
+                %th= tiebreaker.name_with_tooltip
+      
+            - rosters.each_with_index do |roster, rank|
+              %tr
+                %th{ scope: 'row' }= rank + 1
+                %td
+                  = present(roster).listing
+                  %ul
+                    - roster.users.each do |player|
+                      %li
+                        =player.steam_id              
+                %td= roster.points
+                - @league.tiebreakers.each do |tiebreaker|
+                  %th= tiebreaker.value_for(roster)
+                %td
+                  %input{:name => "list", :type => "checkbox"}                    
+  .col-md-4 
+    .panel.panel-container
+      %p This is your current tournament ranking table as it appears on the tournament page. Select rosters that you want to distribute medals to and click on the "Download list" button. Bear in mind that rosters also include players who could have been added by captains but did not actually participate in the competition. To avoid roster-riding you can adjust your maximum amount of players to match with the minimum amount. 
+      %p You will recieve a file that contains a list of Steam64 ids that you can later use with one of the following programs:
+      %ul
+        %li
+          %a{:href => "https://github.com/mkrl/pgrant", :target => "_blank"} PGrant
+          \- open-source multi-platform software for mass promo distribution.
+        %li
+          %a{:href => "https://github.com/Manschitz/tf2-promoitemgrant", :target => "_blank"} Promotional Item Granting Utility for Team Fortress 2
+          \- highly-advanced Windows tool by Gadget. Features Steam profile fetching, nice interface and much more.
+        %li
+          %a{:href => "https://gist.github.com/BenjaminSchaaf/e65c9dbccf32d49c23d97d94b61b95da", :target => "_blank"} Python grant script
+          by /dev/zero from ozfortress. Quick and easy to use, requires a basic understanding of working with console and text reading.
+    .panel.panel-danger
+      .panel-heading
+        %h5.outside Pleaase note that for security reasons we do not provide a distribution mechanism itself. Instead we only provide a list of Steam64 ids that can later be used to distribute medals in a third-party program or script. We are not responsible for any mistakes you can make during the distribution process. Be careful and be sure to check everything twice before you start.
+          

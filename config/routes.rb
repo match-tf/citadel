@@ -41,11 +41,13 @@ Rails.application.routes.draw do
 
   
   resources :leagues, :path => :tournaments do
+    get 'medals', to: 'leagues#medals'  
     match 'message',      to: 'message',           via: 'post'   
     patch 'modify', on: :member
-
+    
     resources :transfers, controller: 'leagues/transfers', only: [:index, :destroy, :update]
 
+    
     resources :rosters, controller: 'leagues/rosters', except: [:show], shallow: true do
       member do
         get   'review'

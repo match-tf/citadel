@@ -2,15 +2,19 @@ default: &default
   adapter: postgresql
   encoding: utf-8
   pool: 5
+  username: root
+  password: 256391
+  host: localhost
+  port: 5432
 
 development:
   <<: *default
-  database: citadel_dev
+  database: match_0
 
 test:
   <<: *default
-  database: citadel_test
+  database: match_0
 
 production:
   <<: *default
-  database: citadel_prod
+  database: match_0

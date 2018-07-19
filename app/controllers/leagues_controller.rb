@@ -1,13 +1,17 @@
 class LeaguesController < ApplicationController
   include LeaguePermissions
 
-  before_action except: [:index, :new, :create] do
+  before_action except: [:index, :new, :create, :medals] do
     @league = League.includes(:tiebreakers).find(params[:id])
   end
 
+  before_action only: [:medals] do
+    @league = League.includes(:tiebreakers).find(params[:league_id])
+  end  
+  
   before_action :require_user_leagues_permission, only: [:destroy]
   before_action :require_user_create_permission, only: [:new, :create]
-  before_action :require_user_league_permission, only: [:edit, :update, :modify, :message]
+  before_action :require_user_league_permission, only: [:edit, :update, :modify, :message, :medals]
   before_action :require_league_not_hidden_or_permission, only: [:show]
   before_action :require_hidden, only: [:destroy]
 
@@ -17,7 +21,7 @@ class LeaguesController < ApplicationController
                      .includes(format: :game)
     @leagues = @leagues.visible unless user_can_edit_leagues? || user_can_view_leagues? 
     @leagues = @leagues.group_by { |league| league.format.game }
-
+    
     @games = @leagues.keys
   end
 
@@ -41,6 +45,18 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    @rosters = @league.rosters.includes(:division)
+    @ordered_rosters = @league.ordered_rosters_by_division
+    @divisions = @ordered_rosters.map(&:first)
+    @roster = @league.roster_for(current_user) if user_signed_in?
+    @personal_matches = @roster.matches.pending.ordered.reverse_order.includes(:home_team, :away_team) if @roster
+    @top_div_matches = @divisions.first.matches.pending.ordered
+                                 .includes(:home_team, :away_team).last(5)
+    @matches = @league.matches.ordered.includes(:rounds, :home_team, :away_team)
+                      .group_by(&:division)
+  end
+  
+  def medals
     @rosters = @league.rosters.includes(:division)
     @ordered_rosters = @league.ordered_rosters_by_division
     @divisions = @ordered_rosters.map(&:first)
@@ -81,6 +97,7 @@ class LeaguesController < ApplicationController
     end
   end
 
+  
   before_action only: [:message] do
     comm = params.require(:message)
     org = params.require(:url)
