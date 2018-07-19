@@ -114,6 +114,7 @@
         .btn-group
           - klass = 'btn btn-default pull-right'
           
+          = link_to 'Medals', league_medals_path(@league), class: klass
           = link_to 'Transfers', league_transfers_path(@league), class: klass
           = link_to 'Signups', league_rosters_path(@league), class: klass
           = link_to 'Matches', league_matches_path(@league), class: klass

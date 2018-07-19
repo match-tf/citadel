@@ -30,7 +30,9 @@
                 - @league.tiebreakers.each do |tiebreaker|
                   %th= tiebreaker.value_for(roster)
                 %td
-                  %input{:name => "list", :type => "checkbox"}                    
+                  %input{:name => "list", :type => "checkbox"}   
+    %button.btn.btn-primary.btn-lg.btn-block{:type => "button", :id => "download"} Download list     
+    %br
   .col-md-4 
     .panel.panel-container
       %p This is your current tournament ranking table as it appears on the tournament page. Select rosters that you want to distribute medals to and click on the "Download list" button. Bear in mind that rosters also include players who could have been added by captains but did not actually participate in the competition. To avoid roster-riding you can adjust your maximum amount of players to match with the minimum amount. 
