@@ -22,7 +22,7 @@
                 %th{ scope: 'row' }= rank + 1
                 %td
                   = present(roster).listing
-                  %ul
+                  %ul{:class => "steamids", style: "display: none"} 
                     - roster.users.each do |player|
                       %li
                         =player.steam_id              
@@ -50,4 +50,29 @@
     .panel.panel-danger
       .panel-heading
         %h5.outside Pleaase note that for security reasons we do not provide a distribution mechanism itself. Instead we only provide a list of Steam64 ids that can later be used to distribute medals in a third-party program or script. We are not responsible for any mistakes you can make during the distribution process. Be careful and be sure to check everything twice before you start.
-          
+
+:javascript
+  $(function() {
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+      }
+  
+      $("#download").click(function () {
+          var ids = [];
+          $("input:checked").each(function () {
+              list = $(this).parent().parent().find(".steamids > li");       
+              list.each(function () { 
+                  var temp = $(this).html().replace(/(\r\n\t|\n|\r\t)/gm,"");
+                  ids.push(temp);
+              });
+          });  
+          console.log(ids);
+          download("MedalSteam64IDs" + Date.now() + ".txt", ids.join("\n"));
+      });
+  });        
