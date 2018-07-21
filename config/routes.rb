@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'pages/home'
 
   # Custom pages
-  get 'rules', to: 'pages#rules'
   get 'host', to: 'pages#host'
   get 'faq', to: 'pages#faq'
   get 'about', to: 'pages#about'

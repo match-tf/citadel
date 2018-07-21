@@ -16,8 +16,11 @@
                 <div class="panel-body">
 
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five <a href="http://jquery2dotnet.com/" class="label label-success">http://jquery2dotnet.com/</a> centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                    <p>Match.tf is a tournament hosting system, crafted just for TF2. </p>
+                    <p>We provide a complete and free service that will help you to run a competition of any size: from 1-night cups to LANs and competitive leagues. We have tournament brackets, rosters, divs, easy pick/ban system, match scheduling, medal distribution helper and much more. </p>
+                    <p>Yes, that means you no longer need to keep track of your participants if you are lucky enough to be given an ability of medal distribution. </p>
+                    <p>You no longer need to ask captains to report scores in Discord (seriously, it's 2018 right now!). </p>
+                    
                 </div>
             </div>
         </div>
@@ -29,6 +32,7 @@
 
             </div>
             <div id="question1" class="panel-collapse collapse">
+            
             <div class="panel-body timeline-container">
 						<ul class="timeline">
 							<li>
@@ -38,7 +42,7 @@
 										<h4 class="timeline-title">Log into the site</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Use Steam to log in, no additional actions required.</p>
+										<p>Use Steam to sign up, no additional actions required.</p>
 									</div>
 								</div>
 							</li>
@@ -49,6 +53,7 @@
 										<h4 class="timeline-title">Hop in our <a href="https://discord.match.tf" target="_blank">Discord server</a></h4>
 									</div>
 									<div class="timeline-body">
+                                        <p>This site is currenly in a semi-closed beta state. Which means that not everyone is given an ability to freely host a tournament just yet. Stay calm! You can still participate if you follow the steps below.</p>
 										<p>This is required for a better coordination process & customer support. You are free to use any kind of coordination hub for your tournament, but as a tournament host, you should join our server.</p>
 									</div>
 								</div>
@@ -60,18 +65,18 @@
 										<h4 class="timeline-title">Request tournament host permissions</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Fill in a simple form in <code>#request-center</code>. You can submit it via PM if you want your application and tournament to be private. This is only required once, you will be able to host as many tournaments as you want.</p>
+										<p>Fill in a simple form <a href="/apply" target="_blank">here</a>. Don't forget your username. Explain why do you think you are a worthy candidate.</p>
 									</div>
 								</div>
 							</li>
 							<li>
-								<div class="timeline-badge"><em class="fa-fire"></em></div>
+								<div class="timeline-badge"><em class="fa fa-fast-forward"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4 class="timeline-title">Go for it!</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Once you are granted with the permissions, you will recieve a site notification with a link to your new tournament page and all the information on the hosting process.</p>
+										<p>Once you are granted with the permissions, you will recieve a site notification that will directly take you to the page where you can create your first tournament.</p>
 									</div>
 								</div>
 							</li>
@@ -96,7 +101,7 @@
 										<h4 class="timeline-title">Log into the site</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Use Steam to log in, no additional actions required.</p>
+										<p>Use Steam to sign up, no additional actions required.</p>
 									</div>
 								</div>
 							</li>
@@ -104,21 +109,23 @@
 								<div class="timeline-badge"><em class="fa fa-sign-in"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Create a team</h4>
+										<h4 class="timeline-title">Create or join a team</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Go to the "Teams" page, press the "Start team" button.</p>
+										<p>Go to the "Teams" page, press the "Start team" button. You can invite your friends into your team by clicking on the "Invite" button on the team page.</p>
+										<p>Alternatively, if you want to join an existing team, ask captain to invite you. You will recieve a site notification once you are invited.</p>
 									</div>
 								</div>
 							</li>
 							<li>
-								<div class="timeline-badge"><em class="fa fa-magic"></em></div>
+								<div class="timeline-badge"><em class="fa fa-search"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Request tournament host permissions</h4>
+										<h4 class="timeline-title">Find a tournament</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Fill in a simple form in <code>#request-center</code>. You can submit it via PM if you want your application and tournament to be private. This is only required once, you will be able to host as many tournaments as you want.</p>
+										<p>Find a tournament you are interested in. Please notice, we are not responsible for anything that happenes within tournaments hosted on this site. If you have any questions, please contact a corresponding tournament host.</p>
+										<p>Once you have opened a tournament page, read through the rules and participation requirements, then click on the "Sign up" button. If you are a captain of the team that has enough players to participate, you'll be able to enter the competition and create a roster.</p>
 									</div>
 								</div>
 							</li>
@@ -126,10 +133,10 @@
 								<div class="timeline-badge"><em class="fa-fire"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Go for it!</h4>
+										<h4 class="timeline-title">Wait for an approval and your matches</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Once you are granted with the permissions, you will recieve a site notification with a link to your new tournament page and all the information on the hosting process.</p>
+										<p>A tournament admin will now go through your team application and confirm your signup. Be sure to check the site from time to time to stay updated with your tournament status. You will now recieve notifications for your new matches, match comments and many other things.</p>
 									</div>
 								</div>
 							</li>
@@ -148,7 +155,8 @@
                 <div class="panel-body">
 
 
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                    <p>We provide all the support in our <a href="https://discord.match.tf" target="_blank">Discord server</a>. If you have any questions, feel free to ping @Staff.</p>
+                    <p>Got any suggestions on how to improve the site? Hit us up!</p>
                 </div>
             </div>
         </div>

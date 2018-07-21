@@ -23,9 +23,9 @@
     %em.fa.fa-bars  
     FAQ
     
-%li{ class: navbar_class(:about) }
+%li{ class: navbar_class(:faq) }
   %a{:href => "/about"}
-    %em.fa.fa-bars  
+    %em.fa.fa-book  
     About
 
 - if user_signed_in? && current_user.admin?
