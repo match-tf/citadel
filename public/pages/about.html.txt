@@ -2,12 +2,52 @@
 <div class="panel panel-container">
 
 <ul class="nav nav-tabs nav-justified">
-  <li class="active"><a data-toggle="tab" href="#privacy">Privacy Policy</a></li>
+  <li class="active"><a data-toggle="tab" href="#home">About us</a></li>
+  <li><a data-toggle="tab" href="#privacy">Privacy Policy</a></li>
   <li><a data-toggle="tab" href="#terms">Terms and Conditions</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="privacy" class="tab-pane fade in active">
+  <div id="home" class="tab-pane fade in active">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-4">
+    <img src="/images/logo.png" class="img-responsive">
+    </div>
+    <div class="col-md-8">
+    <h1>match.tf</h1>
+    <p>This is a tournament hosting platform. </p>
+    <p>Unlike third-party sites, our goal is to exclusively support Team Fortress 2 and unite all the tournaments or LANs that do not have a website, like leagues do. There is no longer need in hosting your own website just to run 1 tournament.</p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+    <h3>Why is this better than any other service?</h1>
+    <p>Per every tournament created, you will get a full support, a customizable tournament page to keep your rules, info and scheduling and an easy medal distribution for a big amount of teams participating.<br> 
+        But the best part of it is the community. With all the tournaments kept in one place, we will have teams that can be shared across the tournaments, as well as public player profiles to track the progress of participating in various competitions. </p>
+    <h3>Features include but not limited to:</h1>
+    <ul>
+    <li>A customizable tournament page per every tournament</li>
+    <li>A system to communicate and notify participants and team leaders</li>
+    <li>Powerful match system: match comms, map-specific result submissions. Match scheduling based on team availability. Pick/ban system.</li>
+    <li>Weekly / manual brackets, playoff brackets system. Tiebreaking.</li>
+    <li>Participation per approval for closed tournaments.</li>
+    <li>Roster locks, transfers and all the other stuff you are so used to have on TF2 league websites all around the world.</li>
+    </ul>
+    <p>Right now, we only need you - the people. Help us to grow by hosting your next tournament using match.tf and sharing your feedback!</p>
+    <br>
+    <br>
+    <br>
+    <div class="text-center">
+    <h2>Join the community now</h2>
+    <a href="https://discord.match.tf" target="_blank"><img src="/images/discord.png" class="img-responsive"></a>
+    </div>
+    </div>
+    </div>
+    </div>
+  
+  </div>
+  <div id="privacy" class="tab-pane fade">
 <ol>
                     <li>
                         <h5>Foreword</h5>
