@@ -9,15 +9,15 @@
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-  <div class="container">
-    <div class="row">
-    <div class="col-md-4">
-    <img src="/images/logo.png" class="img-responsive">
+
+    <div class="row about-row">
+    <div class="col-sm-6">
+    <img src="/images/logo.png" class="img-responsive about-logo">
     </div>
-    <div class="col-md-8">
-    <h1>match.tf</h1>
+    <div class="col-sm-6 about-text">
+    <h1>What is this all about?</h1>
     <p>This is a tournament hosting platform. </p>
-    <p>Unlike third-party sites, our goal is to exclusively support Team Fortress 2 and unite all the tournaments or LANs that do not have a website, like leagues do. There is no longer need in hosting your own website just to run 1 tournament.</p>
+    <p>Unlike third-party sites, our goal is to exclusively support Team Fortress 2 and unite all the tournaments or LANs that do not have a website like leagues do. There is no longer need in hosting your own website just to run 1 tournament.</p>
     </div>
     </div>
     <div class="row">
@@ -44,7 +44,7 @@
     </div>
     </div>
     </div>
-    </div>
+
   
   </div>
   <div id="privacy" class="tab-pane fade">

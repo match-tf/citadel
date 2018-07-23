@@ -28,7 +28,13 @@
     = f.check_box :forfeit_all_matches_when_roster_disbands
 
 .panel.panel-default
-  .panel-heading Points
+  .panel-heading 
+    Points
+    %br
+    %small
+      Looks confusing? Go through our
+      %a{:href => "/host", :target => "_blank"} tournament host guide.
+
   .panel-body
     = f.number_field :points_per_round_win,  label: 'Points per set won'
     = f.number_field :points_per_round_draw, label: 'Points per set drawn'

@@ -1745,3 +1745,26 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     text-decoration: none;
 }
 
+.about-logo {
+    margin: 0 auto;
+    max-height: 400px;
+}
+
+    
+@media (min-width: 768px) {
+    .about-row {
+        display: flex;
+        align-items: center;
+        margin-top: 6vh;
+        margin-bottom: 8vh;
+    }
+    .about-logo {
+        margin: 0 0 0 auto !important;
+    }  
+     .about-text {
+            max-width: 30%;
+    }  
+    .about-text > h1 {
+       padding-left: 0;
+    }    
+}
