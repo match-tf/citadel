@@ -8,6 +8,10 @@
     .alert.alert-warning
       %span.glyphicon.glyphicon-lock
       Private
+    .alert.alert-warning
+      %span.glyphicon.glyphicon-question-sign
+      New to tournament system? Check out our
+      %a{:href => "/host", :target => "_blank"} tournament system guide.
 	  
   - if @league.display_heroimage?  
     .panel.panel-default 
