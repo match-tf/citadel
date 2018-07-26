@@ -40,7 +40,7 @@
     <br>
     <div class="text-center">
     <h2>Join the community now</h2>
-    <a href="https://discord.match.tf" target="_blank"><img src="/images/discord.png" class="img-responsive"></a>
+    <a href="https://discord.match.tf" target="_blank"><img src="/images/discord.png" class="img-responsive centered"></a>
     </div>
     </div>
     </div>
