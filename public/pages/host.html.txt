@@ -102,7 +102,7 @@
         <h3 id="6">6. Additional Notes and Potential Bugs</h3>
         <p>When players submit their scores, the other team can go onto the match page and confirm or deny the scores. This ensures that scores reported are legit. However, in RSP we've asked for logs to validate those scores just in case players submit faulty scores or different scores, and it flies past the faces of the opposing teams.</p>
         <p>There is a bug I know about where if you do not select Has a Distinct Winner on match creation, wins will NOT get full points.</p>
-        <p>There is another bug I know about where if teams disband, and "Forfeit all matches when roster disbands" the webapp may act very strangely. In one case I've seen it will try to fill in the matches the disbanding team was in with another team, and it will throw off scores.</p>
+        <p>There is another bug I know about where if teams disband, and "Forfeit all matches when roster disbands" is not checked, the webapp may act very strangely. In one case I've seen it will try to fill in the matches the disbanding team was in with another team, and it will throw off scores.</p>
         <p>If you see any strange behavior on the site, please report it as soon as possible so we may investigate. We wish to deliver a simple and functional experience and we don't want anything to hamper this.</p>
         </div>
     </div>
