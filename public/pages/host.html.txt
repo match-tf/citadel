@@ -72,7 +72,7 @@
         <img src="/tut/rsp18.png" class="img-responsive tut-img">
         <p>The last box is Scheduling. This will allow you to set time frames for teams to play, and allow your teams to setup days where they're available so other teams have an idea of how flexible their opponents are. This can be helpful because it'll urge transparency. If you’re also planning on having weeklies then I implore you to use it.</p>
         <img src="/tut/rsp19.png" class="img-responsive tut-img">
-        <p>When Schedule is set to Weeklies, you can check what days you want to be eligible for your players to play. When new teams sign on to your league, they will be able to select from what days you have checked here to show other teams their availability. Use Schedule Locked to select just one day a week to play your weeklies.</p>
+        <p>When Schedule is set to Weeklies, you can check what days you want to be eligible for your players to play. When new teams sign on to your league, they will be able to select from what days you have checked here to show other teams their availability. Use Schedule Locked to select just one day a week to play your weeklies. "Minimum Required" means that a team must list their availability for at least this amount of days. </p>
         <p>Having this set to Manual will allow you to assert when matches will be played on your own by communicating yourself to your players. This is ideal for one day cups and other tourneys that will not take a weekly format.</p>
         <p>Click Create and you're done!</p>
         <p>Once you’re sure of everything and are ready to start accepting teams, go to your League settings and click this big yellow button.</p>
