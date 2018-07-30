@@ -3,7 +3,7 @@ require 'discord_notifier'
 class ApplyController < ApplicationController
   
   include UsersHelper
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:sendrequest]
   
   def index
   end
