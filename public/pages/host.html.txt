@@ -24,7 +24,7 @@
         <p>Matches submittable: Checking this means matches are currently taking place and scores can be submitted. Generally, this will be checked when the tourney begins and remain so until it ends.</p>
         <p>Transfers require approval: This is an important one. Before roster locking, you can still check on new players entering active rosters. If you want to have some degree of Quality Assurance for the teams entering your tourney, you can check this. Any transfers in or out of teams thereafter can be found in your Tourneys transfer requests from the admin panel.</p>
         <p>Allow disbanding: Self-explanatory, this allows teams to disband at any time. Once they are, this cannot be undone. </p>
-        <p>Forfeit all matches when roster disbands: Also self-explanatory, this will FF loss all matches of a team that disbands.</p>
+        <p>Forfeit all matches when roster disbands: Also self-explanatory, this will FF loss all matches of a team that disbands. Please note this will only affect active matches as far as I've seen. It'd be a good idea to keep this enabled if you are going to allow disband.</p>
 
         <h3 id="3">3. Active Rosters and You</h3>
         <p>Before we move on, there is an important clarification that should be made. There is a difference between a Player Pool and an Active Roster.</p>
@@ -65,20 +65,45 @@
         <p>So real quick I'll break it down in a tl;dr. <strong>Points awarded by Sets are for individual Rounds played. Points awarded by Match are for full Matches with any number of sets in them, with unplayed/unsubmitted matches counting as a draw. Forfeits are strange in that a w/ff has a winner and a loser by forfeit, a ff/ff is a loss for both sides by forfeit (Mutual), and w/w is a draw by forfeit (Technical).</strong></p>
         <p>The next box is Tiebreaking, and a general rule of thumb is to have it setup like we do below. The chances two teams will have a similar point total is pretty high, so we present these parameters to break such ties.</p>
         <img src="/tut/rsp16.png" class="img-responsive">
-        <p>This way, when the Points of two teams are similar it falls on Sets Won to determine score. If THOSE also tie, then the Set Score Sum will determine the tiebreaker. This is a bit hard to portray, so if you have questions on this just ask.</p>
+        <p>This way, when the Points of two teams are similar it falls on Sets Won to determine score. If THOSE also tie, then the Set Score Sum will determine the tiebreaker. This is a bit hard to portray, so if you have questions on this just ask. Our recommended default is Round Wins, and Round Score Difference.</p>
         <p>The next box is the Divisions box. If you want to split up your teams by region or skill level, this is where you’d do so. If you don’t care and just want a free for all, then you’d just set up one like I did below. When generating a round of matches, you will be able to do it by division later on so it is important to split up your divisions here so the web app knows and your players aren’t confused.</p>
         <img src="/tut/rsp17.png" class="img-responsive">
         <p>The Map Pool box is very self explanatory, leave empty for all maps in the web app (contact staff for a detailed list), or you can determine the allowed maps for your league. If there's a map that you want to see that isn’t here, feel free to contact staff.</p>
         <img src="/tut/rsp18.png" class="img-responsive">
         <p>The last box is Scheduling. This will allow you to set time frames for teams to play, and allow your teams to setup days where they're available so other teams have an idea of how flexible their opponents are. This can be helpful because it'll urge transparency. If you’re also planning on having weeklies then I implore you to use it.</p>
         <img src="/tut/rsp19.png" class="img-responsive">
-        <p><em>Don’t use Schedule locked unless you’re absolutely certain there is a certain day you want matches played.</em></p>
-        <p>It is a good idea to leave Sunday as the start of a week since it’s pretty universal. As for the days that are checked, these are the days you’d allow players to play their matches. When teams join up for the League you are making, they will be asked to choose from your checked days what works for them, and it will be displayed on their team page for everyone to see.</p>
+        <p>When Schedule is set to Weeklies, you can check what days you want to be eligible for your players to play. When new teams sign on to your league, they will be able to select from what days you have checked here to show other teams their availability. Use Schedule Locked to select just one day a week to play your weeklies.</p>
+        <p>Having this set to Manual will allow you to assert when matches will be played on your own by communicating yourself to your players. This is ideal for one day cups and other tourneys that will not take a weekly format.</p>
         <p>Click Create and you're done!</p>
         <p>Once you’re sure of everything and are ready to start accepting teams, go to your League settings and click this big yellow button.</p>
         <img src="/tut/rsp20.png" class="img-responsive">
         <p>And let the games begin! As always if you've read all this and you're still confused about anything, please contact us!</p>
-        <p class="text-muted">More Coming Soon</p>
+
+        <h3 id="5">5. Creating Matches on Match.tf</h3>
+        <p>Now that we've covered getting your tournament set up, it's time to make your teams fight each other for our own amusement. </p>
+        <img src="/tut/rsp21.png" class="img-responsive">
+        <p>You can choose to create a Single Match, or Generate a Round. Both of these will be functionally similar, only in creating a Single Match you will be given the option to define the Home and Away team.</p>
+        <img src="/tut/rsp22.png" class="img-responsive">
+        <p>On the top you'll see tabs for each of your Divs. For RSP we used the Regions. Here we see Single Match creation and we're given the Home and Away Team drop downs.</p>
+        <p>In situations where you won't ever expect a Draw (Forfeits do not count), you will want to select Has a Distinct Winner.</p>
+        <p>Allow set draws will do exactly as it says, but if the above is also selected then matches will ultimately need a determined winner.</p>
+        <p>Round Number only accepts numbers. As stated, it will organize matches in your Matches view from latest to earliest.</p>
+        <p>Name the Round however you wish. We do Week 1, Week 2, Week 3, etc for our weekly structure of RSP.</p>
+        <p>The Notice is for you to use to give your players announcements and such. This will be displayed on your players match pages above their Match Comms.</p>
+        <img src="/tut/rsp23.png" class="img-responsive">
+        <p>This is what's shown in Generate Matches. You can select Division, Tournament System, Pairing System, and Which direction to push BYEs. These Defaults will mostly be what you use for larger scale weekly formats, such as RSP. You also have the opportunity to use built in Round Robin, Single Elimination, Double Elimination, and Page Playoffs. All but Page Playoffs are self explanatory but if you need any help feel free to ask.</p>
+        <img src="/tut/rsp24.png" class="img-responsive">
+        <p>Ask in the Discord for help with the Pick & Ban System.</p>
+        <p>In the past we've just facilitated this ourselves using the match page Match Comms with our players.</p>
+        <img src="/tut/rsp25.png" class="img-responsive">
+        <p>Here you can select the map or maps that your players will be playing for the particular match. Easy enough.</p>
+        <p>You can now Create Match/Round and all your teams will have to fight, and you can enjoy the view from your Ivory Tower.</p>
+
+        <h3 id="6">6. Additional Notes and Potential Bugs</h3>
+        <p>When players submit their scores, the other team can go onto the match page and confirm or deny the scores. This ensures that scores reported are legit. However, in RSP we've asked for logs to validate those scores just in case players submit faulty scores or different scores, and it flies past the faces of the opposing teams.</p>
+        <p>There is a bug I know about where if you do not select Has a Distinct Winner on match creation, wins will NOT get full points.</p>
+        <p>There is another bug I know about where if teams disband, and "Forfeit all matches when roster disbands" is not checked, the webapp may act very strangely. In one case I've seen it will try to fill in the matches the disbanding team was in with another team, and it will throw off scores.</p>
+        <p>If you see any strange behavior on the site, please report it as soon as possible so we may investigate. We wish to deliver a simple and functional experience and we don't want anything to hamper this.</p>
         </div>
     </div>
 </div>
