@@ -3,8 +3,8 @@
 </div>
 
 <div class="panel panel-container">
-    <div class="panel panel-default">
-        <div class="panel-body">
+
+
           <p class="text-muted">A Basic Usage Guide by TheDerpySage</p>
 
          <p>In this tutorial, we're going to break down step by step how to make a tournament using the Citadel esport framework by ozfortress. This system is what is being utilized by several sites including this one. There's been quite a bit of confusion as to all the numbers and what they do, so we'll do our best to clarify what all of them mean, and how important they'd be in your tournament. After this, we will also break down how to make a single match or generate an entire week's worth of matches once the tournament has been made, and what all their settings mean.</p>
@@ -13,11 +13,11 @@
         <p>When making your league, the first thing it asks for is the format. This should be a no-brainer to our community vets and should've been setup prior by your site staff. If you want any custom format added, please let us know. For the initiated, formats will generally range between HL (9v9), Prolander (7v7), Sixes (6v6), Fours (4v4), Ultiduo (2v2), and MGE (1v1/2x2). </p>
 
         <h3 id="2">2. Create New Tournament</h3>
-        <img src="/tut/rsp1.png" class="img-responsive">
+        <img src="/tut/rsp1.png" class="img-responsive tut-img">
         <p>This first box of the tournament creation process should be self-explanatory. Choose your Format, give your Tournament a fun quirky name, a short description or rules (feel free to write huge wall of text here, this section is minimized by default), and a category (optional). It is a good practice to add a category if you are planning on hosting multiple tournaments of the same type on our site. Tournaments can be later filtered by a category in a dropdown menu on the tournaments page.</p>
-        <img src="/tut/rsp2.png" class="img-responsive">
+        <img src="/tut/rsp2.png" class="img-responsive tut-img">
         <p>The second box will dictate the minimum (to sign up and play) and maximum number of players in an active roster. The minimum will be dictated by the format; however, the maximum should be changed on a case by case basis. For a Sixes tourney, a logical number would be 12 (6 mains, 6 subs) as to not have too many people per roster.</p>
-        <img src="/tut/rsp3.png" class="img-responsive">
+        <img src="/tut/rsp3.png" class="img-responsive tut-img">
         <p>The third box is the State box and is the second most important. As time goes by in your tourney you might want to make changes to these settings.</p>
         <p>Signuppable: Checking this means new teams can sign up and expect to be put into matches soon.</p>
         <p>Rocker locked: Self-explanatory, once you've reached a point in your tourney that you don't want any new players to be added to active rosters for any reason you can check this.</p>
@@ -31,79 +31,79 @@
         <p>A Player Pool is a pool of players who are associated with the leader of any given team and set themselves up to potentially join any tournament hosted on this site. </p>
         <p>An Active Roster is a list of players currently active in any tournament hosted on this site.</p>
         <p>Take for example our Ready Steady Pan Team.</p>
-        <img src="/tut/rsp4.png" class="img-responsive">
+        <img src="/tut/rsp4.png" class="img-responsive tut-img">
         <p>200, Umbra, Paced, and Blades are currently rostered up to play in the tourney “This is a Test”, however you can clearly see that while they are in the player pool, Fargoth, Cooli, and I (TheDerpySage) are not in the active roster. This means we are not technically eligible to participate or receive any awards from “This is a Test”.</p>
         <p>Being in a Player Pool does not bar you from joining other Player Pools, as illustrated by my team Test Team Please Ignore.</p>
-        <img src="/tut/rsp5.png" class="img-responsive">
+        <img src="/tut/rsp5.png" class="img-responsive tut-img">
         <p>I’m also in the Ready Steady Pan Team’s Player Pool, but I am currently in the Active Roster of Test Team Please Ignore. Already being in one Active Roster keeps me from joining the Active Roster of Ready Steady Pan Team for the tourney "This is a Test".</p>
 
         <h3 id="4">4. Create New Tournament Continued</h3>
         <p>The next box is the Points box, and it going to be the most confusing. I’ll do my best to explain and break it down. For the sake of this tutorial, all other numbers not shown are set to zero to showcase what each portion does correctly and as clearly as possible.</p>
         <p>The first portion is the Points per set portion.</p>
-        <img src="/tut/rsp6.png" class="img-responsive">
+        <img src="/tut/rsp6.png" class="img-responsive tut-img">
         <p>A set as defined by the web app is pretty much what we’d call a Round. Playing on a certain map to a set amount of points. With the given spread above, when a winner is declared the winner of that set is issued 2 points, draws are given 1, and losses are given 0.</p>
-        <img src="/tut/rsp7.png" class="img-responsive">
+        <img src="/tut/rsp7.png" class="img-responsive tut-img">
         <p>In the Division "what part of Test do you not get" (Divisions will be explained in a bit) we see that the first match of “test 1” was played in 3 sets. My team won the first and last set, while Ready Steady Pan Team only one the second.  My team was awarded 2 points per set won, and so we have 4 points. Ready Steady Pan, even though they lost the match, was still awarded 2 points because my team gave up a round forcing the play to a third.</p>
         <p>Set Draws are something that can be disallowed in a Matches setting (more on this later), but in the event a set draw happens both teams would be awarded 1 point, as shown below with the second match "test 2".</p>
-        <img src="/tut/rsp8.png" class="img-responsive">
+        <img src="/tut/rsp8.png" class="img-responsive tut-img">
         <p>The second portion is the Points per match portion. Confusion about points in the past has stemmed from having these set up IN ADDITION TO Points per set.</p>
-        <img src="/tut/rsp9.png" class="img-responsive">
+        <img src="/tut/rsp9.png" class="img-responsive tut-img">
         <p>A quick thing to note, the webapp will treat unplayed matches as Drawn matches, as shown below. Drawn matches will also look a bit like Drawn sets from above when they occur naturally. As stated before, confusion can crop up when Points per set are set up with Points per match. Generally, you'll want to have one or the other.</p>
-        <img src="/tut/rsp10.png" class="img-responsive">
+        <img src="/tut/rsp10.png" class="img-responsive tut-img">
         <p>For the sake of this tutorial, I have set up 6 matches and thus both teams have 6 points. If you set up matches as you go this will be less apparent, but it should still be noted. When a match is played to completion and a winner is declared, the webapp will change the scores accordingly, boosting the 1 point awarded for a drawn match to 2 for a win for the victor, and deducting 1 down to 0 for a loss from the loser.</p>
-        <img src="/tut/rsp11.png" class="img-responsive">
+        <img src="/tut/rsp11.png" class="img-responsive tut-img">
         <p>As you can see, no matter how many sets there is played the winner still only gets +1 and the loser only gets -1 (the 5 points for the 5 matches still unplayed, and +2 for the match won and 0 for the match lost).</p>
         <p>As stated before, and for simplicity sake, we advise you to choose one over the other (Sets or Matches) since they make point totals more readable.</p>
         <p>The last portion is the Points per match * by forfeit portion.</p>
-        <img src="/tut/rsp12.png" class="img-responsive">
+        <img src="/tut/rsp12.png" class="img-responsive tut-img">
         <p>Forfeits are bound to happen, so the webapp kindly asks what to do when we have one.</p>
-        <img src="/tut/rsp13.png" class="img-responsive">
+        <img src="/tut/rsp13.png" class="img-responsive tut-img">
         <p>Here we see that the Ready Steady Pan Team has so rudely missed both matches for whatever reason, but I also missed the second. The first match resulted in a Forfeit win for my team, awarding me a point but no win. The second match is what the app refers to as a “Mutual Forfeit” meaning both teams forfeit, and this counts as a loss by forfeit for both teams.</p>
         <p>There is another kind of forfeit in the webapp that’s only possible when the Distinct Winner box isn't checked in a matches settings (more on that later) called a Technical Forfeit. This result in a w/w drawn forfeit rather than a ff/ff as seen with test 3 below.</p>
-        <img src="/tut/rsp14.png" class="img-responsive">
+        <img src="/tut/rsp14.png" class="img-responsive tut-img">
         <p>We see that my team has been awarded the 1 point for win by forfeit, and no points have been awarded for the loss or draw by forfeit.</p>
         <p>So real quick I'll break it down in a tl;dr. <strong>Points awarded by Sets are for individual Rounds played. Points awarded by Match are for full Matches with any number of sets in them, with unplayed/unsubmitted matches counting as a draw. Forfeits are strange in that a w/ff has a winner and a loser by forfeit, a ff/ff is a loss for both sides by forfeit (Mutual), and w/w is a draw by forfeit (Technical).</strong></p>
         <p>The next box is Tiebreaking, and a general rule of thumb is to have it setup like we do below. The chances two teams will have a similar point total is pretty high, so we present these parameters to break such ties.</p>
-        <img src="/tut/rsp16.png" class="img-responsive">
+        <img src="/tut/rsp16.png" class="img-responsive tut-img">
         <p>This way, when the Points of two teams are similar it falls on Sets Won to determine score. If THOSE also tie, then the Set Score Sum will determine the tiebreaker. This is a bit hard to portray, so if you have questions on this just ask. Our recommended default is Round Wins, and Round Score Difference.</p>
         <p>The next box is the Divisions box. If you want to split up your teams by region or skill level, this is where you’d do so. If you don’t care and just want a free for all, then you’d just set up one like I did below. When generating a round of matches, you will be able to do it by division later on so it is important to split up your divisions here so the web app knows and your players aren’t confused.</p>
-        <img src="/tut/rsp17.png" class="img-responsive">
+        <img src="/tut/rsp17.png" class="img-responsive tut-img">
         <p>The Map Pool box is very self explanatory, leave empty for all maps in the web app (contact staff for a detailed list), or you can determine the allowed maps for your league. If there's a map that you want to see that isn’t here, feel free to contact staff.</p>
-        <img src="/tut/rsp18.png" class="img-responsive">
+        <img src="/tut/rsp18.png" class="img-responsive tut-img">
         <p>The last box is Scheduling. This will allow you to set time frames for teams to play, and allow your teams to setup days where they're available so other teams have an idea of how flexible their opponents are. This can be helpful because it'll urge transparency. If you’re also planning on having weeklies then I implore you to use it.</p>
-        <img src="/tut/rsp19.png" class="img-responsive">
+        <img src="/tut/rsp19.png" class="img-responsive tut-img">
         <p>When Schedule is set to Weeklies, you can check what days you want to be eligible for your players to play. When new teams sign on to your league, they will be able to select from what days you have checked here to show other teams their availability. Use Schedule Locked to select just one day a week to play your weeklies.</p>
         <p>Having this set to Manual will allow you to assert when matches will be played on your own by communicating yourself to your players. This is ideal for one day cups and other tourneys that will not take a weekly format.</p>
         <p>Click Create and you're done!</p>
         <p>Once you’re sure of everything and are ready to start accepting teams, go to your League settings and click this big yellow button.</p>
-        <img src="/tut/rsp20.png" class="img-responsive">
+        <img src="/tut/rsp20.png" class="img-responsive tut-img">
         <p>And let the games begin! As always if you've read all this and you're still confused about anything, please contact us!</p>
 
         <h3 id="5">5. Creating Matches on Match.tf</h3>
         <p>Now that we've covered getting your tournament set up, it's time to make your teams fight each other for our own amusement. </p>
-        <img src="/tut/rsp21.png" class="img-responsive">
+        <img src="/tut/rsp21.png" class="img-responsive tut-img">
         <p>You can choose to create a Single Match, or Generate a Round. Both of these will be functionally similar, only in creating a Single Match you will be given the option to define the Home and Away team.</p>
-        <img src="/tut/rsp22.png" class="img-responsive">
-        <p>On the top you'll see tabs for each of your Divs. For RSP we used the Regions. Here we see Single Match creation and we're given the Home and Away Team drop downs.</p>
+        <img src="/tut/rsp22.png" class="img-responsive tut-img">
+        <p>On the top you'll see tabs for each of your Divs. You can also use that to create regional divisions if your tournament is featured in more than one part of the world. Here we see Single Match creation and we're given the Home and Away Team drop downs.</p>
         <p>In situations where you won't ever expect a Draw (Forfeits do not count), you will want to select Has a Distinct Winner.</p>
         <p>Allow set draws will do exactly as it says, but if the above is also selected then matches will ultimately need a determined winner.</p>
         <p>Round Number only accepts numbers. As stated, it will organize matches in your Matches view from latest to earliest.</p>
-        <p>Name the Round however you wish. We do Week 1, Week 2, Week 3, etc for our weekly structure of RSP.</p>
+        <p>Name the Round however you wish. For example, you can do "Week 1", "Week 2", "Week 3", etc for the weekly structure.</p>
         <p>The Notice is for you to use to give your players announcements and such. This will be displayed on your players match pages above their Match Comms.</p>
-        <img src="/tut/rsp23.png" class="img-responsive">
-        <p>This is what's shown in Generate Matches. You can select Division, Tournament System, Pairing System, and Which direction to push BYEs. These Defaults will mostly be what you use for larger scale weekly formats, such as RSP. You also have the opportunity to use built in Round Robin, Single Elimination, Double Elimination, and Page Playoffs. All but Page Playoffs are self explanatory but if you need any help feel free to ask.</p>
-        <img src="/tut/rsp24.png" class="img-responsive">
-        <p>Ask in the Discord for help with the Pick & Ban System.</p>
+        <img src="/tut/rsp23.png" class="img-responsive tut-img">
+        <p>This is what's shown in Generate Matches. You can select Division, Tournament System, Pairing System, and Which direction to push BYEs. These Defaults will mostly be what you use for larger scale weekly formats, such as RSP. You also have the opportunity to use built in Round Robin, Single Elimination, Double Elimination (currently being worked on), and Page Playoffs. All but Page Playoffs are self explanatory but if you need any help feel free to ask.</p>
+        <img src="/tut/rsp24.png" class="img-responsive tut-img">
+        <p>If you need any help with the Pick & Ban System, feel free to ask us in <a href="https://discord.match.tf" target="_blank">Discord</a>. Other than that, this part is pretty self-explanatory.</p>
         <p>In the past we've just facilitated this ourselves using the match page Match Comms with our players.</p>
-        <img src="/tut/rsp25.png" class="img-responsive">
+        <img src="/tut/rsp25.png" class="img-responsive tut-img">
         <p>Here you can select the map or maps that your players will be playing for the particular match. Easy enough.</p>
         <p>You can now Create Match/Round and all your teams will have to fight, and you can enjoy the view from your Ivory Tower.</p>
 
         <h3 id="6">6. Additional Notes and Potential Bugs</h3>
-        <p>When players submit their scores, the other team can go onto the match page and confirm or deny the scores. This ensures that scores reported are legit. However, in RSP we've asked for logs to validate those scores just in case players submit faulty scores or different scores, and it flies past the faces of the opposing teams.</p>
-        <p>There is a bug I know about where if you do not select Has a Distinct Winner on match creation, wins will NOT get full points.</p>
-        <p>There is another bug I know about where if teams disband, and "Forfeit all matches when roster disbands" is not checked, the webapp may act very strangely. In one case I've seen it will try to fill in the matches the disbanding team was in with another team, and it will throw off scores.</p>
+        <p>When players submit their scores, the other team can go onto the match page and confirm or deny the scores. This ensures that scores reported are legit. You can ask players for logs to validate those scores just in case players submit faulty scores or different scores, and it flies past the faces of the opposing teams.</p>
+        <p>If you do not select Has a Distinct Winner on match creation, wins will NOT get full points.</p>
+        <p>If teams disband, and "Forfeit all matches when roster disbands" is not checked, the webapp may act very strangely. In one case I've seen it will try to fill in the matches the disbanding team was in with another team, and it will throw off scores.</p>
         <p>If you see any strange behavior on the site, please report it as soon as possible so we may investigate. We wish to deliver a simple and functional experience and we don't want anything to hamper this.</p>
-        </div>
-    </div>
+
+
 </div>

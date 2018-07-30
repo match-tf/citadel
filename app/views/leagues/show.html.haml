@@ -124,15 +124,18 @@
           = link_to 'Matches', league_matches_path(@league), class: klass
   .row
     .panel.panel-default
-      .panel-heading Send a message to captains
+      .panel-heading Send a message to participants
       .panel-body
         = bootstrap_form_tag url: league_message_path(@league) do |f|
           = f.hidden_field   :id, value: @league.id 
           = f.text_field  :message
-          %p.text-muted This message will be displayed for every team captain of this tournament. Will only work for teams that are signed up and have an active roster in the tournament.
+          %p.text-muted This message will be displayed for every player that is participating in this tournament. Will only work for teams that are signed up and have an active roster in the tournament.
           %br
           = f.url_field  :url, label: 'URL'
-          %p.text-muted When captains click on the notification with the text stated above, they will be redirected to this URL.
+          %p.text-muted When participants click on the notification with the text stated above, they will be redirected to this URL.
+          = f.check_box  :captains, label: 'Send to captains only'
+          %p.text-muted Will only send a notification to captains instead of regular roster members
+          %br
           = f.submit 'Send a message'    
   :javascript
-    $(function() {$("input").prop('required',true);});
+    $(function() {$("input[type='text']").prop('required',true); $("input[type='url']").prop('required',true); });

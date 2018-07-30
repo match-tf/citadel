@@ -101,6 +101,7 @@ class LeaguesController < ApplicationController
   before_action only: [:message] do
     comm = params.require(:message)
     org = params.require(:url)
+    caps_only = params.require(:captains)
   end  
   
   def message
@@ -109,20 +110,40 @@ class LeaguesController < ApplicationController
     
     message = params['message']
     url = params['url']
+    captains = params['captains']
 
     i = 0
     
-    Team.find_each do |team|
-      if team.rosters.joins(:division).where(league_divisions: { league_id: league_id }).exists?
-        User.which_can(:edit, team).each do |user|
+    if captains == "1"
+    
+      Team.find_each do |team|
+        if team.rosters.joins(:division).where(league_divisions: { league_id: league_id }).exists?
+          User.which_can(:edit, team).each do |user|
+            Users::NotificationService.call(user, message, url)
+            i += 1
+          end
+        end
+      end
+      
+      flash[:notice] = "The message was sent to  " + i.to_s + " captains"
+      redirect_to league_path(@league)      
+      
+      
+    else
+    
+      @league.rosters.find_each do |roster|
+        roster.players.find_each do |gamer|
+          user = User.find(gamer.id)
           Users::NotificationService.call(user, message, url)
           i += 1
         end
-      end
-    end
+      end 
+      
+      flash[:notice] = "The message was sent to  " + i.to_s + " participants"
+      redirect_to league_path(@league)     
+
+    end  
     
-    flash[:notice] = "The message was sent to  " + i.to_s + " captains"
-    redirect_to league_path(@league)
     
   end
   
