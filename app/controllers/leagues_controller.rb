@@ -133,7 +133,7 @@ class LeaguesController < ApplicationController
     
       @league.rosters.find_each do |roster|
         roster.players.find_each do |gamer|
-          user = User.find(gamer.id)
+          user = User.find(gamer.user_id)
           Users::NotificationService.call(user, message, url)
           i += 1
         end
