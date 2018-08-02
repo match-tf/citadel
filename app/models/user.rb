@@ -167,6 +167,27 @@ class User < ApplicationRecord
     admin_grants.map { |action, subject| grant_model_for(action, subject).association_name }
   end
 
+  # TODO: fix this terrible code because there is a better way to access action_user_edit_league
+  def permitted_leagues
+    permitted = []
+    sql = "SELECT league_id from action_user_edit_league WHERE user_id = " + self.id.to_s
+    query = ActiveRecord::Base.connection.execute(sql)
+    query.field_values("league_id").each_entry do |entry|
+      permitted.push(entry)
+    end
+    League.where(id: permitted)
+  end    
+  
+  def public_permitted_leagues
+    permitted = []
+    sql = "SELECT league_id from action_user_edit_league WHERE user_id = " + self.id.to_s
+    query = ActiveRecord::Base.connection.execute(sql)
+    query.field_values("league_id").each_entry do |entry|
+      permitted.push(entry)
+    end
+    League.visible.where(id: permitted)
+  end    
+  
   private
 
   def update_query_cache
