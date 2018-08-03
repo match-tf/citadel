@@ -1,0 +1,109 @@
+/* Temporary solution for people with baby eyes
+v. 0.9.1b */
+
+body {
+    color: #fff !important
+}
+
+.panel.panel-container {
+    background-color: #1c171730 !important;
+}
+
+.well {
+    background-color: #2d2d2c !important;
+}
+
+p {
+    color: white !important;
+}
+
+.sidebar {
+    background-color: #2d2d2c !important;
+}
+
+.sidebar ul.nav li a {
+    color: #fff !important;
+}
+
+.profile-sidebar {
+    border-bottom-color: #363636 !important;
+}
+
+.btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active {
+  background-color: #2e2e2c !important;
+  border-color: #404040 !important;
+  color: #ffffff !important;
+}
+
+.form-control {color: #ededed !important;background-color: #24242400 !important;border-color: #2e2e2c !important;}
+
+.list-group-item {
+    background-color: #2e2e2c75 !important;
+    border: 0 !important;
+}
+
+.panel {
+    background-color: #1c171730 !important;
+    border: 1px solid transparent !important;
+}
+
+.panel-default .panel-heading {
+    background: #2e2e2c !important;
+    border-bottom: 1px solid #363636 !important;
+    color: #ffffff !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #ffffff !important;
+    background-color: #2e2e2ce3 !important;
+    border: none !important;
+    border-bottom-color: transparent !important;
+}
+
+.nav-tabs {
+    background: #2e2e2c66 !important;
+    border: 0 !important;
+}
+
+.nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #353535 !important;
+}
+
+.thumbnail {
+    background-color: #2e2e2c52 !important;
+    border: none !important;
+}
+
+
+.alert-warning {
+  background-color: #5747378f !important;
+  border: 0 !important;
+  color: #ffffff !important;
+}
+
+.alert-warning hr {
+  border-top-color: #574737cf !important;
+}
+
+.alert-warning .alert-link {
+  color: #ffffff !important;
+}
+
+.panel-info > .panel-heading {
+    background-color: #222322 !important;
+}
+
+.dropdown-menu {
+    background-color: #2e2e2c;
+    color: #fff !important;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+a.list-group-item, button.list-group-item {
+    color: #ffffff !important;
+}
