@@ -3,18 +3,7 @@
   %h2.outside For all your admin needs
 
 .panel.panel-container
-  .row
-    - if current_user.can?(:edit, :leagues)
-      .panel.panel-default
-        .panel-heading Leagues
-        .panel-body
-          = link_to new_league_path, class: 'btn btn-default' do
-            %span.glyphicon.glyphicon-plus
-            Create New League
-        %ul.list-group
-          - leagues.order(created_at: :desc).each do |league|
-            = link_to league.name, league_path(league), class: 'list-group-item'
-    
+  .row    
     - if current_user.can?(:edit, :users)
       .panel.panel-default
         .panel-heading Community
