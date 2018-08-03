@@ -82,19 +82,76 @@
               = match.link
 
 
-.row			  
-  .panel.panel-info
-    .panel-heading Teams
-    %ul.list-group
-      - @teams.each do |team|
-        %li.list-group-item
-          = link_to team.name, team_path(team)
-          - if current_user?
-            .button-group.pull-right
-              = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
-                Leave
-                %span.glyphicon.glyphicon-remove
-  
+.row
+  - if user_can_edit_user?
+    - unless @user.permitted_leagues.empty?
+      .col-md-6.col-sm-12.nopadding.pr-20-md
+        .panel.panel-info
+          .panel-heading Teams
+          %ul.list-group
+            - @teams.each do |team|
+              %li.list-group-item
+                = link_to team.name, team_path(team)
+                - if current_user?
+                  .button-group.pull-right
+                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
+                      Leave
+                      %span.glyphicon.glyphicon-remove
+      
+      .col-md-6.col-sm-12.nopadding
+        .panel.panel-info
+          .panel-heading Hosted tournaments
+          %ul.list-group
+            - @user.permitted_leagues.order(created_at: :desc).each do |league|
+              = link_to league.name, league_path(league), class: 'list-group-item'
+    - else 
+      .col-md-12.nopadding
+        .panel.panel-info
+          .panel-heading Teams
+          %ul.list-group
+            - @teams.each do |team|
+              %li.list-group-item
+                = link_to team.name, team_path(team)
+                - if current_user?
+                  .button-group.pull-right
+                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
+                      Leave
+                      %span.glyphicon.glyphicon-remove
+  - else
+    - unless @user.public_permitted_leagues.empty?
+      .col-md-6.col-sm-12.nopadding.pr-20-md
+        .panel.panel-info
+          .panel-heading Teams
+          %ul.list-group
+            - @teams.each do |team|
+              %li.list-group-item
+                = link_to team.name, team_path(team)
+                - if current_user?
+                  .button-group.pull-right
+                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
+                      Leave
+                      %span.glyphicon.glyphicon-remove
+      
+      .col-md-6.col-sm-12.nopadding
+        .panel.panel-info
+          .panel-heading Hosted tournaments
+          %ul.list-group
+            - @user.public_permitted_leagues.order(created_at: :desc).each do |league|
+              = link_to league.name, league_path(league), class: 'list-group-item'
+    - else 
+      .col-md-12.nopadding
+        .panel.panel-info
+          .panel-heading Teams
+          %ul.list-group
+            - @teams.each do |team|
+              %li.list-group-item
+                = link_to team.name, team_path(team)
+                - if current_user?
+                  .button-group.pull-right
+                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
+                      Leave
+                      %span.glyphicon.glyphicon-remove
+.row          
   .panel.panel-info
     .panel-heading Transfers
     %ul.list-group
@@ -108,7 +165,7 @@
   
   - unless @rosters.empty?
     .panel.panel-info
-      .panel-heading Leagues
+      .panel-heading Tournaments
       %ul.list-group
         - present_collection(@rosters).each do |roster|
           - unless roster.league.hidden?
