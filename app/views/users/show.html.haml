@@ -47,23 +47,6 @@
     
       .pull-right= render 'users/bans/list', user: @user
     
-    - if current_user? && !@team_invites.empty?
-      - @team_invites.each do |invite|
-        - team = invite.team
-        .alert.alert-info
-          You have been invited to join #{present(team).link}
-    
-          .button-group.pull-right
-            = button_to decline_team_invite_path(team),
-                        method: :delete, class: 'btn btn-danger' do
-              Decline
-              %span.glyphicon.glyphicon-remove
-          .button-group.pull-right
-            = button_to accept_team_invite_path(team),
-                        method: :post, class: 'btn btn-success' do
-              Accept
-              %span.glyphicon.glyphicon-ok
-    
     .panel.panel-default
       .panel-heading Description
       .panel-body.markdown= user_p.description
@@ -81,22 +64,11 @@
             %li.list-group-item
               = match.link
 
-
 .row
   - if user_can_edit_user?
     - unless @user.permitted_leagues.empty?
       .col-md-6.col-sm-12.nopadding.pr-20-md
-        .panel.panel-info
-          .panel-heading Teams
-          %ul.list-group
-            - @teams.each do |team|
-              %li.list-group-item
-                = link_to team.name, team_path(team)
-                - if current_user?
-                  .button-group.pull-right
-                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
-                      Leave
-                      %span.glyphicon.glyphicon-remove
+        = render 'user_teams'
       
       .col-md-6.col-sm-12.nopadding
         .panel.panel-info
@@ -106,31 +78,11 @@
               = link_to league.name, league_path(league), class: 'list-group-item'
     - else 
       .col-md-12.nopadding
-        .panel.panel-info
-          .panel-heading Teams
-          %ul.list-group
-            - @teams.each do |team|
-              %li.list-group-item
-                = link_to team.name, team_path(team)
-                - if current_user?
-                  .button-group.pull-right
-                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
-                      Leave
-                      %span.glyphicon.glyphicon-remove
+        = render 'user_teams'
   - else
     - unless @user.public_permitted_leagues.empty?
       .col-md-6.col-sm-12.nopadding.pr-20-md
-        .panel.panel-info
-          .panel-heading Teams
-          %ul.list-group
-            - @teams.each do |team|
-              %li.list-group-item
-                = link_to team.name, team_path(team)
-                - if current_user?
-                  .button-group.pull-right
-                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
-                      Leave
-                      %span.glyphicon.glyphicon-remove
+        = render 'user_teams'
       
       .col-md-6.col-sm-12.nopadding
         .panel.panel-info
@@ -140,17 +92,7 @@
               = link_to league.name, league_path(league), class: 'list-group-item'
     - else 
       .col-md-12.nopadding
-        .panel.panel-info
-          .panel-heading Teams
-          %ul.list-group
-            - @teams.each do |team|
-              %li.list-group-item
-                = link_to team.name, team_path(team)
-                - if current_user?
-                  .button-group.pull-right
-                    = button_to leave_team_path(team), method: :patch, class: 'btn btn-danger bnt-leave' do
-                      Leave
-                      %span.glyphicon.glyphicon-remove
+        = render 'user_teams'
 .row          
   .panel.panel-info
     .panel-heading Transfers
