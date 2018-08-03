@@ -20,6 +20,10 @@ module Ozfortress
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    Raven.configure do |config|
+      config.dsn = Rails.application.secrets.sentry_dsn 
+    end    
+    
     # Make view helpers, view specific
     config.action_controller.include_all_helpers = false
 
