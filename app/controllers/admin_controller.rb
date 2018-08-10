@@ -12,7 +12,6 @@ class AdminController < ApplicationController
   end  
 
   def host_grant
-    @user.grant(:view, :leagues)
     @user.grant(:create, :leagues)
 	@user.notifications.create(user_id: @user.id, message: "You have been granted the tournament host permissions! Click this notification to create your first tournament.", link: "/tournaments/new", created_at: Time.now, updated_at: Time.now)
 	@user.badge_name = "Tournament host"
