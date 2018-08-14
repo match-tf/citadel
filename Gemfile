@@ -101,7 +101,7 @@ group :development do
 end
 
 # Animate.css
-gem "animate-rails"
+gem 'animate-rails'
 
 # User impersonation:
 gem 'pretender', '~> 0.3.1'
@@ -110,5 +110,5 @@ gem 'allowable', '~> 1.1'
 # Discord webhooks
 gem 'discord-notifier'
 
-# Sentry logging 
-gem "sentry-raven"
+# Sentry logging
+gem 'sentry-raven'

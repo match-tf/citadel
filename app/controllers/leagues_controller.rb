@@ -7,8 +7,8 @@ class LeaguesController < ApplicationController
 
   before_action only: [:medals] do
     @league = League.includes(:tiebreakers).find(params[:league_id])
-  end  
-  
+  end
+
   before_action :require_user_leagues_permission, only: [:destroy]
   before_action :require_user_create_permission, only: [:new, :create]
   before_action :require_user_league_permission, only: [:edit, :update, :modify, :message, :medals]
@@ -19,7 +19,7 @@ class LeaguesController < ApplicationController
     @leagues = League.search(params[:q])
                      .order(status: :asc, created_at: :desc)
                      .includes(format: :game)
-    @leagues = (@leagues.visible + current_user.permitted_leagues).uniq unless user_can_edit_leagues? || user_can_view_leagues? 
+    @leagues = (@leagues.visible + current_user.permitted_leagues).uniq unless user_can_edit_leagues? || user_can_view_leagues?
     @leagues = @leagues.group_by { |league| league.format.game }
     
     @games = @leagues.keys
@@ -55,7 +55,7 @@ class LeaguesController < ApplicationController
     @matches = @league.matches.ordered.includes(:rounds, :home_team, :away_team)
                       .group_by(&:division)
   end
-  
+
   def medals
     @rosters = @league.rosters.includes(:division)
     @ordered_rosters = @league.ordered_rosters_by_division
@@ -97,25 +97,21 @@ class LeaguesController < ApplicationController
     end
   end
 
-  
   before_action only: [:message] do
-    comm = params.require(:message)
-    org = params.require(:url)
-    caps_only = params.require(:captains)
-  end  
-  
-  def message
-    
+    message = params.require(:message)
+    url = params.require(:url)
+    captains = params.require(:captains)
     league_id = @league.id
-    
+  end
+
+  def message
     message = params['message']
     url = params['url']
     captains = params['captains']
-
+    league_id = @league.id
     i = 0
-    
-    if captains == "1"
-    
+    if captains == '1'
+
       Team.find_each do |team|
         if team.rosters.joins(:division).where(league_divisions: { league_id: league_id }).exists?
           User.which_can(:edit, team).each do |user|
@@ -124,13 +120,12 @@ class LeaguesController < ApplicationController
           end
         end
       end
-      
-      flash[:notice] = "The message was sent to  " + i.to_s + " captains"
-      redirect_to league_path(@league)      
-      
-      
+
+      flash[:notice] = 'The message was sent to  ' + i.to_s + ' captains'
+      redirect_to league_path(@league)
+
     else
-    
+
       @league.rosters.find_each do |roster|
         roster.players.find_each do |gamer|
           user = User.find(gamer.user_id)
@@ -138,15 +133,13 @@ class LeaguesController < ApplicationController
           i += 1
         end
       end 
-      
-      flash[:notice] = "The message was sent to  " + i.to_s + " participants"
-      redirect_to league_path(@league)     
 
-    end  
-    
-    
+      flash[:notice] = 'The message was sent to  ' + i.to_s + ' participants'
+      redirect_to league_path(@league)
+
+    end
   end
-  
+
   private
 
   LEAGUE_PARAMS = [

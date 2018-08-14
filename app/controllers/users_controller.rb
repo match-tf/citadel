@@ -127,8 +127,8 @@ class UsersController < ApplicationController
     stop_impersonating_user
 
     redirect_back(fallback_location: root_path)
-  end  
-  
+  end
+
   private
 
   def steam_data
@@ -165,8 +165,8 @@ class UsersController < ApplicationController
 
   def require_users_impersonate_permission
     redirect_to root_path unless user_can_impersonate_users?
-  end  
-  
+  end
+
   def require_user_confirmation_token
     return if @user
 
