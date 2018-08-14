@@ -36,6 +36,8 @@ class User < ApplicationRecord
   caches_markdown_render_for :description
   validates :email, allow_blank: true, format: { with: /@/ } # How you actually validate emails
   validates :notice, presence: true, allow_blank: true
+  validates :time_zone, presence: true, allow_blank: false
+  validate :timezone_exists
   caches_markdown_render_for :notice
 
   validates_permission_to :edit, :users
@@ -201,4 +203,10 @@ class User < ApplicationRecord
            .where(rosters_sort => { id: ids, is_joining: true })
            .order(:name)
   end
+
+  def timezone_exists
+    return if ActiveSupport::TimeZone[time_zone].present?
+    errors.add(:time_zone, "does not exist")
+  end
+
 end
