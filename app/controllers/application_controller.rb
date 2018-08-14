@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   impersonates :user
-  before_action :set_raven_context
-  
+  before_action :set_raven_context, :set_user_time_zone
+
   before_action do
     @notifications = current_user.notifications.order(created_at: :desc).load if user_signed_in?
   end
@@ -29,5 +29,10 @@ class ApplicationController < ActionController::Base
   def set_raven_context
     Raven.user_context(id: session[:current_user_id]) 
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
-  end  
+  end
+
+  def set_user_time_zone
+    Time.zone = current_user.time_zone if user_signed_in?
+  end
+
 end
