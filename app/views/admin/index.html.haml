@@ -26,6 +26,7 @@
         .panel-heading Meta Data
         .panel-body
           %ul.list-group
+            = link_to 'Add news post', new_news_path, class: 'list-group-item'
             = link_to 'Games', meta_games_path, class: 'list-group-item'
             = link_to 'Formats', meta_formats_path, class: 'list-group-item'
             = link_to 'Maps', meta_maps_path, class: 'list-group-item'

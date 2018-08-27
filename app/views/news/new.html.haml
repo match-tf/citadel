@@ -1,0 +1,7 @@
+%h1.outside Compose a news post
+
+.panel.panel-container
+  .row
+    = bootstrap_form_for @news, method: :new do |f|
+      = render 'form', f: f
+      = f.submit 'Save'

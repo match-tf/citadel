@@ -1,0 +1,33 @@
+- content_for(:title) { 'News' }
+
+.row.padless
+  .col-sm-12
+    %h1.outside News
+
+- if @news.empty?
+  .panel.panel-container
+    %h5 No news just yet...
+- else
+  .row.padless
+    .col-sm-12
+      .panel.panel-default.news-pane
+        .panel-heading.nopadding
+          = present(@first).image
+          .newsdate
+            %span= present(@first).created_at
+        .panel-body
+          %h2.nopadding= present(@first).link
+          %p= present(@first).content
+  .row.padless
+    - present_collection(@rest).each do |news|
+      .col-md-4
+        .panel.panel-default.news-pane
+          .panel-heading.nopadding
+            = news.thumb
+            .newsdate
+              %span= news.created_at
+          .panel-body
+            %h2.nopadding= news.link
+            %p= news.short
+%br/
+= link_to 'New News', new_news_path

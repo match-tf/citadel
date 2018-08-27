@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :news
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
 
@@ -152,8 +153,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :forums, :path => :news, only: :show
-  namespace :forums, :path => :news, shallow: true do
+  resource :forums, only: :show
+  namespace :forums, shallow: true do
     resources :topics, except: :index do
       concerns :subscribable
       patch :isolate, on: :member

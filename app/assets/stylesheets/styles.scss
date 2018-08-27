@@ -1782,3 +1782,65 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     padding-right: 20px !important;
 }
 }
+
+.row.padless > .col-md-1:first-child, .row.padless > .col-sm-1:first-child, .row.padless > .col-lg-1:first-child, .row.padless > .col-xs-1:first-child,
+.row.padless > .col-md-2:first-child, .row.padless > .col-sm-2:first-child, .row.padless > .col-lg-2:first-child, .row.padless > .col-xs-2:first-child,
+.row.padless > .col-md-3:first-child, .row.padless > .col-sm-3:first-child, .row.padless > .col-lg-3:first-child, .row.padless > .col-xs-3:first-child,
+.row.padless > .col-md-4:first-child, .row.padless > .col-sm-4:first-child, .row.padless > .col-lg-4:first-child, .row.padless > .col-xs-4:first-child,
+.row.padless > .col-md-5:first-child, .row.padless > .col-sm-5:first-child, .row.padless > .col-lg-5:first-child, .row.padless > .col-xs-5:first-child,
+.row.padless > .col-md-6:first-child, .row.padless > .col-sm-6:first-child, .row.padless > .col-lg-6:first-child, .row.padless > .col-xs-6:first-child,
+.row.padless > .col-md-7:first-child, .row.padless > .col-sm-7:first-child, .row.padless > .col-lg-7:first-child, .row.padless > .col-xs-7:first-child,
+.row.padless > .col-md-8:first-child, .row.padless > .col-sm-8:first-child, .row.padless > .col-lg-8:first-child, .row.padless > .col-xs-8:first-child,
+.row.padless > .col-md-8:first-child, .row.padless > .col-sm-9:first-child, .row.padless > .col-lg-9:first-child, .row.padless > .col-xs-9:first-child,
+.row.padless > .col-md-10:first-child, .row.padless > .col-sm-10:first-child, .row.padless > .col-lg-10:first-child, .row.padless > .col-xs-10:first-child,
+.row.padless > .col-md-11:first-child, .row.padless > .col-sm-11:first-child, .row.padless > .col-lg-11:first-child, .row.padless > .col-xs-11:first-child,
+.row.padless > .col-md-12:first-child, .row.padless > .col-sm-12:first-child, .row.padless > .col-lg-12:first-child, .row.padless > .col-xs-12:first-child,  {
+    padding-left: 0 !important;
+}
+
+.row.padless > .col-md-1:last-child, .row.padless > .col-sm-1:last-child, .row.padless > .col-lg-1:last-child, .row.padless > .col-xs-1:last-child,
+.row.padless > .col-md-2:last-child, .row.padless > .col-sm-2:last-child, .row.padless > .col-lg-2:last-child, .row.padless > .col-xs-2:last-child,
+.row.padless > .col-md-3:last-child, .row.padless > .col-sm-3:last-child, .row.padless > .col-lg-3:last-child, .row.padless > .col-xs-3:last-child,
+.row.padless > .col-md-4:last-child, .row.padless > .col-sm-4:last-child, .row.padless > .col-lg-4:last-child, .row.padless > .col-xs-4:last-child,
+.row.padless > .col-md-5:last-child, .row.padless > .col-sm-5:last-child, .row.padless > .col-lg-5:last-child, .row.padless > .col-xs-5:last-child,
+.row.padless > .col-md-6:last-child, .row.padless > .col-sm-6:last-child, .row.padless > .col-lg-6:last-child, .row.padless > .col-xs-6:last-child,
+.row.padless > .col-md-7:last-child, .row.padless > .col-sm-7:last-child, .row.padless > .col-lg-7:last-child, .row.padless > .col-xs-7:last-child,
+.row.padless > .col-md-8:last-child, .row.padless > .col-sm-8:last-child, .row.padless > .col-lg-8:last-child, .row.padless > .col-xs-8:last-child,
+.row.padless > .col-md-8:last-child, .row.padless > .col-sm-9:last-child, .row.padless > .col-lg-9:last-child, .row.padless > .col-xs-9:last-child,
+.row.padless > .col-md-10:last-child, .row.padless > .col-sm-10:last-child, .row.padless > .col-lg-10:last-child, .row.padless > .col-xs-10:last-child,
+.row.padless > .col-md-11:last-child, .row.padless > .col-sm-11:last-child, .row.padless > .col-lg-11:last-child, .row.padless > .col-xs-11:last-child,
+.row.padless > .col-md-12:last-child, .row.padless > .col-sm-12:last-child, .row.padless > .col-lg-12:last-child, .row.padless > .col-xs-12:last-child,  {
+    padding-right: 0 !important;
+}
+
+.newsdate {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    padding-right: 10px;
+    background-color: #2c2c2c75;
+}
+
+.newsdate > span {
+    float: right;
+}
+
+.panel.news-pane, .panel.news-pane > .panel-heading {
+    position: relative;
+    overflow: hidden;
+}
+
+.panel.news-pane > .panel-heading > img {
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.panel.news-pane:hover > .panel-heading > img {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+
