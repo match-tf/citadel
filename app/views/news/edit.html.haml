@@ -1,0 +1,15 @@
+%h1.outside Editing News
+
+.panel.panel-container
+  .row
+    = bootstrap_form_for @news, method: :patch do |f|
+      = render 'form', f: f
+      %p= f.submit 'Save'
+
+    .panel.panel-danger
+      .panel-heading Danger Zone
+      .panel-body.btn-spacing
+        = button_to news_path(@news), method: :delete, class: 'btn btn-danger',
+                    data: { confirm: 'Are you sure you want to delete this post?' } do
+          %span.glyphicon.glyphicon-trash
+          Delete

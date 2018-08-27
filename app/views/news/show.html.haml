@@ -1,0 +1,14 @@
+%h1.outside= present(@news).title
+.panel.panel-default.news-pane
+  .panel-heading.nopadding
+    = present(@news).image
+    .newsdate
+      %span= present(@news).created_at
+  .panel-body
+    %p= present(@news).content
+
+.panel.panel-container
+  - if user_can_meta?
+    = link_to edit_news_path(@news), class: 'btn btn-default', type: 'button' do
+      Edit
+      %span.glyphicon.glyphicon-cog	

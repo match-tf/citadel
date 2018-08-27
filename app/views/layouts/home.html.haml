@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = auto_discovery_link_tag(:atom, news_index_url(format: "atom"))
     %title
       = content_for :title
       \- match.tf

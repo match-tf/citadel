@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180814163231) do
+ActiveRecord::Schema.define(version: 20180819140211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -517,6 +517,19 @@ ActiveRecord::Schema.define(version: 20180814163231) do
     t.index ["game_id"], name: "index_maps_on_game_id"
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "content", null: false
+    t.text "content_render_cache"
+    t.integer "author_id", null: false
+    t.string "twitter_url"
+    t.string "shorttext", null: false
+    t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_news_on_author_id"
+  end
+
   create_table "team_invites", id: :serial, force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
@@ -765,6 +778,7 @@ ActiveRecord::Schema.define(version: 20180814163231) do
   add_foreign_key "league_tiebreakers", "leagues"
   add_foreign_key "leagues", "formats"
   add_foreign_key "maps", "games"
+  add_foreign_key "news", "users", column: "author_id"
   add_foreign_key "team_invites", "teams"
   add_foreign_key "team_invites", "users"
   add_foreign_key "team_players", "teams"

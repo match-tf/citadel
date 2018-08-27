@@ -1,0 +1,16 @@
+- news = f.object
+
+%p All fields are required
+
+.clearfix
+  = image_tag news.image.url, class: 'img-responsive' if news.image?
+
+  = f.file_field :image, accept: 'image/png,image/jpeg', label: 'Poster (should fit into 2:1, at least 1600x800 is recommended)'
+  = f.hidden_field :image_cache
+
+= f.text_field :title
+= f.markdown_editor :content, rows: 10
+= f.text_area :shorttext, rows: 6, label: 'Short text'
+
+%br
+%p Bear in mind, by pressing the button you also @everyone at the Discord. Short text is used as a preview for Discord #news channel. Deleting the post will NOT remove the announcement. Updating the post will not update it either so be careful.
