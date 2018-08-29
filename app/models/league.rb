@@ -51,6 +51,8 @@ class League < ApplicationRecord
   validates :points_per_forfeit_draw, presence: true, numericality: { only_integer: true }
   validates :points_per_forfeit_loss, presence: true, numericality: { only_integer: true }
 
+  validate :validate_has_division
+
   # Scheduling
   enum schedule: [:manual, :weeklies]
   has_one :weekly_scheduler, inverse_of: :league, class_name: 'League::Schedulers::Weekly',
@@ -141,6 +143,10 @@ class League < ApplicationRecord
 
   def validate_has_scheduler
     errors.add(:schedule, 'missing scheduler') unless schedule == 'manual' || scheduler.present?
+  end
+
+  def validate_has_division
+    errors.add(:divisions, 'Must have at least one division') unless divisions.length > 0
   end
 
   def set_defaults
