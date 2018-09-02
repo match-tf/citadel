@@ -90,6 +90,11 @@ class League < ApplicationRecord
     rosters.includes(:division).order(:division_id).approved.ordered(self).group_by(&:division)
   end
 
+  def ordered_rosters_by_one_division(div)
+    return divisions.map { |div| [div, []] } if rosters.approved.empty?
+    rosters.includes(:division).where("division_id" => div).order(:division_id).approved.ordered(self).group_by(&:division)
+  end
+
   def valid_roster_size?(size)
     min_players <= size && (size <= max_players || max_players.zero?)
   end

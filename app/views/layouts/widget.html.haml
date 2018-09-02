@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "noindex, nofollow", :name => "robots"}
+    %title
+      = content_for :title
+      \- match.tf
+    = csrf_meta_tags
+    = content_for :head
+    / Custom Font
+    %link{:href => "https://fonts.googleapis.com/css?family=Anton|Lato", :rel => "stylesheet"}
+  %body.widget
+    = yield

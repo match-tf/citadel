@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'statistics',  to: 'admin#statistics', as: 'admin_statistics'
 
   get 'apply', to: 'apply#index'  
-  match 'apply/sendrequest',      to: 'apply#sendrequest',           via: 'post'   
+  match 'apply/sendrequest',      to: 'apply#sendrequest',           via: 'post'
   
   namespace :meta do
     resources :games, except: [:destroy]
@@ -41,13 +41,13 @@ Rails.application.routes.draw do
 
   
   resources :leagues, :path => :tournaments do
-    get 'medals', to: 'leagues#medals'  
-    match 'message',      to: 'message',           via: 'post'   
+    get 'medals', to: 'leagues#medals'
+    get 'widget', to: 'leagues#widget'
+    match 'message',      to: 'message',           via: 'post'
     patch 'modify', on: :member
-    
+
     resources :transfers, controller: 'leagues/transfers', only: [:index, :destroy, :update]
 
-    
     resources :rosters, controller: 'leagues/rosters', except: [:show], shallow: true do
       member do
         get   'review'
