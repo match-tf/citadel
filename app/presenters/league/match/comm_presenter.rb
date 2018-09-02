@@ -16,6 +16,10 @@ class League
         user_roster&.team
       end
 
+      def league
+        comm.league
+      end
+
       def created_at
         comm.created_at.strftime('%c')
       end

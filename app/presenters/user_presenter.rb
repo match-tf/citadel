@@ -37,9 +37,12 @@ class UserPresenter < BasePresenter
 
   def titles(options = {})
     team = options[:team]
+    league = options[:league]
     has_captain_label = team && user.can?(:edit, team) && user.can?(:use, :teams)
+    league_admin = user.is_league_admin?(league)
 
     titles = []
+    titles << content_tag(:div, 'Tournament Admin', class: 'label alert-info') if league_admin
     titles << content_tag(:div, 'captain', class: 'label alert-danger') if has_captain_label
     titles << badge if user.badge?
     safe_join(titles, ' ')

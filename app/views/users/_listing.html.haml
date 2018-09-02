@@ -6,5 +6,5 @@
   .user-details
     .row.slim-gutter
       = user.link
-      = user.titles team: local_assigns[:team]
+      = user.titles team: local_assigns[:team], league: local_assigns[:league]
       .steam-link= user.steam_link
