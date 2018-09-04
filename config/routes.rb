@@ -26,13 +26,8 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   get 'admin', to: 'admin#index'
-  get 'admin/host', to: 'admin#host'
-  match '/admin/host_grant',      to: 'admin#host_grant',           via: 'post'
   get 'statistics',  to: 'admin#statistics', as: 'admin_statistics'
 
-  get 'apply', to: 'apply#index'  
-  match 'apply/sendrequest',      to: 'apply#sendrequest',           via: 'post'
-  
   namespace :meta do
     resources :games, except: [:destroy]
     resources :formats, except: [:destroy]

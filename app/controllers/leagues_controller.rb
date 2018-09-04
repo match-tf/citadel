@@ -10,7 +10,7 @@ class LeaguesController < ApplicationController
     @league = League.includes(:tiebreakers).find(params[:league_id])
   end
 
-  before_action :require_user_create_permission, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :require_user_league_permission, only: [:edit, :update, :modify, :message, :medals, :destroy]
   before_action :require_league_not_hidden_or_permission, only: [:show, :widget]
   before_action :require_hidden, only: [:destroy]
@@ -195,10 +195,6 @@ class LeaguesController < ApplicationController
     redirect_to leagues_path unless user_can_edit_leagues?
   end
 
-  def require_user_create_permission
-    redirect_to leagues_path unless user_can_edit_leagues? || user_can_create_leagues?
-  end  
-  
   def require_user_league_permission
     redirect_to league_path(@league) unless user_can_edit_league?
   end

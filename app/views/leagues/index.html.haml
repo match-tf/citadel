@@ -4,15 +4,10 @@
   %h1.tab-header.outside Tournaments
   .col-sm-3.col-md-3.searchbox.pull-right
     = render 'search'
-  - if user_can_edit_leagues? || user_can_create_leagues?
+  - if user_signed_in?
     = link_to new_league_path, class: 'btn btn-default pull-right btn-lg' do
       %span.glyphicon.glyphicon-plus
       Create New Tournament
-  - else
-    - if user_signed_in?
-      = link_to apply_path, class: 'btn btn-default pull-right btn-lg' do
-        %span.glyphicon.glyphicon-pencil
-        Apply for a tournament host 
 
 .row
   .panel.panel-container
