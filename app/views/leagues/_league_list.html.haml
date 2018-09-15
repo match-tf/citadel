@@ -27,7 +27,7 @@
 
               %h4.list-group-item-heading
                 = league.name
-              .league-underlay{:style => "background: url(#{league.heroimage_url})"}
+              .league-underlay{:style => "background: url(#{league.banner})"}
   .col-xs-3.col-sm-2
     %ul.list-group
       - select = (['All'] + categories.keys).map { |category| [category, category_id.call(category)] }

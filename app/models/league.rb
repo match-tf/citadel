@@ -27,7 +27,9 @@ class League < ApplicationRecord
   validates :rules, presence: true
   caches_markdown_render_for :description, escaped: false
   caches_markdown_render_for :rules, escaped: false
-  
+
+  mount_uploader :banner, HeroimageUploader
+
   validates :category, length: { in: 0..64, allow_nil: false }
 
   validates :signuppable,                              inclusion: { in: [true, false] }

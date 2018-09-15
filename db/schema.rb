@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819140211) do
+ActiveRecord::Schema.define(version: 20180915163533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -499,10 +499,10 @@ ActiveRecord::Schema.define(version: 20180819140211) do
     t.integer "points_per_forfeit_draw", default: 0, null: false
     t.integer "points_per_forfeit_loss", default: 0, null: false
     t.boolean "forfeit_all_matches_when_roster_disbands", default: true, null: false
-    t.string "heroimage_url", default: "/images/heroimage_default.png", null: false
-    t.boolean "display_heroimage", default: false, null: false
+    t.boolean "display", default: true, null: false
     t.string "rules", default: "### Welcome to match.tf tournament! Please follow the rules below:", null: false
     t.text "rules_render_cache", default: "", null: false
+    t.string "banner"
     t.index "query_name_cache gist_trgm_ops", name: "index_leagues_on_query_name_change", using: :gist
     t.index ["format_id"], name: "index_leagues_on_format_id"
   end

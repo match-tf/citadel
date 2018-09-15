@@ -157,7 +157,7 @@ class LeaguesController < ApplicationController
   private
 
   LEAGUE_PARAMS = [
-    :name, :description, :rules, :heroimage_url, :display_heroimage, :format_id, :category,
+    :name, :description, :rules, :banner, :display, :format_id, :category,
     :signuppable, :roster_locked, :matches_submittable, :transfers_require_approval, :allow_disbanding,
     :forfeit_all_matches_when_roster_disbands,
     :min_players, :max_players,

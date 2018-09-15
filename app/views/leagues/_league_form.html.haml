@@ -1,10 +1,13 @@
 .panel.panel-default
   .panel-heading Info
   .panel-body
+    .clearfix
+      = image_tag @league.banner.url, class: 'img-responsive' if @league.banner?
+    
+      = f.file_field :banner, accept: 'image/png,image/jpeg', label: 'Banner'
     = f.select :format_id, format_options
     = f.text_field :name
-    = f.text_field :heroimage_url
-    = f.check_box :display_heroimage
+    = f.check_box :display, label: 'Display in Hub'
     = f.markdown_editor :description, rows: 10
     = f.markdown_editor :rules, rows: 15    
     = f.text_field :category
