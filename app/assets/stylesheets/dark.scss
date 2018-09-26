@@ -44,7 +44,7 @@ p {
 
 .panel {
     background-color: #07070769 !important;
-    border: 1px solid transparent !important;
+    border: none !important;
 }
 
 .panel-default .panel-heading {
@@ -188,4 +188,92 @@ select option {
 
 hr {
   border-top: 1px solid #2e2e2c69 !important;
+}
+
+.panel-warning > .panel-heading {
+  background-color: #2f2821;
+  color: #444;
+  border: none;
+}
+
+.panel-heading.post-edit > .pull-right {
+    font-size: 11px;
+}
+.panel-heading.post-edit > .pull-right > a{
+    color: #cc8f184f;
+}
+
+.panel-heading.post-edit > .pull-right:nth-child(2) > a > span{
+    font-size: 10px;
+}
+
+.match-table > thead > tr > th:last-child {
+    text-align: right;
+}
+.match-table > tbody > tr > td:last-child {
+    text-align: right;
+}
+
+.match-table > tbody > tr > td:last-child > .row > .pull-left {
+    float: right !important;
+}
+
+.match-table > tbody > tr > td:last-child > .row > .user-details {
+    padding-left: 0;
+    padding-right: 45px;
+}
+
+
+.label {
+    padding: 0.2em 0.6em 0.3em;
+    font-size: 75%;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+.alert-danger {
+    background-color: #512020;
+    color: #ffffff;
+}
+
+.alert-info {
+    background-color: #1d2124;
+    color: #ffffff;
+}
+
+.alert-success {
+    background-color: #3b4935;
+    color: #ffffff;
+}
+
+.round-score {
+    display: inline-block;
+    border-left: none !important;
+    line-height: calc(100% + 2px);
+    outline: none !important;
+    background-color: #282828b5;
+    border-radius: 6px;
+    margin-bottom: 1px;
+}
+
+.round-score div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+}
+.round-won {
+    background-color: #155515;
+    color: white;
+}
+.match-vs {
+    text-align: center;
+    width: 60px;
+    font-family: monospace;
+    background: transparent;
 }
