@@ -12,7 +12,7 @@
     .col-sm-12
       .panel.panel-default.news-pane
         .panel-heading.nopadding
-          = present(@first).image
+          = present(@first).imagelink
           .newsdate
             %span= present(@first).created_at
         .panel-body
@@ -23,7 +23,7 @@
       .col-md-4
         .panel.panel-default.news-pane
           .panel-heading.nopadding
-            = news.thumb
+            = news.thumblink
             .newsdate
               %span= news.created_at
           .panel-body

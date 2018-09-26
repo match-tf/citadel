@@ -1831,13 +1831,13 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     overflow: hidden;
 }
 
-.panel.news-pane > .panel-heading > img {
+.panel.news-pane > .panel-heading > a > img {
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
-.panel.news-pane:hover > .panel-heading > img {
+.panel.news-pane:hover > .panel-heading > a > img {
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);

@@ -1,20 +1,34 @@
 - content_for(:title) { 'Home' }
 
-- if @topic
-  %h1.outside News
+- if @news.empty?
   .panel.panel-container
-    .row  
-      - @threads.each do |thread|
-        - post = @news_posts[thread]
-      
-        = render 'forums/posts/news_post', post: post
-      
-      - if @more_threads
-        = link_to 'View Older', forums_topic_path(@topic), class: 'btn btn-default'
+    %h5 No news just yet...
 - else
-  .panel.panel-container
-    .row
-      .jumbotron
-        %h1 Welcome to match.tf
-      
-        %p Nothing to see here yet, go check out another #{link_to 'cool site', 'https://cfg.tf'}
+  .row.padless
+    .col-md-8
+      .row.padless
+        .col-sm-12
+          .panel.panel-default.news-pane
+            .panel-heading.nopadding
+              = present(@head).imagelink
+              .newsdate
+                %span= present(@head).created_at
+            .panel-body
+              %h2.nopadding= present(@head).link
+              %p= present(@head).content
+      .row.padless
+        - present_collection(@rest).each do |news|
+          .col-md-3
+            .panel.panel-default.news-pane
+              .panel-heading.nopadding
+                = news.thumblink
+                .newsdate
+                  %span= news.created_at
+              .panel-body
+                %h4.nopadding= news.link
+                %p= news.short
+        .col-md-3
+          .panel.panel-default.news-pane
+            .panel-body
+              %h4= link_to 'Read more...', news_index_path
+    .col-md-4

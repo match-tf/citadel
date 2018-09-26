@@ -5,8 +5,8 @@ class News < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
   validates :title, presence: true, length: { in: 2..128 }
-  validates :shorttext, presence: true, length: { in: 10..10_000 }
-  validates :content, presence: true, length: { in: 10..253 }
+  validates :shorttext, presence: true, length: { in: 10..253 }
+  validates :content, presence: true, length: { in: 10..10_000 }
   validates :image, presence: true
   caches_markdown_render_for :content
 
