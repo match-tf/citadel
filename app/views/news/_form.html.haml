@@ -2,6 +2,12 @@
 
 %p All fields are required
 
+:javascript
+  function charcountupdate(str) {
+    var lng = str.length;
+    document.getElementById("counter").innerHTML = lng + ' / 253';
+  }
+
 .clearfix
   = image_tag news.image.url, class: 'img-responsive' if news.image?
 
@@ -10,7 +16,8 @@
 
 = f.text_field :title
 = f.markdown_editor :content, rows: 10
-= f.text_area :shorttext, rows: 6, label: 'Short text'
+= f.text_area :shorttext, rows: 6, label: 'Short text', onkeyup: 'charcountupdate(this.value)'
+%p#counter
 
 %br
 %p Bear in mind, by pressing the button you also @everyone at the Discord. Short text is used as a preview for Discord #news channel. Deleting the post will NOT remove the announcement. Updating the post will not update it either so be careful.

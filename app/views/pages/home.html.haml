@@ -16,10 +16,10 @@
             .panel-body
               %h2.nopadding= present(@head).link
               %p= present(@head).content
-      .row.padless
+      .row.padless.bottom-news
         - present_collection(@rest).each do |news|
           .col-md-3
-            .panel.panel-default.news-pane
+            .panel.panel-default.news-pane.thumb
               .panel-heading.nopadding
                 = news.thumblink
                 .newsdate
