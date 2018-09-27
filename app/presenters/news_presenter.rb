@@ -6,7 +6,7 @@ class NewsPresenter < BasePresenter
   end
 
   def created_at
-    news.created_at.strftime('%c')
+    news.created_at.strftime('%d/%m/%Y %H:%M')
   end
 
   def link(label = nil)

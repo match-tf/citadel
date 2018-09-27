@@ -1,8 +1,11 @@
 - content_for(:title) { 'News' }
 
 .row.padless
-  .col-sm-12
-    %h1.outside News
+  .col-xs-9
+    %h1.outside.nopadding News
+  .col-xs-3
+    = link_to '/news.atom', class: 'btn btn-default pull-right inh1-button', type: 'button' do
+      %span.glyphicon.glyphicon-briefcase
 
 - if @news.empty?
   .panel.panel-container
