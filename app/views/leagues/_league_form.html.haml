@@ -8,95 +8,102 @@
     = f.select :format_id, format_options
     = f.text_field :name
     = f.check_box :display, label: 'Display in Hub'
-    = f.markdown_editor :description, rows: 10
-    = f.markdown_editor :rules, rows: 15    
+    .row.padless
+      .col-md-6
+        = f.markdown_editor :description, rows: 10
+      .col-md-6
+        = f.markdown_editor :rules, rows: 10
     = f.text_field :category
 
-.panel.panel-default
-  .panel-heading  Players
-  .panel-body
-    .form-group
-      = f.number_field :min_players, min: 1, label: 'Minimum'
-    .form-group
-      = f.number_field :max_players, min: 0, label: 'Maximum (0 for unlimited)'
+.row.padless
+  .col-md-6
+    .panel.panel-default
+      .panel-heading  Players
+      .panel-body
+        .form-group
+          = f.number_field :min_players, min: 1, label: 'Minimum'
+        .form-group
+          = f.number_field :max_players, min: 0, label: 'Maximum (0 for unlimited)'
+    
+    .panel.panel-default
+      .panel-heading State
+      .panel-body
+        = f.check_box :signuppable
+        = f.check_box :roster_locked
+        = f.check_box :matches_submittable
+        = f.check_box :transfers_require_approval
+        = f.check_box :allow_disbanding
+        = f.check_box :forfeit_all_matches_when_roster_disbands
+    .panel.panel-default
+      .panel-heading Divisions
+      = f.errors_on :divisions, hide_attribute_name: true
+    
+      %ul.list-group
+        = f.fields_for :divisions do |division_f|
+          = render 'division_fields', f: division_f
+        #divisions
+    
+      .panel-body
+        %div
+          = link_to_add_association f, :divisions, class: 'btn btn-default pull-right',
+                                    'data-association-insertion-node' => '#divisions' do
+            %span.glyphicon.glyphicon-plus
+            Add Division
 
-.panel.panel-default
-  .panel-heading State
-  .panel-body
-    = f.check_box :signuppable
-    = f.check_box :roster_locked
-    = f.check_box :matches_submittable
-    = f.check_box :transfers_require_approval
-    = f.check_box :allow_disbanding
-    = f.check_box :forfeit_all_matches_when_roster_disbands
+  .col-md-6
+    .panel.panel-default
+      .panel-heading 
+        Points
+        %br
+        %small
+          Looks confusing? Go through our
+          %a{:href => "/host", :target => "_blank"} tournament host guide.
+    
+      .panel-body
+        = f.number_field :points_per_round_win,  label: 'Points per set won'
+        = f.number_field :points_per_round_draw, label: 'Points per set drawn'
+        = f.number_field :points_per_round_loss, label: 'Points per set lost'
+        = f.number_field :points_per_match_win,  label: 'Points per match won'
+        = f.number_field :points_per_match_draw, label: 'Points per match drawn'
+        = f.number_field :points_per_match_loss, label: 'Points per match lost'
+        = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit'
+        = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit'
+        = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit'
 
-.panel.panel-default
-  .panel-heading 
-    Points
-    %br
-    %small
-      Looks confusing? Go through our
-      %a{:href => "/host", :target => "_blank"} tournament host guide.
-
-  .panel-body
-    = f.number_field :points_per_round_win,  label: 'Points per set won'
-    = f.number_field :points_per_round_draw, label: 'Points per set drawn'
-    = f.number_field :points_per_round_loss, label: 'Points per set lost'
-    = f.number_field :points_per_match_win,  label: 'Points per match won'
-    = f.number_field :points_per_match_draw, label: 'Points per match drawn'
-    = f.number_field :points_per_match_loss, label: 'Points per match lost'
-    = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit'
-    = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit'
-    = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit'
-
-.panel.panel-default
-  .panel-heading Tiebreaking
-  %ul.list-group
-    = f.fields_for :tiebreakers do |tiebreaker_f|
-      = render 'tiebreaker_fields', f: tiebreaker_f
-    #tiebreakers
-
-  .panel-body
-    %div
-      = link_to_add_association f, :tiebreakers, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#tiebreakers' do
-        %span.glyphicon.glyphicon-plus
-        Add Tiebreaker
-
-.panel.panel-default
-  .panel-heading Divisions
-  = f.errors_on :divisions, hide_attribute_name: true
-
-  %ul.list-group
-    = f.fields_for :divisions do |division_f|
-      = render 'division_fields', f: division_f
-    #divisions
-
-  .panel-body
-    %div
-      = link_to_add_association f, :divisions, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#divisions' do
-        %span.glyphicon.glyphicon-plus
-        Add Division
-
-.panel.panel-default
-  .panel-heading 
-    Map Pool (Leave empty for all maps)
-    %br
-    %small 
-      Missing a map? Hit us up on Discord.
-
-  %ul.list-group
-    = f.fields_for :pooled_maps do |pooled_map_f|
-      = render 'pooled_map_fields', f: pooled_map_f
-    #pooled-maps
-
-  .panel-body
-    %div
-      = link_to_add_association f, :pooled_maps, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#pooled-maps' do
-        %span.glyphicon.glyphicon-plus
-        Add Map
+.row.padless
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Tiebreaking
+      %ul.list-group
+        = f.fields_for :tiebreakers do |tiebreaker_f|
+          = render 'tiebreaker_fields', f: tiebreaker_f
+        #tiebreakers
+    
+      .panel-body
+        %div
+          = link_to_add_association f, :tiebreakers, class: 'btn btn-default pull-right',
+                                    'data-association-insertion-node' => '#tiebreakers' do
+            %span.glyphicon.glyphicon-plus
+            Add Tiebreaker
+  .col-md-6
+    .panel.panel-default
+      .panel-heading 
+        Map Pool (Leave empty for all maps)
+        %br
+        %small 
+          Missing a map? Hit us up on Discord.
+    
+      %ul.list-group
+        = f.fields_for :pooled_maps do |pooled_map_f|
+          = render 'pooled_map_fields', f: pooled_map_f
+        #pooled-maps
+    
+      .panel-body
+        %div
+          = link_to_add_association f, :pooled_maps, class: 'btn btn-default pull-right',
+                                    'data-association-insertion-node' => '#pooled-maps' do
+            %span.glyphicon.glyphicon-plus
+            Add Map
 
 .panel.panel-default
   .panel-heading Scheduling
