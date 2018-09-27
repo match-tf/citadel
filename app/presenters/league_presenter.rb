@@ -9,6 +9,11 @@ class LeaguePresenter < BasePresenter
     link_to league.name, league_path(league)
   end
 
+  def help(info)
+    data = { toggle: :tooltip, placement: :left,
+             html: 'true', 'original-title' => info }
+  end
+
   def description
     # rubocop:disable Rails/OutputSafety
     league.description_render_cache.html_safe
