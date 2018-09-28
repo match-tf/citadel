@@ -14,10 +14,10 @@ class HeroimageUploader < CarrierWave::Uploader::Base
   end
 
 
-  process resize_to_fit: [1500, 300]
+  process resize_to_limit: [1530, nil]
 
-  version :thumb do
-    process resize_to_fill: [500, 100]
+  version :bar do
+    process resize_to_fill: [1298, 80]
   end
 
   def extension_white_list

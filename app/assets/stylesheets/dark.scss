@@ -379,3 +379,33 @@ span.glyphicon.glyphicon-question-sign.help {
     font-size: 16px;
     color: red;
 }
+.panel.facts > .panel-body > em {
+    position: absolute;
+    top: -27px;
+    right: -11px;
+    color: #e29418;
+    font-size: 182px;
+    transform: rotate(-27deg);
+    z-index: 10;
+}
+
+.panel.facts > .panel-body > h3 {
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.panel.facts {
+    position:relative;
+    overflow: hidden;
+}
+
+.panel.facts > .panel-body > p {
+    position: relative;
+    z-index: 20;
+}
+
+.panel.facts > .panel-body {
+    padding-left: 30px;
+    padding-right: 56px;
+}

@@ -3,7 +3,7 @@
   .panel-body
     .clearfix
       = image_tag @league.banner.url, class: 'img-responsive' if @league.banner?
-      %div{data: present(@league).help('A picture that represents your tournament<br> 5:1 ratio and at least 1500x300 is recommended')}
+      %div{data: present(@league).help('A picture that represents your tournament<br> Image width is recommended to be at least 1530 pixels to avoid upscaling.')}
         = f.file_field :banner, accept: 'image/png,image/jpeg', label: 'Banner '
     %div{data: present(@league).help('Format dictates a minimum amount of players required to enter the competition<br>If you need a non-standard format, please contact us on Discord')}
       = f.select :format_id, format_options
