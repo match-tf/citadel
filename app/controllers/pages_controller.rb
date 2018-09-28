@@ -2,13 +2,14 @@ class PagesController < ApplicationController
   layout "home", only: [:home]
 
   def home
-    read_news_config
+    read_news
     random_tip
+    @tourneys = League.active.order("RANDOM()").limit(4)
   end
 
   private
 
-  def read_news_config
+  def read_news
     @news = News.all
     @head = News.first
     @rest = News.all_but_first.first(3)

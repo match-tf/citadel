@@ -69,6 +69,7 @@ class League < ApplicationRecord
   after_save :update_roster_match_counters
 
   scope :visible, -> { where.not(status: League.statuses[:hidden]) }
+  scope :active, -> { where(status: League.statuses[:running]) }
 
   scope :search, (lambda do |query|
     return all if query.blank?

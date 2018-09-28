@@ -37,3 +37,13 @@
           %h3 Did you know?
           %em.fa.fa-lightbulb-o 
           %p= @tip
+      %h3.outside.text-right Random tournaments
+      .panel.panel-default
+        %ul.list-group.tourneys
+          - @tourneys.each do |league|
+            = link_to league_path(league), class: 'list-group-item list-group-item-info' do
+              %h4.list-group-item-heading.nopadding
+                = league.name
+              .league-underlay{:style => "background: url(#{league.banner.bar})"}
+      %h3.outside Competitive leagues
+      .panel.panel-default= render 'leagues'

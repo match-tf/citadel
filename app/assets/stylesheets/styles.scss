@@ -1596,6 +1596,7 @@ p.back-link {
 h1.outside, h2.outside, h3.outside, h4.outside, h5.outside, h6.outside, h1.outside, h2.outside, h3.outside, h4.outside, h5.outside, h6.outside {
   color: #ffffff;
   padding-left: 0;
+  padding-right: 0;
 }
 
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover, h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
@@ -1848,4 +1849,36 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     transform: scale(1.05);
 }
 
+.list-group.tourneys > .list-group-item > h4 {
+    font-size: 15px;
+}
 
+.list-group.tourneys > .list-group-item > .league-underlay {
+    background-position-x: -192px !important;
+}
+
+.list-group.league-list > .list-group-item > .league-underlay {
+    background-position-x: -175px !important;
+    opacity: 0.1;
+}
+
+.list-group.league-list > .list-group-item  {
+    background: linear-gradient(to right, #2d2d2c, black) !important;
+    border-top: 1px solid #2d2d2c !important;
+}
+
+.list-group.league-list > .list-group-item > p {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: max-height 0.1s ease-out;
+}
+
+.list-group.league-list > .list-group-item:hover > p {
+    max-height: 50px;
+    transition: max-height 0.5s ease-out;
+}
+
+.list-group.league-list > .list-group-item:hover  {
+    background: linear-gradient(to right, #414141, black) !important;
+}
