@@ -409,3 +409,18 @@ span.glyphicon.glyphicon-question-sign.help {
     padding-left: 30px;
     padding-right: 56px;
 }
+
+.panel.league-panel {
+    position: relative;
+    overflow: hidden;
+}
+
+.panel.league-panel > em {
+    position: absolute;
+    top: 192px;
+    left: -139px;
+    color: #e29418;
+    font-size: 282px;
+    z-index: 10;
+    pointer-events: none;
+}
