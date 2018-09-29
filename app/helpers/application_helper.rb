@@ -13,6 +13,10 @@ module ApplicationHelper
     case name
     when :home
       controller_name == 'pages' && action_name == 'home'
+    when :faq
+      controller_name == 'pages' && action_name == 'faq'
+    when :about
+      controller_name == 'pages' && action_name == 'about'
     when :admin
       controller.is_a? AdminController
     else
