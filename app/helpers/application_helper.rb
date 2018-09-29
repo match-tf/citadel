@@ -20,6 +20,11 @@ module ApplicationHelper
     end
   end
 
+  def caption(info)
+    data = { toggle: :tooltip, placement: :left,
+             html: 'true', 'original-title' => info }
+  end
+
   def format_options
     Format.all.collect { |format| [format.name, format.id] }
   end
