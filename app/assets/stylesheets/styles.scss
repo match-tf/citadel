@@ -748,7 +748,7 @@ a.label:hover, a.label:focus {
 	position: absolute;
 	content: " ";
 	width: 2px;
-	background-color: $light-gray;
+	background-color: #e29418;
 	left: 25px;
 	margin-right: -1.5px;
 }
@@ -770,7 +770,7 @@ a.label:hover, a.label:focus {
 .timeline > li > .timeline-panel {
 	width: calc( 100% - 65px );
 	float: right;
-	border: 1px solid #edeeed;
+	border: 1px solid #4b4b4b;
 	border-radius: 2px;
 	padding: 10px 20px;
 	position: relative;
@@ -783,8 +783,8 @@ a.label:hover, a.label:focus {
 	left: -11px;
 	display: inline-block;
 	border-top: 11px solid transparent;
-	border-right: 11px solid #edeeed;
-	border-left: 0 solid #edeeed;
+	border-right: 11px solid #e29418;
+	border-left: 0 solid #e29418;
 	border-bottom: 11px solid transparent;
 	content: " ";
 }
@@ -795,8 +795,8 @@ a.label:hover, a.label:focus {
 	left: -10px;
 	display: inline-block;
 	border-top: 10px solid transparent;
-	border-right: 10px solid #fff;
-	border-left: 0 solid #fff;
+	border-right: 10px solid #e29418;
+	border-left: 0 solid #e29418;
 	border-bottom: 10px solid transparent;
 	content: " ";
 }
