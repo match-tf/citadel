@@ -8,8 +8,7 @@
     %div{data: caption('Format dictates a minimum amount of players required to enter the competition<br>If you need a non-standard format, please contact us on Discord')}
       = f.select :format_id, format_options
     = f.text_field :name
-    %div{data: caption('Display your tournament in the main Tournament Hub.<br>This does not affect signups or tournament availability.')}
-      = f.check_box :display, label: 'Display in Hub'
+    = f.hidden_field :display, label: 'Display in Hub'
     .row.padless
       .col-md-6
         = f.markdown_editor :description, rows: 10
