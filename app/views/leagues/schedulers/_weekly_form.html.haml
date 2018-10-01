@@ -16,4 +16,5 @@
           = check_box_tag "#{f.object_name}[days_indecies][]", index, value, class: 'checkbox'
   %span.help-block= f.object.errors.full_messages_for(:days).first
 
-= f.number_field :minimum_selected, label: 'Minimum Required (0 for unlimited)'
+%div{data: caption('When a team signs up for a competition, they are prompted to provide days of the week when the team is able to play.<br>This option means that the team must select at least this amount of days of the week in order to be able to sign up.')}
+  = f.number_field :minimum_selected, label: 'Minimum Required (0 for unlimited)'
