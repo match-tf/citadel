@@ -1,18 +1,18 @@
 class LeaguesController < ApplicationController
+  layout "widget", only: [:widget]
   include LeaguePermissions
 
-  before_action except: [:index, :new, :create, :medals] do
+  before_action except: [:index, :new, :create, :medals, :widget] do
     @league = League.includes(:tiebreakers).find(params[:id])
   end
 
-  before_action only: [:medals] do
+  before_action only: [:medals, :widget] do
     @league = League.includes(:tiebreakers).find(params[:league_id])
   end
 
-  before_action :require_user_leagues_permission, only: [:destroy]
-  before_action :require_user_create_permission, only: [:new, :create]
-  before_action :require_user_league_permission, only: [:edit, :update, :modify, :message, :medals]
-  before_action :require_league_not_hidden_or_permission, only: [:show]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :require_user_league_permission, only: [:edit, :update, :modify, :message, :medals, :destroy]
+  before_action :require_league_not_hidden_or_permission, only: [:show, :widget]
   before_action :require_hidden, only: [:destroy]
 
   def index
@@ -67,11 +67,18 @@ class LeaguesController < ApplicationController
     @rosters = @league.rosters.includes(:division)
     @ordered_rosters = @league.ordered_rosters_by_division
     @divisions = @ordered_rosters.map(&:first)
-    @roster = @league.roster_for(current_user) if user_signed_in?
-    @personal_matches = @roster.matches.pending.ordered.reverse_order.includes(:home_team, :away_team) if @roster
-    @top_div_matches = @divisions.first.matches.pending.ordered
-                                 .includes(:home_team, :away_team).last(5)
     @matches = @league.matches.ordered.includes(:rounds, :home_team, :away_team)
+                      .group_by(&:division)
+  end
+
+  def widget
+    # TODO: rewrite for a better look
+    params[:sweek] ||= @league.divisions.find(params[:div]).matches.minimum(:round_number)
+    params[:eweek] ||= @league.divisions.find(params[:div]).matches.maximum(:round_number)
+    @rosters = @league.rosters.includes(:division)
+    @div_rosters = @league.ordered_rosters_by_one_division(params[:div])
+    @matches = @league.matches.ordered.includes(:rounds, :home_team, :away_team)
+                      .where(:round_number => (params[:sweek].to_i..params[:eweek].to_i))
                       .group_by(&:division)
   end
 
@@ -98,7 +105,7 @@ class LeaguesController < ApplicationController
 
   def destroy
     if @league.destroy
-      redirect_to admin_path(@league)
+      redirect_to leagues_path
     else
       render :edit
     end
@@ -150,7 +157,7 @@ class LeaguesController < ApplicationController
   private
 
   LEAGUE_PARAMS = [
-    :name, :description, :rules, :heroimage_url, :display_heroimage, :format_id, :category,
+    :name, :description, :rules, :banner, :display, :format_id, :category,
     :signuppable, :roster_locked, :matches_submittable, :transfers_require_approval, :allow_disbanding,
     :forfeit_all_matches_when_roster_disbands,
     :min_players, :max_players,
@@ -164,8 +171,20 @@ class LeaguesController < ApplicationController
     pooled_maps_attributes: [:id, :map_id, :_destroy]
   ].freeze
 
+  # WIDGET_PARAMS = [
+    # :div, :sweek, :eweek
+  # ].freeze
+
+  WIDGET_PARAMS = [
+    :div
+  ].freeze
+
   def league_params
     params.require(:league).permit(LEAGUE_PARAMS)
+  end
+
+  def widget_params
+    params.require(:widget).permit(WIDGET_PARAMS)
   end
 
   def require_hidden
@@ -176,10 +195,6 @@ class LeaguesController < ApplicationController
     redirect_to leagues_path unless user_can_edit_leagues?
   end
 
-  def require_user_create_permission
-    redirect_to leagues_path unless user_can_edit_leagues? || user_can_create_leagues?
-  end  
-  
   def require_user_league_permission
     redirect_to league_path(@league) unless user_can_edit_league?
   end

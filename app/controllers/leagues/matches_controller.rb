@@ -14,6 +14,7 @@ module Leagues
     before_action :require_user_league_permission, only: [:new, :create, :generate, :create_round,
                                                           :edit, :update, :destroy]
     before_action :require_user_either_teams, only: [:submit, :confirm]
+    before_action :require_running, only: [:new, :create, :generate, :create_round]
     before_action :require_user_can_report_scores, only: [:submit, :forfeit]
     before_action :require_match_not_bye, only: [:submit, :confirm, :forfeit]
     before_action :require_match_not_forfeit, only: [:forfeit]
@@ -200,6 +201,13 @@ module Leagues
 
     def page_playoffs_tournament_params
       params.require(:page_playoffs_tournament).permit(:starting_round, :bronze_match)
+    end
+
+    def require_running
+      if @league.signuppable? && @league.rosters.empty?
+        flash[:notice] = 'You must close signups and have rosters in your tournament in order to create new matches.'
+        redirect_to league_path(@league)
+      end
     end
 
     def require_user_can_report_scores

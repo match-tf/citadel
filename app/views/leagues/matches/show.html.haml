@@ -23,26 +23,27 @@
         points have been awarded
 
 - else
-  .panel.panel-default
-    = render 'leagues/matches/players_table', match: @match, match_p: match_p
-
-  .panel.panel-info
-    .panel-heading Results #{match_p.status}
-
-    - can_view_scores = !@match.confirmed? && user_can_either_teams? && @league.matches_submittable?
-    - if can_view_scores || user_can_edit_league?
-      = render 'leagues/matches/match_scores', match: @match, pick_bans: @pick_bans, rounds: @rounds
-    - else
-      = render 'leagues/matches/match_results',
-               match: @match, pick_bans: @pick_bans, rounds: @rounds
-
-  - if @match.notice.present? && (user_on_either_teams? || user_can_edit_league?)
-    .panel.panel-info
-      .panel-heading Match Notice
-      .panel-body.markdown= match_p.notice
-
-  - if @match.home_team.schedule_data && @match.away_team.schedule_data
-    = render 'leagues/matches/schedule', match: @match, league: @league
-
-  = render 'leagues/matches/match_comms', league: @league, match: @match, comm: @comm, comms: @comms
-  
+  .row.padless
+    .col-md-8
+      .panel.panel-default
+        = render 'leagues/matches/players_table', match: @match, match_p: match_p
+      
+      .panel.panel-info
+        .panel-heading Results #{match_p.status}
+      
+        - can_view_scores = !@match.confirmed? && user_can_either_teams? && @league.matches_submittable?
+        - if can_view_scores || user_can_edit_league?
+          = render 'leagues/matches/match_scores', match: @match, pick_bans: @pick_bans, rounds: @rounds
+        - else
+          = render 'leagues/matches/match_results',
+                   match: @match, pick_bans: @pick_bans, rounds: @rounds
+      
+      - if @match.notice.present? && (user_on_either_teams? || user_can_edit_league?)
+        .panel.panel-info
+          .panel-heading Match Notice
+          .panel-body.markdown= match_p.notice
+    .col-md-4
+      - if @match.home_team.schedule_data && @match.away_team.schedule_data
+        = render 'leagues/matches/schedule', match: @match, league: @league
+      
+      = render 'leagues/matches/match_comms', league: @league, match: @match, comm: @comm, comms: @comms

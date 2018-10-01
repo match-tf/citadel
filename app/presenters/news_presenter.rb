@@ -6,7 +6,7 @@ class NewsPresenter < BasePresenter
   end
 
   def created_at
-    news.created_at.strftime('%c')
+    news.created_at.strftime('%d/%m/%Y %H:%M')
   end
 
   def link(label = nil)
@@ -15,11 +15,19 @@ class NewsPresenter < BasePresenter
   end
 
   def image
-      image_tag(news.image.url, class: 'img-responsive')
+    image_tag(news.image.url, class: 'img-responsive')
   end
 
   def thumb
-    link=image_tag(news.image.thumb.url, class: 'img-responsive')
+    image_tag(news.image.thumb.url, class: 'img-responsive')
+  end
+
+  def thumblink
+    link_to image_tag(news.image.thumb.url, class: 'img-responsive'), news_path(news)
+  end
+
+  def imagelink
+    link_to image_tag(news.image.url, class: 'img-responsive'), news_path(news)
   end
 
   def content

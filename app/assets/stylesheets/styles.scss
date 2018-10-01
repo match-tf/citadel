@@ -670,8 +670,8 @@ a.label:hover, a.label:focus {
 }
 
 .panel-heading span {
-	margin: 0px;
-	font-size: 14px;
+    margin: 11px;
+    font-size: 20px;
 }
 
 // Makes panel toggle and settings buttons into a single tabbed button. Safe to remove if wanted 
@@ -748,7 +748,7 @@ a.label:hover, a.label:focus {
 	position: absolute;
 	content: " ";
 	width: 2px;
-	background-color: $light-gray;
+	background-color: #e29418;
 	left: 25px;
 	margin-right: -1.5px;
 }
@@ -770,7 +770,7 @@ a.label:hover, a.label:focus {
 .timeline > li > .timeline-panel {
 	width: calc( 100% - 65px );
 	float: right;
-	border: 1px solid #edeeed;
+	border: 1px solid #4b4b4b;
 	border-radius: 2px;
 	padding: 10px 20px;
 	position: relative;
@@ -783,8 +783,8 @@ a.label:hover, a.label:focus {
 	left: -11px;
 	display: inline-block;
 	border-top: 11px solid transparent;
-	border-right: 11px solid #edeeed;
-	border-left: 0 solid #edeeed;
+	border-right: 11px solid #e29418;
+	border-left: 0 solid #e29418;
 	border-bottom: 11px solid transparent;
 	content: " ";
 }
@@ -795,8 +795,8 @@ a.label:hover, a.label:focus {
 	left: -10px;
 	display: inline-block;
 	border-top: 10px solid transparent;
-	border-right: 10px solid #fff;
-	border-left: 0 solid #fff;
+	border-right: 10px solid #e29418;
+	border-left: 0 solid #e29418;
 	border-bottom: 10px solid transparent;
 	content: " ";
 }
@@ -1596,6 +1596,7 @@ p.back-link {
 h1.outside, h2.outside, h3.outside, h4.outside, h5.outside, h6.outside, h1.outside, h2.outside, h3.outside, h4.outside, h5.outside, h6.outside {
   color: #ffffff;
   padding-left: 0;
+  padding-right: 0;
 }
 
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover, h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
@@ -1621,6 +1622,11 @@ h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hov
 	padding: 0;
 	background: #2d2727 !important;
     border-bottom: none !important;
+}
+.hero-banner > img{
+	width: 100%;
+    object-fit: cover;
+    height: auto;
 }
 
 //Fast animations
@@ -1782,37 +1788,37 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     padding-right: 20px !important;
 }
 }
+@media (min-width: 992px) {
+    .row.padless > .col-md-1:first-child, .row.padless > .col-sm-1:first-child, .row.padless > .col-lg-1:first-child, .row.padless > .col-xs-1:first-child,
+    .row.padless > .col-md-2:first-child, .row.padless > .col-sm-2:first-child, .row.padless > .col-lg-2:first-child, .row.padless > .col-xs-2:first-child,
+    .row.padless > .col-md-3:first-child, .row.padless > .col-sm-3:first-child, .row.padless > .col-lg-3:first-child, .row.padless > .col-xs-3:first-child,
+    .row.padless > .col-md-4:first-child, .row.padless > .col-sm-4:first-child, .row.padless > .col-lg-4:first-child, .row.padless > .col-xs-4:first-child,
+    .row.padless > .col-md-5:first-child, .row.padless > .col-sm-5:first-child, .row.padless > .col-lg-5:first-child, .row.padless > .col-xs-5:first-child,
+    .row.padless > .col-md-6:first-child, .row.padless > .col-sm-6:first-child, .row.padless > .col-lg-6:first-child, .row.padless > .col-xs-6:first-child,
+    .row.padless > .col-md-7:first-child, .row.padless > .col-sm-7:first-child, .row.padless > .col-lg-7:first-child, .row.padless > .col-xs-7:first-child,
+    .row.padless > .col-md-8:first-child, .row.padless > .col-sm-8:first-child, .row.padless > .col-lg-8:first-child, .row.padless > .col-xs-8:first-child,
+    .row.padless > .col-md-8:first-child, .row.padless > .col-sm-9:first-child, .row.padless > .col-lg-9:first-child, .row.padless > .col-xs-9:first-child,
+    .row.padless > .col-md-10:first-child, .row.padless > .col-sm-10:first-child, .row.padless > .col-lg-10:first-child, .row.padless > .col-xs-10:first-child,
+    .row.padless > .col-md-11:first-child, .row.padless > .col-sm-11:first-child, .row.padless > .col-lg-11:first-child, .row.padless > .col-xs-11:first-child,
+    .row.padless > .col-md-12:first-child, .row.padless > .col-sm-12:first-child, .row.padless > .col-lg-12:first-child, .row.padless > .col-xs-12:first-child,  {
+        padding-left: 0 !important;
+    }
 
-.row.padless > .col-md-1:first-child, .row.padless > .col-sm-1:first-child, .row.padless > .col-lg-1:first-child, .row.padless > .col-xs-1:first-child,
-.row.padless > .col-md-2:first-child, .row.padless > .col-sm-2:first-child, .row.padless > .col-lg-2:first-child, .row.padless > .col-xs-2:first-child,
-.row.padless > .col-md-3:first-child, .row.padless > .col-sm-3:first-child, .row.padless > .col-lg-3:first-child, .row.padless > .col-xs-3:first-child,
-.row.padless > .col-md-4:first-child, .row.padless > .col-sm-4:first-child, .row.padless > .col-lg-4:first-child, .row.padless > .col-xs-4:first-child,
-.row.padless > .col-md-5:first-child, .row.padless > .col-sm-5:first-child, .row.padless > .col-lg-5:first-child, .row.padless > .col-xs-5:first-child,
-.row.padless > .col-md-6:first-child, .row.padless > .col-sm-6:first-child, .row.padless > .col-lg-6:first-child, .row.padless > .col-xs-6:first-child,
-.row.padless > .col-md-7:first-child, .row.padless > .col-sm-7:first-child, .row.padless > .col-lg-7:first-child, .row.padless > .col-xs-7:first-child,
-.row.padless > .col-md-8:first-child, .row.padless > .col-sm-8:first-child, .row.padless > .col-lg-8:first-child, .row.padless > .col-xs-8:first-child,
-.row.padless > .col-md-8:first-child, .row.padless > .col-sm-9:first-child, .row.padless > .col-lg-9:first-child, .row.padless > .col-xs-9:first-child,
-.row.padless > .col-md-10:first-child, .row.padless > .col-sm-10:first-child, .row.padless > .col-lg-10:first-child, .row.padless > .col-xs-10:first-child,
-.row.padless > .col-md-11:first-child, .row.padless > .col-sm-11:first-child, .row.padless > .col-lg-11:first-child, .row.padless > .col-xs-11:first-child,
-.row.padless > .col-md-12:first-child, .row.padless > .col-sm-12:first-child, .row.padless > .col-lg-12:first-child, .row.padless > .col-xs-12:first-child,  {
-    padding-left: 0 !important;
+    .row.padless > .col-md-1:last-child, .row.padless > .col-sm-1:last-child, .row.padless > .col-lg-1:last-child, .row.padless > .col-xs-1:last-child,
+    .row.padless > .col-md-2:last-child, .row.padless > .col-sm-2:last-child, .row.padless > .col-lg-2:last-child, .row.padless > .col-xs-2:last-child,
+    .row.padless > .col-md-3:last-child, .row.padless > .col-sm-3:last-child, .row.padless > .col-lg-3:last-child, .row.padless > .col-xs-3:last-child,
+    .row.padless > .col-md-4:last-child, .row.padless > .col-sm-4:last-child, .row.padless > .col-lg-4:last-child, .row.padless > .col-xs-4:last-child,
+    .row.padless > .col-md-5:last-child, .row.padless > .col-sm-5:last-child, .row.padless > .col-lg-5:last-child, .row.padless > .col-xs-5:last-child,
+    .row.padless > .col-md-6:last-child, .row.padless > .col-sm-6:last-child, .row.padless > .col-lg-6:last-child, .row.padless > .col-xs-6:last-child,
+    .row.padless > .col-md-7:last-child, .row.padless > .col-sm-7:last-child, .row.padless > .col-lg-7:last-child, .row.padless > .col-xs-7:last-child,
+    .row.padless > .col-md-8:last-child, .row.padless > .col-sm-8:last-child, .row.padless > .col-lg-8:last-child, .row.padless > .col-xs-8:last-child,
+    .row.padless > .col-md-8:last-child, .row.padless > .col-sm-9:last-child, .row.padless > .col-lg-9:last-child, .row.padless > .col-xs-9:last-child,
+    .row.padless > .col-md-10:last-child, .row.padless > .col-sm-10:last-child, .row.padless > .col-lg-10:last-child, .row.padless > .col-xs-10:last-child,
+    .row.padless > .col-md-11:last-child, .row.padless > .col-sm-11:last-child, .row.padless > .col-lg-11:last-child, .row.padless > .col-xs-11:last-child,
+    .row.padless > .col-md-12:last-child, .row.padless > .col-sm-12:last-child, .row.padless > .col-lg-12:last-child, .row.padless > .col-xs-12:last-child,  {
+        padding-right: 0 !important;
+    }
 }
-
-.row.padless > .col-md-1:last-child, .row.padless > .col-sm-1:last-child, .row.padless > .col-lg-1:last-child, .row.padless > .col-xs-1:last-child,
-.row.padless > .col-md-2:last-child, .row.padless > .col-sm-2:last-child, .row.padless > .col-lg-2:last-child, .row.padless > .col-xs-2:last-child,
-.row.padless > .col-md-3:last-child, .row.padless > .col-sm-3:last-child, .row.padless > .col-lg-3:last-child, .row.padless > .col-xs-3:last-child,
-.row.padless > .col-md-4:last-child, .row.padless > .col-sm-4:last-child, .row.padless > .col-lg-4:last-child, .row.padless > .col-xs-4:last-child,
-.row.padless > .col-md-5:last-child, .row.padless > .col-sm-5:last-child, .row.padless > .col-lg-5:last-child, .row.padless > .col-xs-5:last-child,
-.row.padless > .col-md-6:last-child, .row.padless > .col-sm-6:last-child, .row.padless > .col-lg-6:last-child, .row.padless > .col-xs-6:last-child,
-.row.padless > .col-md-7:last-child, .row.padless > .col-sm-7:last-child, .row.padless > .col-lg-7:last-child, .row.padless > .col-xs-7:last-child,
-.row.padless > .col-md-8:last-child, .row.padless > .col-sm-8:last-child, .row.padless > .col-lg-8:last-child, .row.padless > .col-xs-8:last-child,
-.row.padless > .col-md-8:last-child, .row.padless > .col-sm-9:last-child, .row.padless > .col-lg-9:last-child, .row.padless > .col-xs-9:last-child,
-.row.padless > .col-md-10:last-child, .row.padless > .col-sm-10:last-child, .row.padless > .col-lg-10:last-child, .row.padless > .col-xs-10:last-child,
-.row.padless > .col-md-11:last-child, .row.padless > .col-sm-11:last-child, .row.padless > .col-lg-11:last-child, .row.padless > .col-xs-11:last-child,
-.row.padless > .col-md-12:last-child, .row.padless > .col-sm-12:last-child, .row.padless > .col-lg-12:last-child, .row.padless > .col-xs-12:last-child,  {
-    padding-right: 0 !important;
-}
-
 .newsdate {
     position: absolute;
     bottom: 0;
@@ -1831,16 +1837,48 @@ a.list-group-item-info:hover, button.list-group-item-info:hover {
     overflow: hidden;
 }
 
-.panel.news-pane > .panel-heading > img {
+.panel.news-pane > .panel-heading > a > img {
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
-.panel.news-pane:hover > .panel-heading > img {
+.panel.news-pane:hover > .panel-heading > a > img {
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
 }
 
+.list-group.tourneys > .list-group-item > h4 {
+    font-size: 15px;
+}
 
+.list-group.tourneys > .list-group-item > .league-underlay {
+    background-position-x: -192px !important;
+}
+
+.list-group.league-list > .list-group-item > .league-underlay {
+    background-position-x: -175px !important;
+    opacity: 0.1;
+}
+
+.list-group.league-list > .list-group-item  {
+    background: linear-gradient(to right, #2d2d2c, black) !important;
+    border-top: 1px solid #2d2d2c !important;
+}
+
+.list-group.league-list > .list-group-item > p {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: max-height 0.1s ease-out;
+}
+
+.list-group.league-list > .list-group-item:hover > p {
+    max-height: 50px;
+    transition: max-height 0.5s ease-out;
+}
+
+.list-group.league-list > .list-group-item:hover  {
+    background: linear-gradient(to right, #414141, black) !important;
+}

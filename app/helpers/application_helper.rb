@@ -13,11 +13,20 @@ module ApplicationHelper
     case name
     when :home
       controller_name == 'pages' && action_name == 'home'
+    when :faq
+      controller_name == 'pages' && action_name == 'faq'
+    when :about
+      controller_name == 'pages' && action_name == 'about'
     when :admin
       controller.is_a? AdminController
     else
       controller_path.start_with? name.to_s
     end
+  end
+
+  def caption(info)
+    data = { toggle: :tooltip, placement: :left,
+             html: 'true', 'original-title' => info }
   end
 
   def format_options

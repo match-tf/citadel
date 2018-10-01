@@ -12,24 +12,15 @@
       %span.glyphicon.glyphicon-question-sign
       New to tournament system? Check out our
       %a{:href => "/host", :target => "_blank"} tournament system guide.
-	  
-  - if @league.display_heroimage?  
-    .panel.panel-default 
-      - if user_can_edit_league?
-        = link_to edit_league_path(@league), class: 'btn btn-default pull-right margined pos-abs', type: 'button' do
-          Manage
-          %span.glyphicon.glyphicon-cog
-      .panel-heading.hero-banner
-        %img.img-responsive.center-block{:src => @league.heroimage_url}
-      .panel-body.markdown= present(@league).description
-  - else
-    .panel.panel-default 
-      - if user_can_edit_league?
-        = link_to edit_league_path(@league), class: 'btn btn-default pull-right margined', type: 'button' do
-          Manage
-          %span.glyphicon.glyphicon-cog	
-      .panel-heading Tournament Info
-      .panel-body.markdown= present(@league).description
+
+  .panel.panel-default 
+    - if user_can_edit_league?
+      = link_to edit_league_path(@league), class: 'btn btn-default pull-right margined pos-abs', type: 'button' do
+        Manage
+        %span.glyphicon.glyphicon-cog
+    .panel-heading.hero-banner
+      %img.img-responsive.center-block{:src => @league.banner.url}
+    .panel-body.markdown= present(@league).description
 
 .row
   .global-collapsible

@@ -9,3 +9,13 @@
   = check_box_tag 'page_playoffs_tournament[bronze_match]',
                   checked: page_playoffs_tournament[:bronze_match],
                   class: 'form-control'
+
+.form-group
+  %p Page playoff system is usually suitable for very small tournaments. Teams are seeded using a round-robin tournament and the top four play a mix of a single-elimination and double-elimination tournament to determine the winner. This system gives the top two teams a double chance, in that they can lose their first game and still go on to win the title, producing a similar though not identical effect to a double-elimination tournament. 
+  %p You must have your teams seeded before using this system for playoffs.
+  %p The format progresses as follows:
+  %ul
+    %li In Game 1, the third- and fourth-placed teams play against each other. The loser is eliminated.
+    %li In Game 2, the first- and second-placed teams play against each other. The winner qualifies directly for the final.
+    %li In Game 3, the winner of Game 1 plays against the loser of Game 2. The loser is eliminated.
+    %li Game 4 (the final) is then played between the winners of Games 2 and 3.

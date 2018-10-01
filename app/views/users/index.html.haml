@@ -6,15 +6,13 @@
     = render 'search'
 
 .panel.panel-container
-  .row
-    .panel.panel-default
-      - if @users.empty?
-        .panel-body No users found...
-    
-      - else
-        %ul.list-group
-          - @users.each do |user|
-            %li.list-group-item
-              = render 'users/listing', user: user
-    
-    = bootstrap_paginate @users
+  - if @users.empty?
+    .panel-body No users found...
+  
+  - else
+    %ul.list-group
+      - @users.each do |user|
+        %li.list-group-item
+          = render 'users/listing', user: user
+  
+  = bootstrap_paginate @users

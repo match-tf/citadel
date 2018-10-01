@@ -150,6 +150,10 @@ class User < ApplicationRecord
     !confirmed_at.nil? && email.present?
   end
 
+  def is_league_admin?(league)
+    permitted_leagues.include?(league)
+  end
+
   # Always remember using devise rememberable
   def remember_me
     true

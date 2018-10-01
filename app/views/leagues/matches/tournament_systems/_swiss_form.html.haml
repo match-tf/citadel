@@ -2,12 +2,17 @@
   %label.control-label Pairing System
   = select_tag 'swiss_tournament[pairer]', swiss_parer_select, class: 'form-control'
 
-.checkbox
-  %label
-    = check_box_tag 'swiss_tournament[pair_options][allow_duplicates]',
-                    checked: swiss_tournament[:pair_options][:allow_duplicates]
-    Allow Duplicates
+%div{data: caption('Allow teams to be matched with the same opponent more than once.')}
+  .checkbox
+    %label
+      = check_box_tag 'swiss_tournament[pair_options][allow_duplicates]',
+                      checked: swiss_tournament[:pair_options][:allow_duplicates]
+      Allow Duplicates
+
+%div{data: caption('Whenever the amount of participants is odd, a BYE match will be generated for each round. <br>BYE means that for this round the team will not be facing any opponent but this match will be counted as a win (no set points will be awarded though).<br> This setting controls what teams have the priority to have a BYE match.')}
+  .form-group
+    %label.control-label Push BYE Matches to Side
+    = select_tag 'swiss_tournament[pair_options][push_byes_to]', swiss_push_byes_to_select, class: 'form-control'
 
 .form-group
-  %label.control-label Push BYE Matches to Side
-  = select_tag 'swiss_tournament[pair_options][push_byes_to]', swiss_push_byes_to_select, class: 'form-control'
+  %p A Swiss-system tournament is a non-eliminating tournament format which features a set number of rounds of competition, but considerably fewer than in a round-robin tournament. In a Swiss tournament, each competitor (team or individual) does not play every other. Competitors meet one-to-one in each round and are paired using a set of rules designed to ensure that each competitor plays opponents with a similar running score, but not the same opponent more than once. The winner is the competitor with the highest aggregate points earned in all rounds. All competitors play in each round unless there is an odd number of players.

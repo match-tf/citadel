@@ -1,98 +1,124 @@
 .panel.panel-default
   .panel-heading Info
   .panel-body
-    = f.select :format_id, format_options
+    .clearfix
+      = image_tag @league.banner.url, class: 'img-responsive' if @league.banner?
+      %div{data: caption('A picture that represents your tournament<br> Image width is recommended to be at least 1530 pixels to avoid upscaling.')}
+        = f.file_field :banner, accept: 'image/png,image/jpeg', label: 'Banner '
+    %div{data: caption('Format dictates a minimum amount of players required to enter the competition<br>If you need a non-standard format, please contact us on Discord')}
+      = f.select :format_id, format_options
     = f.text_field :name
-    = f.text_field :heroimage_url
-    = f.check_box :display_heroimage
-    = f.markdown_editor :description, rows: 10
-    = f.markdown_editor :rules, rows: 15    
-    = f.text_field :category
+    %div{data: caption('Display your tournament in the main Tournament Hub.<br>This does not affect signups or tournament availability.')}
+      = f.check_box :display, label: 'Display in Hub'
+    .row.padless
+      .col-md-6
+        = f.markdown_editor :description, rows: 10
+      .col-md-6
+        = f.markdown_editor :rules, rows: 10
+    %div{data: caption('A category is being used for the public tournament list<br>For example, if you are hosting multiple competitions as an organization, you can type the name here. Players will then be able to filter the global list by your organization name or a desired keyword.<br>Please do not type formats or tags here.')}
+      = f.text_field :category
 
-.panel.panel-default
-  .panel-heading  Players
-  .panel-body
-    .form-group
-      = f.number_field :min_players, min: 1, label: 'Minimum'
-    .form-group
-      = f.number_field :max_players, min: 0, label: 'Maximum (0 for unlimited)'
+.row.padless
+  .col-md-6
+    .panel.panel-default
+      .panel-heading  Players
+      .panel-body
+        .form-group
+          = f.number_field :min_players, min: 1, label: 'Minimum'
+        .form-group
+          = f.number_field :max_players, min: 0, label: 'Maximum (0 for unlimited)'
+    
+    .panel.panel-default
+      .panel-heading State
+      .panel-body
+        %div{data: caption('This will allow participants to start signing up for your competition. Switches tournament page to live mode: division brackets and upcoming matches are being displayed.')}
+          = f.check_box :signuppable
+        %div{data: caption('This option prevents players from transfering in/out and between rosters (leaving and joining other rosters)')}
+          = f.check_box :roster_locked
+        %div{data: caption('Allow/disallow match results submissions. <br>Usually, if your tournament is live, this should be checked.<br>May be useful if you want to pause the tournament or put your current round on hold.')}
+          = f.check_box :matches_submittable
+        %div{data: caption('Captains will have to request transfers and wait for an approval of tournament admin<br>You will be able to check your transfer requests from the "Transfers" page in the "Admin" section of your tournament page.')}
+          = f.check_box :transfers_require_approval
+        %div{data: caption('Allow teams to leave the competition at any time.')}
+          = f.check_box :allow_disbanding
+        %div{data: caption('If a roster is disbaned during the competition and this option is on, all past matches will be overturned as a forfeit loss (default loss).<br>Be careful, this can affect points.')}
+          = f.check_box :forfeit_all_matches_when_roster_disbands
+    .panel.panel-default
+      .panel-heading Divisions
+      = f.errors_on :divisions, hide_attribute_name: true
+    
+      %ul.list-group
+        = f.fields_for :divisions do |division_f|
+          = render 'division_fields', f: division_f
+        #divisions
+    
+      .panel-body
+        %div
+          = link_to_add_association f, :divisions, class: 'btn btn-default pull-right',
+                                    'data-association-insertion-node' => '#divisions' do
+            %span.glyphicon.glyphicon-plus
+            Add Division
 
-.panel.panel-default
-  .panel-heading State
-  .panel-body
-    = f.check_box :signuppable
-    = f.check_box :roster_locked
-    = f.check_box :matches_submittable
-    = f.check_box :transfers_require_approval
-    = f.check_box :allow_disbanding
-    = f.check_box :forfeit_all_matches_when_roster_disbands
+  .col-md-6
+    .panel.panel-default
+      .panel-heading 
+        Points
 
-.panel.panel-default
-  .panel-heading 
-    Points
-    %br
-    %small
-      Looks confusing? Go through our
-      %a{:href => "/host", :target => "_blank"} tournament host guide.
+      .panel-body
+        %div{data: caption('"Set" is usually being referred to as a "Map". <br>Basically, if during one match teams will have to play on several maps, this amount of points will be added to the team score per every map won.')}
+          = f.number_field :points_per_round_win,  label: 'Points per set won'
+        %div{data: caption('"Set" is usually being referred to as a "Map". <br>If during one match teams will have to play on several maps, this amount of points will be added to the team score per every map played as a tie.')}
+          = f.number_field :points_per_round_draw, label: 'Points per set drawn'
+        %div{data: caption('This amount of points will be deducted from the team score per every map lost during one match.')}
+          = f.number_field :points_per_round_loss, label: 'Points per set lost'
+        %div{data: caption('Amount of points added per one match won.')}
+          = f.number_field :points_per_match_win,  label: 'Points per match won'
+        %div{data: caption('Amount of points added per one match drawn.')}
+          = f.number_field :points_per_match_draw, label: 'Points per match drawn'
+        %div{data: caption('Amount of points deducted per one match lost.')}
+          = f.number_field :points_per_match_loss, label: 'Points per match lost'
+        %div{data: caption('Amount of points added per one match won by forfeit (default loss).')}
+          = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit'
+        %div{data: caption('Amount of points added per one match drawn by forfeit (mutual forfeit).')}
+          = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit'
+        %div{data: caption('Amount of points deducted per one match lost by forfeit (default loss).')}
+          = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit'
 
-  .panel-body
-    = f.number_field :points_per_round_win,  label: 'Points per set won'
-    = f.number_field :points_per_round_draw, label: 'Points per set drawn'
-    = f.number_field :points_per_round_loss, label: 'Points per set lost'
-    = f.number_field :points_per_match_win,  label: 'Points per match won'
-    = f.number_field :points_per_match_draw, label: 'Points per match drawn'
-    = f.number_field :points_per_match_loss, label: 'Points per match lost'
-    = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit'
-    = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit'
-    = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit'
-
-.panel.panel-default
-  .panel-heading Tiebreaking
-  %ul.list-group
-    = f.fields_for :tiebreakers do |tiebreaker_f|
-      = render 'tiebreaker_fields', f: tiebreaker_f
-    #tiebreakers
-
-  .panel-body
-    %div
-      = link_to_add_association f, :tiebreakers, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#tiebreakers' do
-        %span.glyphicon.glyphicon-plus
-        Add Tiebreaker
-
-.panel.panel-default
-  .panel-heading Divisions
-
-  %ul.list-group
-    = f.fields_for :divisions do |division_f|
-      = render 'division_fields', f: division_f
-    #divisions
-
-  .panel-body
-    %div
-      = link_to_add_association f, :divisions, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#divisions' do
-        %span.glyphicon.glyphicon-plus
-        Add Division
-
-.panel.panel-default
-  .panel-heading 
-    Map Pool (Leave empty for all maps)
-    %br
-    %small 
-      Missing a map? Hit us up on Discord.
-
-  %ul.list-group
-    = f.fields_for :pooled_maps do |pooled_map_f|
-      = render 'pooled_map_fields', f: pooled_map_f
-    #pooled-maps
-
-  .panel-body
-    %div
-      = link_to_add_association f, :pooled_maps, class: 'btn btn-default pull-right',
-                                'data-association-insertion-node' => '#pooled-maps' do
-        %span.glyphicon.glyphicon-plus
-        Add Map
+.row.padless
+  .col-md-6
+    %div{data: caption('Whenever several teams have an equal amount of wins and losses, a tiebreaker factor is being used to decide what team has a higher rank.<br>Selected tiebreakers will be visible to everyone and included to the tournament division rank tables.')}
+      .panel.panel-default
+        .panel-heading Tiebreaking
+        %ul.list-group
+          = f.fields_for :tiebreakers do |tiebreaker_f|
+            = render 'tiebreaker_fields', f: tiebreaker_f
+          #tiebreakers
+      
+        .panel-body
+          %div
+            = link_to_add_association f, :tiebreakers, class: 'btn btn-default pull-right',
+                                      'data-association-insertion-node' => '#tiebreakers' do
+              %span.glyphicon.glyphicon-plus
+              Add Tiebreaker
+  .col-md-6
+    .panel.panel-default
+      .panel-heading 
+        Map Pool (Leave empty for all maps)
+        %br
+        %small 
+          Missing a map? Hit us up on Discord.
+    
+      %ul.list-group
+        = f.fields_for :pooled_maps do |pooled_map_f|
+          = render 'pooled_map_fields', f: pooled_map_f
+        #pooled-maps
+    
+      .panel-body
+        %div
+          = link_to_add_association f, :pooled_maps, class: 'btn btn-default pull-right',
+                                    'data-association-insertion-node' => '#pooled-maps' do
+            %span.glyphicon.glyphicon-plus
+            Add Map
 
 .panel.panel-default
   .panel-heading Scheduling

@@ -53,8 +53,7 @@
 										<h4 class="timeline-title">Hop in our <a href="https://discord.match.tf" target="_blank">Discord server</a></h4>
 									</div>
 									<div class="timeline-body">
-                                        <p>This site is currenly in a semi-closed beta state. Which means that not everyone is given an ability to freely host a tournament just yet. Stay calm! You can still participate if you follow the steps below.</p>
-										<p>This is required for a better coordination process & customer support. You are free to use any kind of coordination hub for your tournament, but as a tournament host, you should join our server.</p>
+                                        <p>No, you don't have to. But this site is currenly in beta state. Which means that not everything might be self-explanatory and work as expected. We try to provide as much documentation as possible, but you are always free to ask if you need any kind of help. Plus, you get a unique possibility to chat with other tournament hosts!</p>
 									</div>
 								</div>
 							</li>
@@ -62,10 +61,10 @@
 								<div class="timeline-badge"><em class="fa fa-magic"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Request tournament host permissions</h4>
+										<h4 class="timeline-title">Create your first tournament</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Fill in a simple form <a href="/apply" target="_blank">here</a>. Don't forget your username. Explain why do you think you are a worthy candidate.</p>
+										<p>Go to "Tournaments" > "Create new tournament" (or simply click <a href="/apply" target="_blank">here</a> if you are lazy). Fill in all the required fields and make sure you are ready to face the responsibility of maintaining a tournament you are about to create.</p>
 									</div>
 								</div>
 							</li>
@@ -73,10 +72,11 @@
 								<div class="timeline-badge"><em class="fa fa-fast-forward"></em></div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Go for it!</h4>
+										<h4 class="timeline-title">Advertise, review signups and run!</h4>
 									</div>
 									<div class="timeline-body">
-										<p>Once you are granted with the permissions, you will recieve a site notification that will directly take you to the page where you can create your first tournament.</p>
+										<p>Once you have your tournament parameter "Signuppable" active, captains that have teams fulfilling your tournament requirements will be able to sign their teams up. Don't forget to review signups regularly.</p>
+										<p>When you think you have enough teams, close signups and start generating rounds or matches.</p>
 									</div>
 								</div>
 							</li>
@@ -144,14 +144,71 @@
 			</div>
             </div>
         </div>
+
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">Can I let other users to manage my tournament?</a>
+              </h4>
+            </div>
+            <div id="question3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Yes, go to your tournament page, press "Manage" and scroll down to the "Manage Permissions" part.</p>
+                    <p>This will give the user a full control of the tournament, exactly the same as you have.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">Do you provide game servers?</a>
+              </h4>
+            </div>
+            <div id="question4" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>No, you'll need to ask your participants to use server providers such as serveme.tf or cpu.tf.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question5">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">I don't see a map I need in the list</a>
+              </h4>
+            </div>
+            <div id="question5" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>We currently have most of the popular game mode maps available, but sadly not all of them.</p>
+                    <p>Hop into our Discord server. Ping a @Staff member in the #host-general channel, we'll happily and quickly add your map.</p>
+                    <p>Yes, we can't possibly imagine and list all the maps that were ever made. We do have a feature to add maps in mind.</p>
+                </div>
+            </div>
+        </div>
+        
+         <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question6">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">I need to host a non-standard gamemode tournament</a>
+              </h4>
+            </div>
+            <div id="question6" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>We currently have most of the popular game modes available.</p>
+                    <p>But if you are looking for something else, feel free to ping @Staff in #host-general. We'll add your game mode right away.</p>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question7">
                  <h4 class="panel-title">
                     <a href="#" class="ing">I have more questions</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse">
+            <div id="question7" class="panel-collapse collapse">
                 <div class="panel-body">
 
 

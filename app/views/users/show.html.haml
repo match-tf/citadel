@@ -46,16 +46,20 @@
       != present_collection(@titles).map(&:icon).join(' ')
     
       .pull-right= render 'users/bans/list', user: @user
-    
-    .panel.panel-default
-      .panel-heading Description
-      .panel-body.markdown= user_p.description
-    
-    - if user_p.notice != ''
-      .panel.panel-warning
-        .panel-heading Notice
-        .panel-body.markdown= user_p.notice
-    
+
+    .row.padless.user-desc
+      .col-md-4
+        .panel.panel-default
+          .panel-heading About
+          .panel-body.markdown= user_p.description
+        
+        - if user_p.notice != ''
+          .panel.panel-warning
+            .panel-heading Notice
+            .panel-body.markdown= user_p.notice
+      .col-md-8
+        = render 'user_teams'
+
     - unless @matches.empty?
       .panel.panel-info
         .panel-heading Upcoming Matches
@@ -67,8 +71,14 @@
 .row
   - if user_can_edit_user?
     - unless @user.permitted_leagues.empty?
-      .col-md-6.col-sm-12.nopadding.pr-20-md
-        = render 'user_teams'
+      - unless @rosters.empty?
+        .col-md-6.col-sm-12.nopadding.pr-20-md
+          .panel.panel-info
+            .panel-heading Tournaments
+            %ul.list-group
+              - present_collection(@rosters).each do |roster|
+                - unless roster.league.hidden?
+                  %li.list-group-item= roster.user_listing
       
       .col-md-6.col-sm-12.nopadding
         .panel.panel-info
@@ -77,12 +87,24 @@
             - @user.permitted_leagues.order(created_at: :desc).each do |league|
               = link_to league.name, league_path(league), class: 'list-group-item'
     - else 
-      .col-md-12.nopadding
-        = render 'user_teams'
+      - unless @rosters.empty?
+        .col-md-12.nopadding
+          .panel.panel-info
+            .panel-heading Tournaments
+            %ul.list-group
+              - present_collection(@rosters).each do |roster|
+                - unless roster.league.hidden?
+                  %li.list-group-item= roster.user_listing
   - else
     - unless @user.public_permitted_leagues.empty?
-      .col-md-6.col-sm-12.nopadding.pr-20-md
-        = render 'user_teams'
+      - unless @rosters.empty?
+        .col-md-6.col-sm-12.nopadding.pr-20-md
+          .panel.panel-info
+            .panel-heading Tournaments
+            %ul.list-group
+              - present_collection(@rosters).each do |roster|
+                - unless roster.league.hidden?
+                  %li.list-group-item= roster.user_listing
       
       .col-md-6.col-sm-12.nopadding
         .panel.panel-info
@@ -91,28 +113,28 @@
             - @user.public_permitted_leagues.order(created_at: :desc).each do |league|
               = link_to league.name, league_path(league), class: 'list-group-item'
     - else 
-      .col-md-12.nopadding
-        = render 'user_teams'
-.row          
-  .panel.panel-info
-    .panel-heading Transfers
-    %ul.list-group
-      - @team_transfers.each do |transfer|
-        %li.list-group-item
-          - if transfer.is_joining?
-            joined
-          - else
-            left
-          #{present(transfer.team).link} on #{transfer.created_at.strftime('%c')}
-  
-  - unless @rosters.empty?
+      - unless @rosters.empty?
+        .col-md-12.nopadding
+          .panel.panel-info
+            .panel-heading Tournaments
+            %ul.list-group
+              - present_collection(@rosters).each do |roster|
+                - unless roster.league.hidden?
+                  %li.list-group-item= roster.user_listing
+
+- unless @team_transfers.empty?
+  .row
     .panel.panel-info
-      .panel-heading Tournaments
+      .panel-heading Transfers
       %ul.list-group
-        - present_collection(@rosters).each do |roster|
-          - unless roster.league.hidden?
-            %li.list-group-item= roster.user_listing
-  
+        - @team_transfers.each do |transfer|
+          %li.list-group-item
+            - if transfer.is_joining?
+              joined
+            - else
+              left
+            #{present(transfer.team).link} on #{transfer.created_at.strftime('%c')}
+
 - if user_can_edit_users?
   .row
     .panel.panel-info

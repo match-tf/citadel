@@ -7,7 +7,11 @@ class User
     end
 
     def from
-      ban.class.subject.to_s.capitalize
+      if ban.class.subject.to_s == 'leagues'
+        'Tournaments'
+      else
+        ban.class.subject.to_s.capitalize
+      end
     end
 
     def title_text

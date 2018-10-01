@@ -13,7 +13,7 @@
         = comm_p.created_at
 
     = present(comm_p.user_roster).link + ':' if comm_p.user_roster
-    = render 'users/listing', user: comm.created_by, team: comm_p.user_team
+    = render 'users/listing', user: comm.created_by, team: comm_p.user_team, league: comm_p.league
 
   - if user_can_edit_comm?(comm) && comm.edits.size > 1
     .pull-right

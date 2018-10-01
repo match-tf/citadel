@@ -1,0 +1,22 @@
+- content_for :head do
+  = javascript_include_tag 'jquery'
+  = javascript_include_tag 'brackets'
+  = stylesheet_link_tag 'brackets', media: 'all'
+  = stylesheet_link_tag 'widget', media: 'all'
+
+- content_for(:title) { @league.name }
+
+.w
+  - @div_rosters.each do |div, rosters|
+    .w-header
+      %a{:href => '"/tournaments/" + #{@league.id.to_s}', :target => '_blank'}
+        %h2= @league.name
+      %h5= div.name
+    - matches = @matches[div]
+    - if matches.present?
+      .w-body
+        = render 'leagues/divisions/bracket', division: div, rosters: rosters, matches: matches
+      .w-footer
+        %a.brand{:href => pages_home_path}
+          %span> MATCH
+          \.TF

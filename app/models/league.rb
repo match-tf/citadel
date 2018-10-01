@@ -27,7 +27,9 @@ class League < ApplicationRecord
   validates :rules, presence: true
   caches_markdown_render_for :description, escaped: false
   caches_markdown_render_for :rules, escaped: false
-  
+
+  mount_uploader :banner, HeroimageUploader
+
   validates :category, length: { in: 0..64, allow_nil: false }
 
   validates :signuppable,                              inclusion: { in: [true, false] }
@@ -51,6 +53,8 @@ class League < ApplicationRecord
   validates :points_per_forfeit_draw, presence: true, numericality: { only_integer: true }
   validates :points_per_forfeit_loss, presence: true, numericality: { only_integer: true }
 
+  validate :validate_has_division
+
   # Scheduling
   enum schedule: [:manual, :weeklies]
   has_one :weekly_scheduler, inverse_of: :league, class_name: 'League::Schedulers::Weekly',
@@ -65,6 +69,7 @@ class League < ApplicationRecord
   after_save :update_roster_match_counters
 
   scope :visible, -> { where.not(status: League.statuses[:hidden]) }
+  scope :active, -> { where(status: League.statuses[:running]) }
 
   scope :search, (lambda do |query|
     return all if query.blank?
@@ -86,6 +91,11 @@ class League < ApplicationRecord
   def ordered_rosters_by_division
     return divisions.map { |div| [div, []] } if rosters.approved.empty?
     rosters.includes(:division).order(:division_id).approved.ordered(self).group_by(&:division)
+  end
+
+  def ordered_rosters_by_one_division(div)
+    return divisions.map { |div| [div, []] } if rosters.approved.empty?
+    rosters.includes(:division).where("division_id" => div).order(:division_id).approved.ordered(self).group_by(&:division)
   end
 
   def valid_roster_size?(size)
@@ -141,6 +151,10 @@ class League < ApplicationRecord
 
   def validate_has_scheduler
     errors.add(:schedule, 'missing scheduler') unless schedule == 'manual' || scheduler.present?
+  end
+
+  def validate_has_division
+    errors.add(:divisions, 'Must have at least one division') unless divisions.length > 0
   end
 
   def set_defaults
