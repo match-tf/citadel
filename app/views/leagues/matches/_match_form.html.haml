@@ -11,12 +11,16 @@
   = f.collection_select :away_team_id, div.rosters.active, :id, :name,
                         include_blank: 'BYE', label: 'Away Team'
   = f.errors_on :away_team
-
-= f.check_box :has_winner, label: 'Has a Distinct Winner'
-= f.check_box :allow_round_draws, label: 'Allow set draws'
-= f.number_field :round_number, label: 'Round Number (Used for ordering)'
-= f.text_field :round_name, label: 'Round Name (Display Name)'
-= f.markdown_editor :notice, id: dom_id(div), rows: 6
+%div{data: caption('Makes matches behave like best of. The amount of sets must be odd. <br>Basically, you always want to have this checked as long as the match can not be a tie.')}
+  = f.check_box :has_winner, label: 'Has a Distinct Winner'
+%div{data: caption('Allows draws within maps/sets')}
+  = f.check_box :allow_round_draws, label: 'Allow set draws'
+%div{data: caption('This will order and group your rounds in the tournament division brackets.')}
+  = f.number_field :round_number, label: 'Round Number (Used for ordering)'
+%div{data: caption('Displayed name for a round. <br>If matches have the same name but different round number, they will not be grouped together.')}
+  = f.text_field :round_name, label: 'Round Name (Display Name)'
+%div{data: caption('An optional public message that will be displayed on the match page. <br>You can put your default times / dates or other important things here. ')}
+  = f.markdown_editor :notice, id: dom_id(div), rows: 6
 
 .panel.panel-default
   .panel-heading Picks & Bans

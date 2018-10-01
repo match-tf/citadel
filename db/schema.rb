@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180915163533) do
+ActiveRecord::Schema.define(version: 20181001031759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -340,7 +340,7 @@ ActiveRecord::Schema.define(version: 20180915163533) do
     t.string "notice", default: "", null: false
     t.string "round_name", default: "", null: false
     t.text "notice_render_cache", default: "", null: false
-    t.boolean "has_winner", default: false, null: false
+    t.boolean "has_winner", default: true, null: false
     t.integer "winner_id"
     t.integer "loser_id"
     t.string "script_state"
