@@ -424,3 +424,65 @@ span.glyphicon.glyphicon-question-sign.help {
     z-index: 10;
     pointer-events: none;
 }
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #ffffff;
+  background-color: #2d2d2c;
+  border: 0;
+  cursor: not-allowed;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #e29418;
+  border: 0 !important;
+  cursor: default;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #222;
+  border:  0 !important;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+  cursor: default;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #2d2d2cd9 !important;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+
+.modal-header {
+    border-bottom: 1px solid #3b3b3b;
+}
+
+.modal-footer {
+    border-top: 1px solid #3b3b3b;
+}
