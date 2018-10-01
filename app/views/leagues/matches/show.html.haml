@@ -25,9 +25,10 @@
 - else
   .row.padless
     .col-md-8
-      .panel.panel-default
-        = render 'leagues/matches/players_table', match: @match, match_p: match_p
-      
+      - if @match.notice.present? && (user_on_either_teams? || user_can_edit_league?)
+        .panel.panel-info
+          .panel-heading Match Notice
+          .panel-body.markdown= match_p.notice
       .panel.panel-info
         .panel-heading Results #{match_p.status}
       
@@ -37,11 +38,10 @@
         - else
           = render 'leagues/matches/match_results',
                    match: @match, pick_bans: @pick_bans, rounds: @rounds
+      .panel.panel-default
+        = render 'leagues/matches/players_table', match: @match, match_p: match_p
       
-      - if @match.notice.present? && (user_on_either_teams? || user_can_edit_league?)
-        .panel.panel-info
-          .panel-heading Match Notice
-          .panel-body.markdown= match_p.notice
+
     .col-md-4
       - if @match.home_team.schedule_data && @match.away_team.schedule_data
         = render 'leagues/matches/schedule', match: @match, league: @league
