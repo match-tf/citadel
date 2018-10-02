@@ -8,8 +8,8 @@
       Edit
       %span.glyphicon.glyphicon-cog
   
-  %h1.outside #{present(@league).link}: #{@match.home_team.division.name}
-  %h2.outside= match_p.title
+  %h1.outside.nopadding #{present(@league).link}: #{@match.home_team.division.name}
+  %h4.outside= match_p.title
   
 - if @match.bye?
   %br

@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20181001031759) do
     t.index ["user_id"], name: "index_action_user_edit_users_on_user_id"
   end
 
-  create_table "action_user_impersonate_users", force: :cascade do |t|
+  create_table "action_user_impersonate_users", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.index ["user_id"], name: "index_action_user_impersonate_users_on_user_id"
   end
