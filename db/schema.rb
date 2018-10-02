@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181001031759) do
+ActiveRecord::Schema.define(version: 20181002084929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20181001031759) do
     t.index ["user_id"], name: "index_action_user_edit_users_on_user_id"
   end
 
-  create_table "action_user_impersonate_users", id: :serial, force: :cascade do |t|
+  create_table "action_user_impersonate_users", force: :cascade do |t|
     t.integer "user_id"
     t.index ["user_id"], name: "index_action_user_impersonate_users_on_user_id"
   end
@@ -658,6 +658,7 @@ ActiveRecord::Schema.define(version: 20181001031759) do
     t.text "notice_render_cache", default: "", null: false
     t.string "avatar_token"
     t.string "time_zone", default: "UTC", null: false
+    t.string "locale", default: "en", null: false
     t.index "query_name_cache gist_trgm_ops", name: "index_users_on_query_name_cache", using: :gist
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true

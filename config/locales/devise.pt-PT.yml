@@ -1,0 +1,69 @@
+# Traducoes adicionais em https://github.com/plataformatec/devise/wiki/I18n
+
+# Salve este arquivo em 'config/locales', como 'devise.pt-BR.yml'
+# Adicione a seguinte linha ao arquivo 'config/application.rb':
+# config.i18n.default_locale = :'pt-BR'
+# Para a nova configuracao fazer efeito, reinicie o servidor
+
+pt-BR:
+  devise:
+    confirmations:
+      confirmed: "Sua conta foi confirmada com sucesso."
+      send_instructions: "Voce recebera um email com instrucoes para confirmar sua conta em alguns minutos."
+      send_paranoid_instructions: "Se seu endereco de email existir em nosso banco de dados, voce recebera um email com instrucoes para confirmar sua conta em alguns minutos."
+    failure:
+      already_authenticated: "Voce ja esta logado."
+      inactive: "Sua conta ainda nao foi ativada."
+      invalid: "%{authentication_keys} ou senha invalida."
+      locked: "Sua conta esta bloqueada."
+      last_attempt: "Voce tem mais uma tentativa antes de sua conta ser bloqueada."
+      not_found_in_database: "%{authentication_keys} ou senha invalida."
+      timeout: "Sua sessao expirou. Por favor, faca login novamente para continuar."
+      unauthenticated: "Voce precisa entrar ou registrar-se antes de continuar."
+      unconfirmed: "Voce precisa confirmar seu endereco de email antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucoes de confirmacao"
+      reset_password_instructions:
+        subject: "Instrucoes de redefinicao de senha"
+      unlock_instructions:
+        subject: "Instrucoes de desbloqueio"
+      email_changed:
+        subject: "Email alterado"
+      password_change:
+        subject: "Senha alterada"
+    omniauth_callbacks:
+      failure: "Nao foi possivel autentica-lo em %{kind} porque \"%{reason}\"."
+      success: "Autenticado com sucesso em %{kind}."
+    passwords:
+      no_token: "Voce nao pode acessar esta pagina para redefinicao, por favor tenha certeza de que usou a URL completa recebida."
+      send_instructions: "Voce recebera, em breve, um email com instrucoes de como redefinir sua senha."
+      send_paranoid_instructions: "Se seu endereco de email existir em nosso banco de dados, voce recebera um link de redefinicao de senha em alguns minutos."
+      updated: "Sua senha foi atualizada com sucesso. Voce agora esta logado."
+      updated_not_active: "Sua senha foi atualizada com sucesso."
+    registrations:
+      destroyed: "Tchau! Sua conta foi cancelada com exito. Esperamos ver voce de novo em breve!"
+      signed_up: "Bem-vindo! Voce se registrou com exito."
+      signed_up_but_inactive: "Voce se registrou com exito. Entretanto, precisa confirmar sua conta antes de fazer login."
+      signed_up_but_locked: "Voce se registrou com sucesso. Entretando, sua conta esta bloqueada, e nao foi possivel fazer login."
+      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmacao foi enviada para seu endereco de email. Por favor, siga o link para ativar sua conta."
+      update_needs_confirmation: "Voce atualizou sua conta com sucesso, mas nos precisamos verificar seu endereco de email. Por favor, cheque sua caixa de entrada e siga o link recebido."
+      updated: "Sua conta foi atualizada com sucesso."
+    sessions:
+      signed_in: "Logado com sucesso."
+      signed_out: "Saiu com sucesso."
+      already_signed_out: "Saiu com sucesso."
+    unlocks:
+      send_instructions: "Voce recebera um email com instrucoes para desbloquear sua conta em alguns minutos."
+      send_paranoid_instructions: "Se sua conta existir, voce recebera um email com instrucoes para desbloquea-la em alguns minutos."
+      unlocked: "Sua conta foi desbloqueada com sucesso. Por favor, faca login para continuar."
+  errors:
+    messages:
+      already_confirmed: "ja foi confirmado, por favor faca login"
+      confirmation_period_expired: "precisava ser confirmada em %{period}, por favor solicite um novo link"
+      expired: "expirou, por favor solicite uma nova"
+      not_found: "nao encontrado"
+      not_locked: "nao esta bloqueada"
+      not_saved:
+        one: "1 erro impediu que %{resource} fosse salvo(a):"
+        other: "%{count} erros impediram que %{resource} fosse salvo(a):"

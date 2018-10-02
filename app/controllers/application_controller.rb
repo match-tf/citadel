@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   impersonates :user
-  before_action :set_raven_context, :set_user_time_zone
+  before_action :set_raven_context, :set_user_time_zone, :set_locale
 
   before_action do
     @notifications = current_user.notifications.order(created_at: :desc).load if user_signed_in?
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def set_user_time_zone
     Time.zone = current_user.time_zone if user_signed_in?
+  end
+
+  def set_locale
+    I18n.locale = current_user.try(:locale) || I18n.default_locale
   end
 
 end

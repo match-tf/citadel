@@ -136,12 +136,12 @@ class UsersController < ApplicationController
   end
 
   def new_user_params
-    params.require(:user).permit(:name, :avatar, :description, :email, :time_zone)
+    params.require(:user).permit(:name, :avatar, :description, :email, :time_zone, :locale)
           .merge(steam_id: steam_data['uid'])
   end
 
   def edit_user_params
-    common = [:avatar, :remove_avatar, :description, :email, :time_zone]
+    common = [:avatar, :remove_avatar, :description, :email, :time_zone, :locale]
     permitted = if user_can_edit_users?
                   [:badge_name, :badge_color, :notice]
                 else

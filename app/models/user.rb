@@ -37,6 +37,7 @@ class User < ApplicationRecord
   validates :email, allow_blank: true, format: { with: /@/ } # How you actually validate emails
   validates :notice, presence: true, allow_blank: true
   validates :time_zone, presence: true, allow_blank: false
+  validates :locale, inclusion: { in: proc { I18n.available_locales.map(&:to_s) } }
   validate :timezone_exists
   caches_markdown_render_for :notice
 
