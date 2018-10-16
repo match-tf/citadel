@@ -49,11 +49,14 @@ gem 'ahoy_matey', '~> 1.6'
 # API Serialization
 gem 'active_model_serializers', '~> 0.10.0'
 # Tournament systems
-gem 'tournament-system', '~> 1.0.0'
+gem 'tournament-system', '~> 2.0'
 
 group :test do
   # Use rspec for tests
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.8'
+
+  # Parallelize tests
+  gem 'parallel_tests'
 
   # Test coverage
   gem 'simplecov'
