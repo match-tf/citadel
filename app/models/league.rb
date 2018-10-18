@@ -58,6 +58,8 @@ class League < ApplicationRecord
   validate :validate_players_range
   validate :validate_has_scheduler
 
+  validate :validate_has_division
+
   after_initialize :set_defaults, unless: :persisted?
   before_save :update_query_cache
   after_save :update_roster_match_counters
@@ -139,6 +141,10 @@ class League < ApplicationRecord
 
   def validate_has_scheduler
     errors.add(:schedule, 'Missing scheduler') unless schedule == 'manual' || scheduler.present?
+  end
+
+  def validate_has_division
+    errors.add(:divisions, 'Must have at least one division') unless divisions.length > 0
   end
 
   def set_defaults

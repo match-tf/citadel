@@ -53,6 +53,7 @@
 
 .panel.panel-default
   .panel-heading Divisions
+  = f.errors_on :divisions, hide_attribute_name: true
 
   %ul.list-group
     = f.fields_for :divisions do |division_f|
