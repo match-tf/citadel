@@ -76,7 +76,7 @@
         };
     }
 
-    function render(containerj, canvas) {
+    function render(containerj, canvas, target) {
         // Use twice the scale for better resolution on high dpi displays
         var container = containerj[0];
         var width = container.scrollWidth;
@@ -102,7 +102,7 @@
 
             round.find('.bracket-match').each(function() {
                 var match = $(this);
-                match.find('.bracket-team').each(function() {
+                match.find('.bracket-team[data-team-id="'+target+'"]').each(function() {
                     var team = $(this);
                     var teamId = team.data('team-id');
                     var rightPos = rightPosition(canvasj, team);
@@ -137,8 +137,12 @@
                 buildRound(rounds[index], roundMatches, teams).appendTo(container);
             });
 
-            $(window).on('resize', function() { render(container, canvas); });
-            render(container, canvas);
+            //Render lines on mouseover
+            $('.bracket-team').each(function() {
+              $(this).on("mouseover", function(){
+                render(container, canvas, $(this).data("team-id"))
+              });
+            });
 
             // Scroll to the right of the bracket
             container.scrollLeft(canvas.scrollWidth);
