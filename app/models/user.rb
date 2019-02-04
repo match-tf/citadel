@@ -178,9 +178,9 @@ class User < ApplicationRecord
   def permitted_leagues
     permitted = []
     sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-    query = ActiveRecord::Base.connection.execute(sql)
-    query.field_values('league_id').each_entry do |entry|
-      permitted.push(entry)
+    query = ActiveRecord::Base.connection.exec_query(sql)
+    query.each do |entry|
+      permitted.push(entry["league_id"])
     end
     League.where(id: permitted)
   end
@@ -188,9 +188,9 @@ class User < ApplicationRecord
   def public_permitted_leagues
     permitted = []
     sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-    query = ActiveRecord::Base.connection.execute(sql)
-    query.field_values('league_id').each_entry do |entry|
-      permitted.push(entry)
+    query = ActiveRecord::Base.connection.exec_query(sql)
+    query.each do |entry|
+      permitted.push(entry["league_id"])
     end
     League.visible.where(id: permitted)
   end
