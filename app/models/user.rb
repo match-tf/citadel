@@ -176,23 +176,27 @@ class User < ApplicationRecord
 
   # TODO: fix this terrible code because there is a better way to access action_user_edit_league
   def permitted_leagues
-    permitted = []
-    sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-    query = ActiveRecord::Base.connection.exec_query(sql)
-    query.each do |entry|
-      permitted.push(entry["league_id"])
+    ActiveRecord::Base.connection_pool.with_connection do
+      permitted = []
+      sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
+      query = ActiveRecord::Base.connection.execute(sql)
+      query.field_values('league_id').each_entry do |entry|
+        permitted.push(entry)
+      end
+      League.where(id: permitted)
     end
-    League.where(id: permitted)
   end
   
   def public_permitted_leagues
-    permitted = []
-    sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-    query = ActiveRecord::Base.connection.exec_query(sql)
-    query.each do |entry|
-      permitted.push(entry["league_id"])
+    ActiveRecord::Base.connection_pool.with_connection do
+      permitted = []
+      sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
+      query = ActiveRecord::Base.connection.execute(sql)
+      query.field_values('league_id').each_entry do |entry|
+        permitted.push(entry)
+      end
+      League.visible.where(id: permitted)
     end
-    League.visible.where(id: permitted)
   end
 
   private
