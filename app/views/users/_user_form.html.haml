@@ -14,7 +14,7 @@
   - if user.avatar.file
     = f.check_box :remove_avatar
   = f.time_zone_select :time_zone
-  = f.select :locale, I18n.available_locales
+  /= f.select :locale, I18n.available_locales
 
 = f.markdown_editor :description, rows: 10
 
