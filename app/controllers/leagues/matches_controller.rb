@@ -54,6 +54,7 @@ module Leagues
                                                                          push_byes_to: :bottom_half } }
       @round_robin_tournament        = {}
       @single_elimination_tournament = { teams_limit: 0, starting_round: 0 }
+      @double_elimination_tournament = { teams_limit: 0, starting_round: 0 }
       @page_playoffs_tournament      = { starting_round: 0, bronze_match: false }
     end
 
@@ -173,6 +174,7 @@ module Leagues
       @swiss_tournament              = swiss_tournament_params
       @round_robin_tournament        = round_robin_tournament_params
       @single_elimination_tournament = single_elimination_tournament_params
+      @double_elimination_tournament = double_elimination_tournament_params
       @page_playoffs_tournament      = page_playoffs_tournament_params
     end
 
@@ -181,6 +183,7 @@ module Leagues
       when :swiss              then swiss_tournament_params
       when :round_robin        then round_robin_tournament_params
       when :single_elimination then single_elimination_tournament_params
+      when :double_elimination then double_elimination_tournament_params
       when :page_playoffs      then page_playoffs_tournament_params
       else
         raise 'Invalid tournament system'
@@ -197,6 +200,10 @@ module Leagues
 
     def single_elimination_tournament_params
       params.require(:single_elimination_tournament).permit(:teams_limit, :starting_round)
+    end
+
+    def double_elimination_tournament_params
+      params.require(:double_elimination_tournament).permit(:teams_limit, :starting_round)
     end
 
     def page_playoffs_tournament_params
