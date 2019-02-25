@@ -4,6 +4,7 @@
 
 .row.padless
   = bootstrap_form_for @match, as: :match, url: generate_league_matches_path(@league) do |f|
+    = f.errors_on :base
     .col-md-6
       .panel.panel-default
         .panel-heading Match Settings
@@ -17,12 +18,12 @@
           .form-group
             %label.control-label Division
             = select_tag 'division_id', division_select, class: 'form-control'
-      
+
           .form-group
             %label.control-label Tournament System
             = select_tag 'tournament_system', tournament_system_select, class: 'form-control',
                                                      data: { toggle: 'tab' }
-      
+
           .tab-content
             - tournament_systems.each do |system|
               - klass = system == @tournament_system ? 'active' : ''
