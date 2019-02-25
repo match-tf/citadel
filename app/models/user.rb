@@ -52,14 +52,14 @@ class User < ApplicationRecord
   validates_permission_to :edit, :leagues
   validates_permission_to :create, :leagues
   validates_permission_to :view, :leagues
-  
+
   validates_permission_to :manage_rosters, :league
   validates_permission_to :manage_rosters, :leagues
 
   validates_permission_to :edit, :permissions
 
   validates_permission_to :impersonate, :users
-  
+
   validates_permission_to :manage, :forums
   validates_permission_to :manage, :forums_topic,  class_name: '::Forums::Topic'
   validates_permission_to :manage, :forums_thread, class_name: '::Forums::Thread'
@@ -174,29 +174,21 @@ class User < ApplicationRecord
     admin_grants.map { |action, subject| grant_model_for(action, subject).association_name }
   end
 
-  # TODO: fix this terrible code because there is a better way to access action_user_edit_league
+  # TODO: prevent extra querying
   def permitted_leagues
-    ActiveRecord::Base.connection_pool.with_connection do
-      permitted = []
-      sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-      query = ActiveRecord::Base.connection.execute(sql)
-      query.field_values('league_id').each_entry do |entry|
-        permitted.push(entry)
-      end
-      League.where(id: permitted)
+    permitted = []
+    League.all.each do |league|
+      permitted.push(league.id) if self.can?(:edit, league)
     end
+    League.where(id: permitted)
   end
-  
+
   def public_permitted_leagues
-    ActiveRecord::Base.connection_pool.with_connection do
-      permitted = []
-      sql = 'SELECT league_id from action_user_edit_league WHERE user_id = ' + self.id.to_s
-      query = ActiveRecord::Base.connection.execute(sql)
-      query.field_values('league_id').each_entry do |entry|
-        permitted.push(entry)
-      end
-      League.visible.where(id: permitted)
+    permitted = []
+    League.all.each do |league|
+      permitted.push(league.id) if self.can?(:edit, league)
     end
+    League.visible.where(id: permitted)
   end
 
   private
