@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :maps, except: [:destroy]
   end
 
-  
+
   resources :leagues, :path => :tournaments do
     get 'medals', to: 'leagues#medals'
     get 'widget', to: 'leagues#widget'
@@ -95,8 +95,6 @@ Rails.application.routes.draw do
       patch 'invite'
       patch 'leave'
       patch 'kick'
-      patch 'grant'
-      patch 'revoke'
     end
 
     resource :invite, controller: 'teams/invite', only: [] do
@@ -165,5 +163,5 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
+
 end
