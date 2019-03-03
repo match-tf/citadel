@@ -2,7 +2,7 @@ class BadgeUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
-  storage :file
+#  storage :file
 
   def default_url
     path = 'fallback/' + [version_name, 'default_badge.png'].compact.join('_')
@@ -10,9 +10,9 @@ class BadgeUploader < CarrierWave::Uploader::Base
     ActionController::Base.helpers.asset_path path
   end
 
-  def store_dir
-    'uploads/badges'
-  end
+#  def store_dir
+#    'uploads/badges'
+#  end
 
   process resize_to_fit: [64, 64]
 

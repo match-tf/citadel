@@ -2,11 +2,11 @@ class HeroimageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
-  storage :file
+#  storage :file
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/banners/#{model.id}"
-  end
+#  def store_dir
+#    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/banners/#{model.id}"
+#  end
 
   def default_url
     path = 'fallback/' + [version_name, 'heroimage_default.png'].compact.join('_')

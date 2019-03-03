@@ -2,7 +2,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
-  storage :file
+#  storage :file
 
   def default_url
     model_name = model.model_name.singular
@@ -11,9 +11,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     ActionController::Base.helpers.asset_path path
   end
 
-  def store_dir
-    'uploads/avatars/' + model.model_name.plural
-  end
+#  def store_dir
+#    'uploads/avatars/' + model.model_name.plural
+#  end
 
   def filename
     "#{model.id}-#{token}.#{file.extension}" if original_filename.present?
