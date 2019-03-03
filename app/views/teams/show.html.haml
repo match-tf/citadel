@@ -11,9 +11,6 @@
     
     - team_p = present(@team)
     
-    .clearfix
-      = image_tag @team.avatar.icon.url, class: 'pull-left thumbnail' if @team.avatar?
-    
     .panel.panel-default
       .panel-heading Info
       .panel-body.markdown= team_p.description
