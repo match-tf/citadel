@@ -43,5 +43,21 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
 # end
 
+
+# Temporary: kill workers every 5 hours
+before_fork do
+  require 'puma_worker_killer'
+
+  PumaWorkerKiller.config do |config|
+    config.ram           = 640 # mb
+    config.frequency     = 5    # seconds
+    config.reaper_status_logs = true
+
+    config.pre_term = -> (worker) { puts "Worker #{worker.inspect} being killed" }
+  end
+
+  PumaWorkerKiller.start
+end
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart

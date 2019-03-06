@@ -50,6 +50,8 @@ gem 'ahoy_matey', '~> 1.6'
 gem 'active_model_serializers', '~> 0.10.0'
 # Tournament systems
 gem 'tournament-system', '~> 1.0.0'
+# Rolling restarts for Puma workers
+gem 'puma_worker_killer'
 
 group :test do
   # Use rspec for tests
