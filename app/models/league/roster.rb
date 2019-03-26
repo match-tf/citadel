@@ -48,17 +48,11 @@ class League
     }
     scope :ordered, -> { order(placement: :asc) }
     scope :seeded, -> { order(seeding: :asc) }
-    scope :tied, ->(points) { active.where(points: points) }
 
     # rubocop:disable Rails/SkipsModelValidations
     after_create { League.increment_counter(:rosters_count, league.id) }
     after_destroy { League.decrement_counter(:rosters_count, league.id) }
     # rubocop:enable Rails/SkipsModelValidations
-
-    after_create :trigger_score_update!, if: :approved?
-    after_save do
-      trigger_score_update! if [:ranking, :seeding, :approved, :disbanded].any? { |a| saved_change_to_attribute?(a) }
-    end
 
     after_initialize :set_defaults, unless: :persisted?
 
@@ -107,7 +101,7 @@ class League
       self[:schedule_data] = league.scheduler&.transform_data(data)
     end
 
-    def self.order_keys(league)
+    def order_keys_for(league)
       keys = [ranking || Float::INFINITY, disbanded? ? 1 : 0, -points]
       keys += league.tiebreakers.map { |tiebreaker| -tiebreaker.value_for(self) }
       keys.push seeding || Float::INFINITY
@@ -115,10 +109,6 @@ class League
     end
 
     private
-
-    def trigger_score_update!
-      Leagues::Rosters::ScoreUpdatingService.call(league, division)
-    end
 
     def forfeit_all!
       matches.find_each do |match|
@@ -142,7 +132,7 @@ class League
       return if league.blank?
 
       unless league.valid_roster_size?(players.size)
-        errors.add(:players, "must have at least #{league.min_players} players" +
+        errors.add(:players, "Must have at least #{league.min_players} players" +
           (league.max_players.positive? ? " and no more than #{league.max_players} players" : ''))
       end
     end
@@ -150,7 +140,7 @@ class League
     def unique_within_league
       return if league.blank?
 
-      errors.add(:base, 'can only sign up once') if league.rosters.where(team: team).exists?
+      errors.add(:base, 'Can only sign up once') if league.rosters.where(team: team).exists?
     end
 
     def validate_schedule
@@ -159,7 +149,7 @@ class League
       if schedule_data.present?
         league.scheduler.validate_roster(self)
       else
-        errors.add(:schedule_data, 'is required')
+        errors.add(:schedule_data, 'Is required')
       end
     end
   end
