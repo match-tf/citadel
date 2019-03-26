@@ -56,7 +56,7 @@ class TournamentDriver < Tournament::Driver
   end
 
   def get_team_score(team)
-    team.points
+    team.points.to_f
   end
 
   def build_match(home_team, away_team)
