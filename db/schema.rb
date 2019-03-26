@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181002084929) do
+ActiveRecord::Schema.define(version: 2019_01_29_232424) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "pg_trgm"
+  enable_extension "plpgsql"
 
   create_table "action_user_create_leagues", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -348,6 +348,9 @@ ActiveRecord::Schema.define(version: 20181002084929) do
     t.decimal "total_home_team_score", precision: 20, scale: 6, default: "0.0", null: false
     t.decimal "total_away_team_score", precision: 20, scale: 6, default: "0.0", null: false
     t.boolean "allow_round_draws", default: false, null: false
+    t.integer "total_home_team_round_wins", default: 0, null: false
+    t.integer "total_away_team_round_wins", default: 0, null: false
+    t.integer "total_round_draws", default: 0, null: false
     t.index ["away_team_id"], name: "index_league_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_league_matches_on_home_team_id"
     t.index ["loser_id"], name: "index_league_matches_on_loser_id"
@@ -450,6 +453,11 @@ ActiveRecord::Schema.define(version: 20181002084929) do
     t.text "notice", default: "", null: false
     t.text "notice_render_cache", default: "", null: false
     t.decimal "total_score_difference", precision: 20, scale: 6, default: "0.0", null: false
+    t.integer "placement"
+    t.integer "bye_matches_count", default: 0, null: false
+    t.decimal "normalized_round_score", default: "0.0", null: false
+    t.decimal "buchholz_score", default: "0.0", null: false
+    t.decimal "median_buchholz_score", default: "0.0", null: false
     t.index ["division_id"], name: "index_league_rosters_on_division_id"
     t.index ["points"], name: "index_league_rosters_on_points"
     t.index ["team_id"], name: "index_league_rosters_on_team_id"
@@ -503,8 +511,8 @@ ActiveRecord::Schema.define(version: 20181002084929) do
     t.string "rules", default: "### Welcome to match.tf tournament! Please follow the rules below:", null: false
     t.text "rules_render_cache", default: "", null: false
     t.string "banner"
-    t.index "query_name_cache gist_trgm_ops", name: "index_leagues_on_query_name_change", using: :gist
     t.index ["format_id"], name: "index_leagues_on_format_id"
+    t.index ["query_name_cache"], name: "index_leagues_on_query_name_change", opclass: :gist_trgm_ops, using: :gist
   end
 
   create_table "maps", id: :serial, force: :cascade do |t|
@@ -570,8 +578,8 @@ ActiveRecord::Schema.define(version: 20181002084929) do
     t.text "notice", default: "", null: false
     t.text "notice_render_cache", default: "", null: false
     t.string "avatar_token"
-    t.index "query_name_cache gist_trgm_ops", name: "index_teams_on_query_name_cache", using: :gist
     t.index ["name"], name: "index_teams_on_name", unique: true
+    t.index ["query_name_cache"], name: "index_teams_on_query_name_cache", opclass: :gist_trgm_ops, using: :gist
   end
 
   create_table "user_comment_edits", id: :serial, force: :cascade do |t|
@@ -659,9 +667,9 @@ ActiveRecord::Schema.define(version: 20181002084929) do
     t.string "avatar_token"
     t.string "time_zone", default: "UTC", null: false
     t.string "locale", default: "en", null: false
-    t.index "query_name_cache gist_trgm_ops", name: "index_users_on_query_name_cache", using: :gist
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["query_name_cache"], name: "index_users_on_query_name_cache", opclass: :gist_trgm_ops, using: :gist
     t.index ["steam_id"], name: "index_users_on_steam_id", unique: true
   end
 
