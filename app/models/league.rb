@@ -43,15 +43,15 @@ class League < ApplicationRecord
   validates :min_players, presence: true, numericality: { greater_than: 0 }
   validates :max_players, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :points_per_round_win,  presence: true, numericality: { only_integer: true }
-  validates :points_per_round_draw, presence: true, numericality: { only_integer: true }
-  validates :points_per_round_loss, presence: true, numericality: { only_integer: true }
-  validates :points_per_match_win,  presence: true, numericality: { only_integer: true }
-  validates :points_per_match_draw, presence: true, numericality: { only_integer: true }
-  validates :points_per_match_loss, presence: true, numericality: { only_integer: true }
-  validates :points_per_forfeit_win,  presence: true, numericality: { only_integer: true }
-  validates :points_per_forfeit_draw, presence: true, numericality: { only_integer: true }
-  validates :points_per_forfeit_loss, presence: true, numericality: { only_integer: true }
+  validates :points_per_round_win,  presence: true
+  validates :points_per_round_draw, presence: true
+  validates :points_per_round_loss, presence: true
+  validates :points_per_match_win,  presence: true
+  validates :points_per_match_draw, presence: true
+  validates :points_per_match_loss, presence: true
+  validates :points_per_forfeit_win,  presence: true
+  validates :points_per_forfeit_draw, presence: true
+  validates :points_per_forfeit_loss, presence: true
 
   validate :validate_has_division
 

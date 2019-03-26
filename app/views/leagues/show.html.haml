@@ -84,14 +84,14 @@
               %th #
               %th Team
               %th Points
-              - present_collection(@league.tiebreakers).each do |tiebreaker|
+              - tiebreakers.each do |tiebreaker|
                 %th= tiebreaker.name_with_tooltip
   
             - rosters.each_with_index do |roster, rank|
               %tr
                 %th{ scope: 'row' }= rank + 1
-                %td= present(roster).listing
-                %td= roster.points
+                %td= roster_p.listing
+                %td= roster_p.points_s
                 - @league.tiebreakers.each do |tiebreaker|
                   %th= tiebreaker.value_for(roster)
   

@@ -65,23 +65,23 @@
 
       .panel-body
         %div{data: caption('"Set" is usually being referred to as a "Map". <br>Basically, if during one match teams will have to play on several maps, this amount of points will be added to the team score per every map won.')}
-          = f.number_field :points_per_round_win,  label: 'Points per set won'
+          = f.number_field :points_per_round_win,  label: 'Points per set won', step: :any
         %div{data: caption('"Set" is usually being referred to as a "Map". <br>If during one match teams will have to play on several maps, this amount of points will be added to the team score per every map played as a tie.')}
-          = f.number_field :points_per_round_draw, label: 'Points per set drawn'
+          = f.number_field :points_per_round_draw, label: 'Points per set drawn', step: :any
         %div{data: caption('This amount of points will be deducted from the team score per every map lost during one match.')}
-          = f.number_field :points_per_round_loss, label: 'Points per set lost'
+          = f.number_field :points_per_round_loss, label: 'Points per set lost', step: :any
         %div{data: caption('Amount of points added per one match won.')}
-          = f.number_field :points_per_match_win,  label: 'Points per match won'
+          = f.number_field :points_per_match_win,  label: 'Points per match won', step: :any
         %div{data: caption('Amount of points added per one match drawn.')}
-          = f.number_field :points_per_match_draw, label: 'Points per match drawn'
+          = f.number_field :points_per_match_draw, label: 'Points per match drawn', step: :any
         %div{data: caption('Amount of points deducted per one match lost.')}
-          = f.number_field :points_per_match_loss, label: 'Points per match lost'
+          = f.number_field :points_per_match_loss, label: 'Points per match lost', step: :any
         %div{data: caption('Amount of points added per one match won by forfeit (default loss).')}
-          = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit'
+          = f.number_field :points_per_forfeit_win, label: 'Points per match won by forfeit', step: :any
         %div{data: caption('Amount of points added per one match drawn by forfeit (mutual forfeit).')}
-          = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit'
+          = f.number_field :points_per_forfeit_draw, label: 'Points per match drawn by forfeit', step: :any
         %div{data: caption('Amount of points deducted per one match lost by forfeit (default loss).')}
-          = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit'
+          = f.number_field :points_per_forfeit_loss, label: 'Points per match lost by forfeit', step: :any
 
 .row.padless
   .col-md-6
