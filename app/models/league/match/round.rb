@@ -29,7 +29,7 @@ class League
         home_team_score > away_team_score
       end
 
-       def away_team_won?
+      def away_team_won?
         away_team_score > home_team_score
       end
 
