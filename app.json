@@ -1,0 +1,57 @@
+{
+  "addons": [
+    "cloudinary",
+    "heroku-postgresql",
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "description": "Review app for Heroku",
+  "env": {
+    "CLOUDINARY_URL": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_BLACK_URL": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_IVORY_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SENTRY_DSN": {
+      "required": true
+    },
+    "STEAM_API_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "citadel",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
