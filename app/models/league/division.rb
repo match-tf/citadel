@@ -43,18 +43,18 @@ class League
       }
 
       tournament_options = { pairer: Tournament::Swiss::Dutch, pair_options: pair_options }
-      Tournament::Swiss.generate new_driver(match_options), tournament_options
+      TournamentSystem::Swiss.generate new_driver(match_options), tournament_options
     end
 
     def generate_round_robin(match_options, _)
-      Tournament::RoundRobin.generate new_driver(match_options)
+      TournamentSystem::RoundRobin.generate new_driver(match_options)
     end
 
     def generate_single_elimination(match_options, options)
       match_options[:has_winner] = true
       match_options[:allow_round_draws] = false
       driver_options = options.slice(:teams_limit, :starting_round)
-      Tournament::SingleElimination.generate new_driver(match_options, driver_options)
+      TournamentSystem::SingleElimination.generate new_driver(match_options, driver_options)
     end
 
     def generate_double_elimination(match_options, options)
@@ -71,7 +71,7 @@ class League
       driver_options[:teams_limit] = 4
       tournament_options = options.slice(:bronze_match)
 
-      Tournament::PagePlayoff.generate new_driver(match_options, driver_options), tournament_options
+      TournamentSystem::PagePlayoff.generate new_driver(match_options, driver_options), tournament_options
     end
   end
 end
