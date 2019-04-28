@@ -1,6 +1,6 @@
-require 'tournament-system'
+require 'tournament_system'
 
-class TournamentDriver < Tournament::Driver
+class TournamentDriver < TournamentSystem::Driver
   def initialize(division, match_options = {}, options = {})
     @division = division
     @match_options = match_options
@@ -56,6 +56,7 @@ class TournamentDriver < Tournament::Driver
   end
 
   def get_team_score(team)
+    # to_f as a workaround for graph_matching (dependency of tournament-system) not supporting BigDecimal
     team.points.to_f
   end
 
