@@ -42,7 +42,7 @@ class League
         push_byes_to:     options[:pair_options].fetch(:push_byes_to, :bottom_half).to_sym,
       }
 
-      tournament_options = { pairer: Tournament::Swiss::Dutch, pair_options: pair_options }
+      tournament_options = { pairer: TournamentSystem::Swiss::Dutch, pair_options: pair_options }
       TournamentSystem::Swiss.generate new_driver(match_options), tournament_options
     end
 
