@@ -1,23 +1,14 @@
 module API
   module V1
     class APIController < ActionController::API
-      def api_key
-        key = request.headers['X-Api-Key']
-        @api_key ||= APIKey.find_by(key: key)
-      end
 
       before_action :track_action
-      before_action :authenticate
 
       rescue_from Exception do |error|
         handle_error(error) if error
       end
 
       protected
-
-      def authenticate
-        render_error :unauthorized, message: 'Unauthorized API key' unless api_key
-      end
 
       def handle_error(error)
         if error.is_a? ActiveRecord::RecordNotFound
