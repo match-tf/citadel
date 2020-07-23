@@ -25,8 +25,8 @@ class League < ApplicationRecord
   validates :name,        presence: true, length: { in: 1..64 }
   validates :description, presence: true
   validates :rules, presence: true
-  caches_markdown_render_for :description, escaped: false
-  caches_markdown_render_for :rules, escaped: false
+  caches_markdown_render_for :description
+  caches_markdown_render_for :rules
 
   mount_uploader :banner, HeroimageUploader
 
