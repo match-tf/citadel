@@ -42,7 +42,6 @@ gem 'will_paginate-bootstrap'
 gem 'redcarpet'
 # File Uploads
 gem 'carrierwave'
-gem 'cloudinary'
 gem 'mini_magick'
 # Tracking and analytics
 gem 'ahoy_matey', '~> 1.6'

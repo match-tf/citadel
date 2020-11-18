@@ -1,5 +1,4 @@
 class BadgeUploader < CarrierWave::Uploader::Base
-  include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
 #  storage :file
