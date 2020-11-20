@@ -6,7 +6,7 @@ atom_feed do |feed|
     feed.entry(post) do |entry|
       entry.title(post.title)
       entry.summary(post.shorttext)
-      entry.content('<img src="https://match.tf' + post.image.thumb.url + '"><br>' + post.content_render_cache, type: 'html')
+      entry.content('<img src="https://match.broadcast.tf' + post.image.thumb.url + '"><br>' + post.content_render_cache, type: 'html')
     end
   end
 end

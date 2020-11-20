@@ -62,7 +62,7 @@
             - if public_league.exists?
               .text-featured.animated.fadeInRight
                 %a{:href => "/tournaments/#{public_league.last.id}"}
-                  %span Latest tournament:
+                  %span Welcome to match.tf - Latest tournament:
                   = public_league.last.name
       .row
         = render 'flashes'
