@@ -58,11 +58,13 @@
       .row
         .panel.panel-default
           .panel-heading.hero-banner
-            %img.img-responsive.center-block{:src => "#{asset_path 'homeimage.png'}"}/
+            %img.img-responsive.center-block{:usemap => "#image-map", :src => "#{asset_path 'homeimage.png'}"}/
+            %map{:name => "image-map"}
+              %area{:target => "_blank", :alt => "Mannco.Store", :title => "Mannco.Store", :href => "https://mannco.store/", :coords => "1454,290,985,112", :shape => "rect"}
             - if public_league.exists?
               .text-featured.animated.fadeInRight
                 %a{:href => "/tournaments/#{public_league.last.id}"}
-                  %span Welcome to match.tf - Latest tournament:
+                  %span Latest Tournament:
                   = public_league.last.name
       .row
         = render 'flashes'
